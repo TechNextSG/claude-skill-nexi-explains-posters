@@ -65,3 +65,9 @@ and adds the series knowledge, the cinematography playbook and a uniqueness chec
 | Exaggerated kit | `kit/nxe-x/` (nxe-x.css + nxe-x.js: badge, Odoo-apps row, balloons, sheets, foam, clash flash, F3 people) + recipe in cinematography.md section 10 |
 | Page style kit | `kit/nxe-page/` (nxe-page.css + nxe-page.js: the technext.asia/nexi-explains look, for posters the owner wants in that style) |
 | Examples | `examples/` (S1 EP00 v1 test + v2 comic cover, S1 EP01 sunlit orrery, S2 EP00 comic splash sample (superseded), S2 EP00-02 page style, S2 all-episodes line-up `s2-all-episodes/`, post 80) |
+
+## Last step: update the repo (owner rule, 2026-10-11)
+Every time this skill is used, and after any lesson or rule is added to it, finish with
+`python ~/ClaudeWork/technext-claude-skills/tools/build_skills.py --push`. It mirrors this folder to its own public repo
+https://github.com/TechNextSG/claude-skill-nexi-explains-posters and rebuilds https://technextsg.github.io/technext-claude-skills/
+(it only commits what changed). Report the repo commit in the status, or the error if the push failed.
