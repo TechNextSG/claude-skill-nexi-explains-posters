@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Post 89 - Nexi introduction: Built by TechNext! (comic flight over Southeast Asia, Nexi Explains page theme)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Inter:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=block" rel="stylesheet">
+<link rel="stylesheet" href="kit.css"><link rel="stylesheet" href="nxe-page.css"><link rel="stylesheet" href="nxe-x.css">
+<style>
+/* POST 89 "BUILT BY TECHNEXT!" - Nexi the PILOT rides the TechNext paper plane over a comic map of Southeast Asia at
+   golden hour (series nxe-page, comic v4 look, no logo row). ONE MOMENT: just after take-off from Singapore HQ, banking
+   toward Taguig City; Ho Chi Minh City waits on the left; a dashed route links the three offices.
+   Archetype: vintage travel poster x comic. Camera: high oblique (the map tilts away, the far coast melts into haze).
+   Light: low golden sun on the horizon at the right, warm key on the plane, long cast shadow of the plane on the sea.
+   Devices: the plane's shadow far below (altitude), sun glitter path on the sea, contrails + speed lines, haze at the
+   horizon, a blurred cloud at the lens. Text: title top-left over the sky. */
+.p89 .tt{position:absolute;z-index:44;left:54px;top:122px}
+.p89 .tt .a{font-size:84px;transform:rotate(-3deg)}
+.p89 .tt .b{font-size:128px;transform:rotate(-2deg) translateY(2px)}
+.p89 .xe{left:58px;top:56px;transform:rotate(-3deg)}
+.p89 .zoom{left:776px;top:740px;rotate:-12deg}
+.p89 .zoom span{font-size:52px;padding:28px 36px}
+.p89 .xbal{left:812px;top:262px;font-size:36px}
+.p89 .xans{left:62px;top:1046px}
+.p89 .xapps{left:62px;top:1100px}
+.p89 .row{position:absolute;z-index:44;left:62px;top:1180px;display:flex;gap:18px;align-items:center}
+.p89 .row .tag{transform:rotate(-2deg);font-size:28px}
+.ytb{display:inline-flex;align-items:center;gap:16px;height:92px;padding:0 36px 0 30px;border-radius:18px;background:#FF0000;color:#fff;font:800 34px/1 var(--display);letter-spacing:-.01em;white-space:nowrap;border:4px solid #101C45;box-shadow:0 9px 0 #101C45}
+.ytb svg{width:40px;height:40px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5 19 12 7 19.5Z" fill="currentColor"/></symbol></defs></svg>
+<section class="post p89 nxp nxx grain" data-p="89">
+  <canvas></canvas>
+  <h1 class="tt" data-qa="text"><span class="a">Built by</span><br><span class="b y">TechNext!</span></h1>
+  <span class="xe" data-qa="text">NEXI EXPLAINS <b>MEET THE CREW</b></span>
+  <div class="xbal" data-qa="text">MY TEAM<br>SETS UP<br><em>YOUR ODOO!</em></div>
+  <div class="boom zoom" data-qa="text"><span>ZOOM!</span></div>
+  <p class="xans" data-qa="text"><b class="y">Odoo Ready Partner.</b> Clients in 10+ countries.</p>
+  <div class="xapps" data-qa="text"><span class="k">ODOO APPS</span><span class="ap"><img src="assets/odoo/accountant.svg" alt="">Accounting</span><span class="ap"><img src="assets/odoo/sale.svg" alt="">Sales</span><span class="ap"><img src="assets/odoo/stock.svg" alt="">Inventory</span><span class="ap"><img src="assets/odoo/crm.svg" alt="">CRM</span></div>
+  <div class="row" data-qa="text"><span class="tag">SINGAPORE &middot; PHILIPPINES &middot; VIETNAM</span><span class="tag w">ASK NEXI ON TECHNEXT.ASIA</span></div>
+  <div class="xft" data-qa="text"><span class="ytb"><svg><use href="#i-play"/></svg>Subscribe on YouTube</span><span class="site">technext.asia<small>All episodes: /nexi-explains</small></span></div>
+</section>
+<script src="kit.js"></script><script src="nxe-page.js"></script><script src="nxe-x.js"></script><script src="nxe-bg.js"></script><script src="a1-lib.js"></script>
+<script>
+(function () {
+  var W = TN.W, H = TN.H, TAU = Math.PI * 2, INK = A1.INK, rr = NXP.rr, S = {};
+  var HZ = 432, SUN = [968, 436];
+  /* the comic map: an oblique affine fitted so the three offices land where the poster needs them */
+  var SGP = [103.82, 1.35], OFF = { sg: [270, 918], vn: [196, 604], ph: [906, 590] };
+  var MX = (function () { var a = [OFF.vn[0] - OFF.sg[0], OFF.vn[1] - OFF.sg[1]], b = [OFF.ph[0] - OFF.sg[0], OFF.ph[1] - OFF.sg[1]], u = [106.70 - SGP[0], 10.78 - SGP[1]], v = [121.05 - SGP[0], 14.52 - SGP[1]], det = u[0] * v[1] - u[1] * v[0];
+    return { a: (a[0] * v[1] - b[0] * u[1]) / det, b: (b[0] * u[0] - a[0] * v[0]) / det, c: (a[1] * v[1] - b[1] * u[1]) / det, d: (b[1] * u[0] - a[1] * v[0]) / det }; })();
+  function P(lon, lat) { var dx = lon - SGP[0], dy = lat - SGP[1]; return [OFF.sg[0] + MX.a * dx + MX.b * dy, OFF.sg[1] + MX.c * dx + MX.d * dy]; }
+  var LAND = {
+    main: [[90, 26], [90, 16], [94.5, 16.2], [97.6, 16.5], [98.4, 12.6], [98.6, 9.9], [98.3, 8.1], [100.3, 5.4], [100.4, 3.6], [101.3, 2.8], [102.6, 1.9], [103.4, 1.38], [104.25, 1.42], [103.9, 2.9], [103.4, 4.2], [103.0, 5.6], [101.9, 6.4], [100.6, 7.0], [100.3, 8.3], [99.3, 9.6], [99.2, 10.9], [100.0, 12.6], [100.9, 13.4], [101.7, 12.7], [102.5, 12.0], [103.5, 10.6], [104.6, 10.3], [104.8, 8.8], [105.2, 8.6], [106.3, 9.5], [106.8, 10.4], [107.6, 10.5], [108.9, 11.3], [109.3, 12.4], [109.2, 13.6], [108.9, 15.2], [108.0, 16.2], [107.1, 17.0], [106.4, 18.0], [105.7, 19.0], [106.6, 20.3], [107.8, 21.5], [109.8, 21.5], [110.4, 20.4], [111.0, 21.5], [113.5, 22.3], [116.5, 23.0], [119.0, 25.0], [120.0, 26.5]],
+    hainan: [[108.6, 19.2], [109.6, 18.2], [110.5, 18.7], [111.0, 19.7], [110.5, 20.1], [109.2, 19.9]],
+    sumatra: [[95.3, 5.6], [97.5, 5.2], [98.7, 3.8], [100.4, 2.2], [101.4, 1.7], [103.2, 0.6], [104.4, -1.0], [106.0, -3.0], [105.8, -5.8], [104.6, -5.9], [102.3, -4.0], [100.9, -1.8], [99.2, 0.3], [98.0, 2.0], [96.3, 3.8]],
+    borneo: [[109.0, 1.4], [109.6, 2.0], [110.9, 1.7], [111.4, 2.6], [113.0, 3.2], [113.9, 4.5], [115.3, 5.0], [116.0, 6.0], [116.8, 7.0], [117.7, 6.4], [119.2, 5.3], [118.3, 4.4], [117.6, 3.2], [118.0, 2.2], [119.0, 1.0], [117.9, 0.6], [117.4, -0.6], [116.6, -1.6], [116.3, -3.6], [114.6, -4.0], [113.0, -3.2], [111.6, -3.2], [110.2, -2.8], [110.0, -1.4], [109.2, -0.5]],
+    luzon: [[120.6, 18.5], [121.2, 18.6], [122.2, 18.5], [122.3, 17.1], [121.6, 15.9], [121.6, 14.7], [122.1, 14.1], [123.0, 13.8], [124.0, 13.0], [123.6, 12.7], [122.6, 13.3], [121.8, 13.9], [120.9, 13.8], [120.6, 14.3], [121.05, 14.65], [120.6, 14.9], [120.0, 15.1], [119.8, 16.3], [120.4, 16.4], [120.4, 17.6]],
+    mindoro: [[120.3, 13.5], [121.4, 13.2], [121.3, 12.3], [120.5, 12.5]],
+    palawan: [[117.2, 8.4], [117.8, 8.6], [118.8, 9.6], [119.6, 10.6], [119.8, 11.4], [119.3, 11.2], [118.4, 10.0], [117.4, 9.0]],
+    visayas: [[121.9, 11.9], [122.9, 11.5], [123.3, 10.5], [124.1, 10.1], [125.0, 11.3], [125.7, 12.3], [125.2, 12.6], [124.3, 12.5], [123.6, 11.1], [122.9, 10.6], [122.4, 10.5], [122.0, 10.9]],
+    mindanao: [[121.9, 7.0], [122.6, 7.8], [123.6, 8.6], [124.8, 8.9], [125.5, 9.7], [126.4, 8.9], [126.6, 7.5], [126.2, 6.3], [125.4, 5.6], [124.6, 6.0], [123.9, 6.9], [123.4, 7.6], [122.8, 7.4]],
+    java: [[105.2, -6.8], [106.5, -6.0], [108.3, -6.3], [110.4, -6.9], [112.6, -6.9], [114.5, -7.7], [114.4, -8.7], [111, -8.2], [108, -7.8], [106.4, -7.4]],
+    sulawesi: [[119.4, -5.5], [119.5, -3.5], [118.8, -2.6], [119.8, 0.0], [120.4, 0.9], [122.5, 1.0], [124.6, 1.5], [125.2, 1.4], [124.0, 0.4], [121.8, 0.5], [121.2, -0.8], [122.8, -0.9], [121.6, -1.9], [122.4, -4.6], [121.0, -2.8], [120.4, -2.8], [120.4, -5.5]]
+  };
+  function setup(post) {
+    var dpr = window.devicePixelRatio || 1; S.dpr = dpr; S.post = post;
+    var c = post.querySelector('canvas'); c.width = W * dpr; c.height = H * dpr; S.g = c.getContext('2d'); NXP.offscreen(S, W, H);
+    return Promise.all([A1.img('assets/nexi-hd/nexi-n89.png'), A1.img('assets/odoo/accountant.svg'), A1.img('assets/odoo/sale.svg'), A1.img('assets/odoo/stock.svg'), document.fonts.load('60px Bangers'), document.fonts.load('800 20px "Plus Jakarta Sans"'), document.fonts.load('700 16px Inter')])
+      .then(function (a) { S.nexi = a[0]; S.ic = a.slice(1, 4); });
+  }
+  function sky(g) {
+    var gr = g.createLinearGradient(0, 0, 0, HZ); gr.addColorStop(0, '#6C63D6'); gr.addColorStop(0.35, '#C76BA8'); gr.addColorStop(0.68, '#FF9A66'); gr.addColorStop(1, '#FFD98A'); g.fillStyle = gr; g.fillRect(0, 0, W, HZ + 2);
+    g.save(); g.globalAlpha = 0.16; g.fillStyle = '#FFF2D0'; g.beginPath(); for (var i = 0; i < 40; i += 2) { var a0 = Math.PI + i / 40 * Math.PI, a1 = Math.PI + (i + 1) / 40 * Math.PI; g.moveTo(SUN[0], SUN[1]); g.lineTo(SUN[0] + Math.cos(a0) * 1800, SUN[1] + Math.sin(a0) * 1800); g.lineTo(SUN[0] + Math.cos(a1) * 1800, SUN[1] + Math.sin(a1) * 1800); g.closePath(); } g.fill(); g.restore();
+    NXB.dots(g, W, HZ, SUN[0], SUN[1], 0.3, 'rgba(255,120,170,.24)', 18);
+    var gl = g.createRadialGradient(SUN[0], SUN[1], 20, SUN[0], SUN[1], 520); gl.addColorStop(0, 'rgba(255,240,190,.95)'); gl.addColorStop(0.3, 'rgba(255,210,130,.45)'); gl.addColorStop(1, 'rgba(255,210,130,0)'); g.fillStyle = gl; g.fillRect(0, 0, W, HZ);
+    g.save(); g.beginPath(); g.rect(0, 0, W, HZ); g.clip(); g.fillStyle = '#FFF4CC'; g.beginPath(); g.arc(SUN[0], SUN[1], 104, 0, TAU); g.fill(); g.restore();
+    /* golden-lit clouds near the horizon + a few birds */
+    A1.cloud(g, 440, 400, 0.75, { lw: 4, fill: '#FFE3C2', shade: 'rgba(230,110,120,.55)' }); A1.cloud(g, 40, 330, 0.62, { lw: 4, fill: '#FFE3C2', shade: 'rgba(230,110,120,.55)' });
+    A1.cloud(g, 700, 250, 0.5, { lw: 0, fill: '#FFD6B8', a: 0.7, shade: 'rgba(230,110,120,.4)' });
+    g.strokeStyle = INK; g.lineWidth = 3.5; g.lineCap = 'round'; [[620, 160, 1], [655, 182, 0.8], [592, 196, 0.7]].forEach(function (b) { g.beginPath(); g.moveTo(b[0] - 14 * b[2], b[1] - 6 * b[2]); g.quadraticCurveTo(b[0] - 5 * b[2], b[1] - 12 * b[2], b[0], b[1]); g.quadraticCurveTo(b[0] + 5 * b[2], b[1] - 12 * b[2], b[0] + 14 * b[2], b[1] - 6 * b[2]); g.stroke(); });
+  }
+  function poly(pts) { var p = new Path2D(); pts.forEach(function (q, k) { var s = P(q[0], q[1]); if (k) p.lineTo(s[0], s[1]); else p.moveTo(s[0], s[1]); }); p.closePath(); return p; }
+  function sea(g) {
+    var gr = g.createLinearGradient(0, HZ, 0, H); gr.addColorStop(0, '#8FD6E8'); gr.addColorStop(0.25, '#3FB4D6'); gr.addColorStop(1, '#1D6FB8'); g.fillStyle = gr; g.fillRect(0, HZ, W, H - HZ);
+    /* sun glitter path on the water */
+    g.save(); g.globalCompositeOperation = 'lighter'; var R = TN.rand(3);
+    for (var k = 0; k < 120; k++) { var t = R(), y = HZ + 6 + t * t * 700, spread = 30 + t * 360, x = SUN[0] - t * 260 + (R() - 0.5) * spread; g.fillStyle = 'rgba(255,226,150,' + (0.6 - t * 0.4) + ')'; g.fillRect(x, y, 10 + R() * 30 * (1 - t * 0.5), 3 + t * 3); }
+    g.restore();
+    /* halftone wave marks, smaller toward the horizon */
+    var R2 = TN.rand(13); g.strokeStyle = 'rgba(255,255,255,.4)'; g.lineCap = 'round';
+    for (var y2 = HZ + 14; y2 < H; y2 += 12 + (y2 - HZ) * 0.05) { var s = 0.4 + (y2 - HZ) / 900; g.lineWidth = 1.5 + s * 1.6; for (var x2 = (y2 * 7) % 60; x2 < W; x2 += 70 * s + R2() * 30) { g.beginPath(); g.moveTo(x2, y2); g.quadraticCurveTo(x2 + 7 * s, y2 - 6 * s, x2 + 14 * s, y2); g.quadraticCurveTo(x2 + 21 * s, y2 + 6 * s, x2 + 28 * s, y2); g.stroke(); } }
+    /* map graticule */
+    g.save(); g.setLineDash([6, 10]); g.strokeStyle = 'rgba(255,255,255,.22)'; g.lineWidth = 2;
+    [100, 105, 110, 115, 120, 125].forEach(function (lo) { var a = P(lo, -8), b = P(lo, 24); g.beginPath(); g.moveTo(a[0], a[1]); g.lineTo(b[0], b[1]); g.stroke(); });
+    [0, 5, 10, 15, 20].forEach(function (la) { var a = P(92, la), b = P(130, la); g.beginPath(); g.moveTo(a[0], a[1]); g.lineTo(b[0], b[1]); g.stroke(); }); g.restore();
+  }
+  function land(g) {
+    var R = TN.rand(29);
+    Object.keys(LAND).forEach(function (k) { var p = poly(LAND[k]);
+      g.save(); g.lineJoin = 'round'; g.lineWidth = 16; g.strokeStyle = 'rgba(255,255,255,.35)'; g.stroke(p); g.lineWidth = 9; g.strokeStyle = '#F7E1A6'; g.stroke(p); g.restore();
+      var gr = g.createLinearGradient(0, HZ, 0, H); gr.addColorStop(0, '#9FD08A'); gr.addColorStop(1, '#4FA65A'); g.fillStyle = gr; g.fill(p);
+      g.save(); g.clip(p); g.fillStyle = 'rgba(40,110,60,.28)'; for (var i = 0; i < 30; i++) { var q = LAND[k][Math.floor(R() * LAND[k].length)], c = P(q[0] + (R() - 0.5) * 3, q[1] + (R() - 0.5) * 3); g.beginPath(); g.ellipse(c[0], c[1], 22 + R() * 30, 9 + R() * 10, -0.1, Math.PI, 0); g.fill(); }
+      g.fillStyle = 'rgba(255,240,180,.25)'; g.fillRect(0, HZ, W, 30); g.restore();
+      g.lineWidth = 4; g.strokeStyle = INK; g.lineJoin = 'round'; g.stroke(p); });
+  }
+  function haze(g) { var hz = g.createLinearGradient(0, HZ - 10, 0, HZ + 170); hz.addColorStop(0, 'rgba(255,226,170,.95)'); hz.addColorStop(0.3, 'rgba(255,214,170,.55)'); hz.addColorStop(1, 'rgba(255,214,170,0)'); g.fillStyle = hz; g.fillRect(0, HZ - 10, W, 180);
+    g.fillStyle = INK; g.fillRect(0, HZ - 1, W, 3); g.fillStyle = 'rgba(255,255,255,.6)'; g.fillRect(0, HZ + 2, W, 2); }
+  function boat(g, x, y, s, f) { g.save(); g.translate(x, y); g.scale(s * f, s); g.strokeStyle = 'rgba(255,255,255,.75)'; g.lineWidth = 3; g.beginPath(); g.moveTo(-34, 8); g.lineTo(-90, 18); g.moveTo(-30, 4); g.lineTo(-80, 0); g.stroke();
+    g.fillStyle = '#E8303F'; g.beginPath(); g.moveTo(-30, -6); g.lineTo(34, -6); g.lineTo(24, 10); g.lineTo(-24, 10); g.closePath(); g.fill(); g.lineWidth = 3; g.strokeStyle = INK; g.stroke(); g.fillStyle = '#FFFFFF'; g.fill(rr(-14, -20, 24, 14, 3)); g.stroke(rr(-14, -20, 24, 14, 3)); g.restore(); }
+  function palm(g, x, y, s, f) {   /* a little comic palm tree on the coast */
+    g.save(); g.translate(x, y); g.scale(s * (f || 1), s); A1.shadow(g, 6, 2, 22, 5, 0.3);
+    g.lineCap = 'round'; g.strokeStyle = INK; g.lineWidth = 11; g.beginPath(); g.moveTo(0, 0); g.quadraticCurveTo(-6, -30, 6, -58); g.stroke(); g.strokeStyle = '#B9773E'; g.lineWidth = 6; g.stroke();
+    [[-0.3, 34], [0.5, 32], [1.4, 30], [2.4, 34], [3.1, 28]].forEach(function (l) { g.save(); g.translate(6, -58); g.rotate(-l[0]); var p = new Path2D(); p.moveTo(0, 0); p.quadraticCurveTo(l[1] * 0.5, -14, l[1], 6); p.quadraticCurveTo(l[1] * 0.5, -2, 0, 0); g.fillStyle = '#2E9B57'; g.fill(p); g.lineWidth = 3; g.strokeStyle = INK; g.stroke(p); g.restore(); });
+    g.fillStyle = '#8A5A2B'; g.beginPath(); g.arc(4, -54, 4, 0, TAU); g.arc(10, -52, 4, 0, TAU); g.fill(); g.restore();
+  }
+  function route(g) {   /* dashed flight route linking the three offices, lifted into arcs */
+    function arc(a, b, lift) { var c = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2 - lift]; g.beginPath(); g.moveTo(a[0], a[1]); g.quadraticCurveTo(c[0], c[1], b[0], b[1]); g.stroke(); }
+    g.save(); g.lineCap = 'round'; g.setLineDash([2, 18]); g.lineWidth = 11; g.strokeStyle = INK; arc(OFF.vn, OFF.ph, 120); arc(OFF.sg, OFF.vn, 90); g.lineWidth = 6; g.strokeStyle = '#FFFFFF'; arc(OFF.vn, OFF.ph, 120); arc(OFF.sg, OFF.vn, 90); g.restore();
+  }
+  function pin(g, at, col, label, side, below) {
+    var x = at[0], y = at[1];
+    A1.shadow(g, x, y + 2, 34, 9, 0.45);
+    g.save(); g.translate(x, y); var p = new Path2D(); p.moveTo(0, 0); p.bezierCurveTo(-14, -30, -40, -52, -40, -86); p.arc(0, -86, 40, Math.PI, 0); p.bezierCurveTo(40, -52, 14, -30, 0, 0); p.closePath();
+    g.save(); g.translate(5, 6); g.fillStyle = INK; g.fill(p); g.restore(); g.fillStyle = col; g.fill(p); g.lineWidth = 5; g.strokeStyle = INK; g.stroke(p);
+    g.fillStyle = '#FFFFFF'; g.beginPath(); g.arc(0, -86, 22, 0, TAU); g.fill(); g.lineWidth = 4; g.stroke();
+    g.fillStyle = '#3167CA'; g.beginPath(); g.moveTo(-12, -84); g.lineTo(13, -95); g.lineTo(3, -74); g.lineTo(0, -82); g.closePath(); g.fill();
+    g.fillStyle = 'rgba(255,255,255,.5)'; g.beginPath(); g.ellipse(-22, -104, 6, 11, 0.5, 0, TAU); g.fill(); g.restore();
+    /* sticker label: above the pin, or below it when below = true */
+    g.save(); g.font = '400 30px Bangers'; var tw = g.measureText(label[0]).width; g.font = '700 15px Inter'; var sw = g.measureText(label[1]).width;
+    var w = Math.max(tw, sw) + 40, h = 66, lx = side < 0 ? x - w - 30 : (side > 0 ? x + 34 : x - w / 2), ly = below ? y + 16 : y - 190;
+    g.translate(lx + w / 2, ly + h / 2); g.rotate(side < 0 || below ? -0.04 : 0.04); g.fillStyle = INK; g.fill(rr(-w / 2 + 5, -h / 2 + 6, w, h, 12)); g.fillStyle = '#FFFFFF'; g.fill(rr(-w / 2, -h / 2, w, h, 12)); g.lineWidth = 4; g.strokeStyle = INK; g.stroke(rr(-w / 2, -h / 2, w, h, 12));
+    g.font = '400 30px Bangers'; g.fillStyle = INK; g.textAlign = 'center'; g.textBaseline = 'alphabetic'; g.fillText(label[0], 0, 4); A1.tx(g, label[1], 0, 25, 15, 700, '#3167CA', 'center', 'Inter'); g.restore();
+  }
+  /* the TechNext paper plane (the logo shape, 160 x 136 units), white with blue folds */
+  var PL = { x: 296, y: 606, s: 3.0, rot: -0.06 };
+  function planeShape(g, fillA, fillB, fillC, lw) {
+    var A = [[3, 30], [159, 3], [132, 19], [110, 30], [89, 40], [71, 50], [50, 61], [42, 62], [33, 56], [18, 45]],
+        B = [[66, 65], [93, 67], [88, 78], [80, 86], [74, 96], [68, 104], [62, 111], [56, 120], [50, 127], [45, 128], [45, 100], [47, 80], [52, 74], [60, 69]],
+        C = [[159, 3], [159, 20], [155, 30], [149, 40], [146, 50], [146, 70], [143, 80], [140, 90], [137, 100], [134, 115], [128, 130], [120, 134], [108, 126], [99, 121], [90, 116], [81, 110], [84, 100], [87, 90], [93, 80], [96, 68], [66, 65], [75, 60], [90, 51], [105, 41], [123, 31], [130, 25], [140, 18]];
+    [[B, fillB], [C, fillC], [A, fillA]].forEach(function (pp) { var p = new Path2D(); pp[0].forEach(function (q, k) { if (k) p.lineTo(q[0], q[1]); else p.moveTo(q[0], q[1]); }); p.closePath(); g.fillStyle = pp[1]; g.fill(p); if (lw) { g.lineWidth = lw; g.lineJoin = 'round'; g.strokeStyle = INK; g.stroke(p); } });
+  }
+  function planeFx(g) {
+    /* its shadow far below on the sea (altitude) */
+    g.save(); g.translate(PL.x - 70, PL.y + 290); g.scale(PL.s * 0.62, PL.s * 0.34); g.rotate(PL.rot); g.filter = 'blur(4px)'; planeShape(g, 'rgba(8,30,80,.42)', 'rgba(8,30,80,.42)', 'rgba(8,30,80,.42)', 0); g.filter = 'none'; g.restore();
+    /* contrails from the wing tip and the tail */
+    g.save(); g.lineCap = 'round'; [[PL.x + 10, PL.y + 100, 26], [PL.x + 150, PL.y + 400, 20]].forEach(function (c) { var gr = g.createLinearGradient(c[0], c[1], c[0] - 360, c[1] + 220); gr.addColorStop(0, 'rgba(255,255,255,.9)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.strokeStyle = gr; g.lineWidth = c[2]; g.beginPath(); g.moveTo(c[0], c[1]); g.lineTo(c[0] - 360, c[1] + 220); g.stroke(); }); g.restore();
+    NXX.speed(g, PL.x + 40, PL.y + 300, Math.PI * 0.82, 260, 14, 300, 12, 'rgba(255,255,255,.8)');
+  }
+  function planeBody(g) {
+    g.save(); g.translate(PL.x, PL.y); g.rotate(PL.rot); g.scale(PL.s, PL.s);
+    g.save(); g.translate(2.2, 2.6); planeShape(g, INK, INK, INK, 0); g.restore();
+    var ga = g.createLinearGradient(0, 0, 160, 60); ga.addColorStop(0, '#FFFFFF'); ga.addColorStop(1, '#E3ECFF');
+    planeShape(g, ga, '#2A5BC8', '#5B8FEA', 6 / PL.s);
+    /* fold highlight + a blue stripe on the wing */
+    g.strokeStyle = 'rgba(49,103,202,.55)'; g.lineWidth = 3 / PL.s * 2; g.beginPath(); g.moveTo(20, 32); g.lineTo(140, 12); g.stroke();
+    g.restore();
+  }
+  function render(t) {
+    var g = S.g, dpr = S.dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+    sky(g);
+    g.save(); g.beginPath(); g.rect(0, HZ, W, H - HZ); g.clip();
+    sea(g); land(g);
+    boat(g, 470, 690, 0.9, 1); boat(g, 1010, 712, 0.85, -1); boat(g, 110, 690, 0.7, 1);
+    var pp = P(104.0, 1.9); palm(g, pp[0] - 60, pp[1] + 8, 0.9, 1); pp = P(107.3, 10.6); palm(g, pp[0] + 30, pp[1] + 6, 0.8, -1); pp = P(121.6, 13.6); palm(g, pp[0] + 30, pp[1] + 28, 0.8, 1); pp = P(102.9, 5.2); palm(g, pp[0] + 10, pp[1] + 10, 0.8, -1); pp = P(121.5, 17.6); palm(g, pp[0] + 20, pp[1] + 20, 0.6, 1);
+    haze(g);
+    g.restore();
+    route(g);
+    planeFx(g);
+    pin(g, OFF.vn, '#FFD23F', ['HO CHI MINH CITY · VN', 'AI engineering hub'], 0);
+    pin(g, OFF.ph, '#2F7BFF', ['TAGUIG CITY · PH', 'development & consulting hub'], 0, true);
+    pin(g, OFF.sg, '#E8303F', ['SINGAPORE · HQ', 'TechNext headquarters'], 0);
+    planeBody(g);
+    /* three Odoo app tiles flying in formation with her (the apps the crew sets up) */
+    [[672, 580, 84, -0.12], [752, 514, 76, 0.1], [820, 452, 66, -0.08]].forEach(function (f, k) { NXX.speed(g, f[0] - 30, f[1] + 18, Math.PI * 0.82, 70, 5, 40, 30 + k, 'rgba(255,255,255,.85)'); NXX.glow(g, f[0], f[1], f[2], '255,240,190', 0.4); NXX.tile(g, S.ic[k], f[0], f[1], f[2], f[3]); });
+    var nh = 330, nw = nh * S.nexi.naturalWidth / S.nexi.naturalHeight, nx = PL.x + 222 - nw * 0.49, ny = PL.y + 118 - nh;
+    A1.nexi(S, g, S.nexi, nx, ny, nh, { px: 5, rot: -0.06 });
+    /* a blurred golden cloud at the lens + finish */
+    A1.cloud(g, 900, -10, 1.45, { lw: 0, blur: 13, fill: '#FFE3C2', a: 0.85, shade: 'rgba(230,110,120,.45)' });
+    A1.finish(g, W, H, 960, 0.8);
+    NXX.balloon(g, S.post, S.post.querySelector('.xbal'), [nx + nw * 0.8, ny + nh * 0.2], { px: 28, py: 22 });
+    window.__dbg = { nexi: [nx, ny, nw, nh], sg: OFF.sg, vn: OFF.vn, ph: OFF.ph };
+  }
+  TN.boot({ slugs: { 89: 'nexi-explains-meet-nexi-technext-crew' }, setup: { 89: setup }, render: { 89: render }, poster: { 89: 0 }, loop: 8 });
+})();
+</script>
+</body>
+</html>

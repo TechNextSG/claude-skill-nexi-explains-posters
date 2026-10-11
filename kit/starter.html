@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Nexi Explains __KEY__ - __TITLE__ (poster)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- brand fonts + ONE display face chosen for this poster's genre (add it to this URL) -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=block" rel="stylesheet">
+<link rel="stylesheet" href="kit.css">
+<style>
+/* __KEY__ "__TITLE__" - this file is a CONTRACT, not a layout. Nothing below the brand row is placed for you: every poster
+   designs its own composition, type treatment, labels and footer styling (reference/cinematography.md).
+   CONCEPT (fill in before drawing; the same 9 axes go to uniq.py --check):
+     archetype: | camera: | light: | palette: | text: | type: | build: | nexi: | device:
+   Film idea (one frozen moment from the episode):
+   Episode facts (from episode.py, never retyped): __FACTS__ */
+.pX{background:#EAF0FB}
+.pX canvas{position:absolute;left:0;top:0;width:1080px;height:100%}
+</style>
+</head>
+<body>
+<section class="post pX grain" data-p="__P__">
+  <canvas></canvas>
+  <div class="brand" data-qa="text"><img class="tn" src="assets/logo/technext-horizontal-blue.svg" alt="TechNext"><img class="odoo" src="assets/logo/odoo-logo.png" alt="Odoo"></div>
+  <!-- the words, designed for THIS poster: series name + episode code, title, one hook line, premiere (or "Out now"),
+       CTA + technext.asia. Every readable element gets data-qa="text". -->
+</section>
+
+<script src="kit.js"></script>
+<script>
+(function () {
+  var W = TN.W, H = TN.H, LOOP = 8, TAU = Math.PI * 2;
+  var DY = 0;   // posters only (3:4); kept so borrowed code that adds DY still works
+  var S = {};
+  function setup(post) {
+    var dpr = window.devicePixelRatio || 1; S.dpr = dpr; S.post = post;
+    var c = post.querySelector('canvas'); c.width = W * dpr; c.height = H * dpr; S.g = c.getContext('2d');
+    return Promise.all([/* images, document.fonts.load('64px YourDisplayFace') for canvas text */]);
+  }
+  function render(t) {
+    var th = TAU * t / LOOP, g = S.g, dpr = S.dpr; window.T = th;   // borrowed film painters read window.T
+    g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H); g.translate(0, DY);
+    /* the scene: far -> near; every time term an integer multiple of th */
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);   /* screen-space finish: grade, vignette, grain sits in CSS */
+    window.__dbg = {};
+  }
+  TN.boot({ slugs: { __P__: '__SLUG__' }, setup: { __P__: setup }, render: { __P__: render }, poster: { __P__: 0 }, loop: LOOP });
+})();
+</script>
+</body>
+</html>

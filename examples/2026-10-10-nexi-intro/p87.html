@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Post 87 - Nexi introduction: Hi, I'm Nexi! (comic, Nexi Explains page theme)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Inter:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=block" rel="stylesheet">
+<link rel="stylesheet" href="kit.css"><link rel="stylesheet" href="nxe-page.css"><link rel="stylesheet" href="nxe-x.css">
+<style>
+/* POST 87 "HI, I'M NEXI!" - superhero SPLASH, daytime (series nxe-page, comic v4 look, no logo row).
+   ONE MOMENT: Nexi blasts UP out of a giant laptop whose screen shows the Odoo app home grid; six app tiles (CRM, Sales,
+   Inventory, Accounting, Project, Website) burst out of their empty slots with her like fireworks.
+   Camera: worm's-eye at desk level (the city skyline leans in, the laptop screen narrows to the top).
+   Light: high afternoon sun right behind her punching fist (halo + rim + anamorphic streak); bright comic sky.
+   Devices: backlit fist flare, firework comet trails, halftone + sunburst, blurred sparkles at the lens, keystone camera.
+   Text: title on the ground line at the bottom (blockbuster billing), tags in the sky corners. */
+.p87 .tt{position:absolute;z-index:44;left:52px;top:874px}
+.p87 .tt .a{font-size:88px;transform:rotate(-3deg) translateX(8px)}
+.p87 .tt .b{font-size:178px;transform:rotate(-2deg) translateY(-8px)}
+.p87 .xe{left:56px;top:56px;transform:rotate(-3deg)}
+.p87 .tg1{position:absolute;z-index:44;right:58px;top:1062px;transform:rotate(-2deg);font-size:26px}
+.p87 .tg2{position:absolute;z-index:44;right:92px;top:992px;transform:rotate(-3deg);font-size:28px}
+.p87 .whoosh{left:672px;top:420px;rotate:-9deg}
+.p87 .whoosh span{font-size:54px;padding:30px 38px}
+.p87 .xbal{left:76px;top:190px;font-size:40px}
+.p87 .xans{left:62px;top:1164px}
+.p87 .xapps{left:62px;top:1218px}
+.ytb{display:inline-flex;align-items:center;gap:16px;height:92px;padding:0 36px 0 30px;border-radius:18px;background:#FF0000;color:#fff;font:800 34px/1 var(--display);letter-spacing:-.01em;white-space:nowrap;border:4px solid #101C45;box-shadow:0 9px 0 #101C45}
+.ytb svg{width:40px;height:40px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5 19 12 7 19.5Z" fill="currentColor"/></symbol></defs></svg>
+<section class="post p87 nxp nxx grain" data-p="87">
+  <canvas></canvas>
+  <span class="xe" data-qa="text">NEXI EXPLAINS <b>MEET NEXI</b></span>
+  <span class="tag r tg1" data-qa="text">PREMIERES TUE 13 OCT &middot; 6 PM SGT</span>
+  <span class="tag tg2" data-qa="text">SERIES PILOT &middot; EP00</span>
+  <div class="xbal" data-qa="text">ODOO, AI<br>&amp; TECH,<br><em>MADE SIMPLE!</em></div>
+  <div class="boom whoosh" data-qa="text"><span>WHOOSH!</span></div>
+  <h1 class="tt" data-qa="text"><span class="a">Hi, I'm</span><br><span class="b y">Nexi!</span></h1>
+  <p class="xans" data-qa="text">TechNext's AI companion. <b class="y">New episodes on YouTube.</b></p>
+  <div class="xapps" data-qa="text"><span class="k">ODOO APPS</span><span class="ap"><img src="assets/odoo/crm.svg" alt="">CRM</span><span class="ap"><img src="assets/odoo/sale.svg" alt="">Sales</span><span class="ap"><img src="assets/odoo/stock.svg" alt="">Inventory</span><span class="ap"><img src="assets/odoo/accountant.svg" alt="">Accounting</span></div>
+  <div class="xft" data-qa="text"><span class="ytb"><svg><use href="#i-play"/></svg>Subscribe on YouTube</span><span class="site">technext.asia<small>All episodes: /nexi-explains</small></span></div>
+</section>
+<script src="kit.js"></script><script src="nxe-page.js"></script><script src="nxe-x.js"></script><script src="nxe-bg.js"></script><script src="a1-lib.js"></script>
+<script>
+(function () {
+  var W = TN.W, H = TN.H, TAU = Math.PI * 2, INK = A1.INK, rr = NXP.rr, S = {};
+  var DESK = 866, VP = [540, -1700];
+  var SCR = { x: 196, y: 530, w: 688, h: 318 };            /* the laptop lid (bezel) before the keystone */
+  var KT = 0.9;                                            /* keystone: the lid's top edge is 90% wide */
+  var NEXI = { cx: 548, bot: 600, h: 474 };
+  var APPS = ['crm', 'sale', 'purchase', 'accountant', 'stock', 'helpdesk', 'project', 'planning', 'website', 'mrp', 'hr', 'documents'];
+  var NAMES = ['CRM', 'Sales', 'Purchase', 'Accounting', 'Inventory', 'Helpdesk', 'Project', 'Planning', 'Website', 'Manufacturing', 'Employees', 'Documents'];
+  var GONE = { crm: 1, sale: 1, accountant: 1, stock: 1, project: 1, website: 1 };
+  /* where each escaped tile is now: [app, x, y, size, rot, trail colour] */
+  var TILES = [['project', 902, 150, 92, 0.3, '255,190,80'], ['accountant', 982, 352, 108, 0.24, '255,120,160'], ['stock', 968, 590, 98, -0.2, '190,120,255'],
+               ['crm', 120, 452, 104, -0.28, '80,200,190'], ['website', 296, 548, 86, -0.12, '120,170,255'], ['sale', 104, 664, 96, 0.22, '255,150,90']];
+  var TILT = -0.035, PIV = [540, 760];
+  function setup(post) {
+    var dpr = window.devicePixelRatio || 1; S.dpr = dpr; S.post = post;
+    var c = post.querySelector('canvas'); c.width = W * dpr; c.height = H * dpr; S.g = c.getContext('2d'); NXP.offscreen(S, W, H);
+    S.ic = {};
+    return Promise.all([A1.img('assets/nexi-hd/nexi-n87.png'), document.fonts.load('60px Bangers'), document.fonts.load('800 20px "Plus Jakarta Sans"'), document.fonts.load('600 16px Inter')].concat(APPS.map(function (a) { return A1.img('assets/odoo/' + a + '.svg').then(function (i) { S.ic[a] = i; }); })))
+      .then(function (a) { S.nexi = a[0]; });
+  }
+  /* keystone map: a point on the flat lid -> where it lands after the worm's-eye squeeze */
+  function ks(x, y) { var t = (y - SCR.y) / SCR.h, k = KT + (1 - KT) * t; return [SCR.x + SCR.w / 2 + (x - SCR.x - SCR.w / 2) * k, y]; }
+  function slot(i) { var c = i % 6, r = Math.floor(i / 6); return [SCR.x + 34 + 54 + c * 104, SCR.y + 112 + r * 112]; }
+  function sky(g) {
+    var gr = g.createLinearGradient(0, 0, 0, DESK); gr.addColorStop(0, '#1E73E8'); gr.addColorStop(0.42, '#4FB0FF'); gr.addColorStop(0.78, '#A8E2FF'); gr.addColorStop(1, '#FFF1C4'); g.fillStyle = gr; g.fillRect(-120, -120, W + 240, DESK + 140);
+    var sun = [770, 236];
+    g.save(); g.globalAlpha = 0.2; g.fillStyle = '#FFFFFF'; g.beginPath(); for (var i = 0; i < 36; i += 2) { var a0 = i / 36 * TAU, a1 = (i + 1) / 36 * TAU; g.moveTo(sun[0], sun[1]); g.lineTo(sun[0] + Math.cos(a0) * 2200, sun[1] + Math.sin(a0) * 2200); g.lineTo(sun[0] + Math.cos(a1) * 2200, sun[1] + Math.sin(a1) * 2200); g.closePath(); } g.fill(); g.restore();
+    NXB.dots(g, W + 60, DESK, sun[0], sun[1], 0.34, 'rgba(255,255,255,.34)', 18);
+    var hl = g.createRadialGradient(sun[0], sun[1], 30, sun[0], sun[1], 560); hl.addColorStop(0, 'rgba(255,248,214,.95)'); hl.addColorStop(0.25, 'rgba(255,236,160,.45)'); hl.addColorStop(1, 'rgba(255,236,160,0)'); g.fillStyle = hl; g.fillRect(-120, -120, W + 240, DESK + 120);
+    var sd = g.createRadialGradient(sun[0] - 20, sun[1] - 20, 10, sun[0], sun[1], 128); sd.addColorStop(0, '#FFFFFF'); sd.addColorStop(0.55, '#FFF6C8'); sd.addColorStop(1, '#FFE07A'); g.fillStyle = sd; g.beginPath(); g.arc(sun[0], sun[1], 128, 0, TAU); g.fill();
+    g.strokeStyle = 'rgba(255,255,255,.6)'; g.lineWidth = 3; [150, 172].forEach(function (r) { g.beginPath(); g.arc(sun[0], sun[1], r, 0, TAU); g.stroke(); });
+    /* far clouds (soft, no ink) then near comic clouds */
+    A1.cloud(g, 640, 700, 0.9, { lw: 0, a: 0.75, shade: 'rgba(150,190,240,.5)' }); A1.cloud(g, -40, 120, 0.8, { lw: 0, a: 0.6 });
+    A1.cloud(g, 900, 760, 1.15, { lw: 5 }); A1.cloud(g, -70, 720, 1.25, { lw: 5 }); A1.cloud(g, 760, 40, 0.7, { lw: 4 });
+    return sun;
+  }
+  function building(g, x0, x1, h, col, ink, R) {
+    var lean = h / (DESK - VP[1]); function top(x) { return [x + (VP[0] - x) * lean, DESK - h]; }
+    var a = top(x0), b = top(x1); g.beginPath(); g.moveTo(x0, DESK + 4); g.lineTo(a[0], a[1]); g.lineTo(b[0], b[1]); g.lineTo(x1, DESK + 4); g.closePath();
+    var gr = g.createLinearGradient(x0, 0, x1, 0); gr.addColorStop(0, col[0]); gr.addColorStop(1, col[1]); g.fillStyle = gr; g.fill(); if (ink) { g.lineWidth = 4; g.strokeStyle = INK; g.lineJoin = 'round'; g.stroke(); }
+    /* window grid that leans with the building */
+    for (var v = 0.08; v < 0.92; v += 0.09) for (var u = 0.12; u < 0.9; u += 0.19) { var bx = x0 + (x1 - x0) * u, p = [bx + (VP[0] - bx) * lean * v, DESK - h * v];
+      g.fillStyle = R() < 0.25 ? 'rgba(255,246,200,.95)' : (ink ? 'rgba(255,255,255,.5)' : 'rgba(255,255,255,.35)'); g.fillRect(p[0], p[1] - 14, (x1 - x0) * 0.1 * (1 - lean * v * 0.6), 11); }
+    if (ink) { g.fillStyle = 'rgba(255,240,200,.35)'; g.beginPath(); g.moveTo(x0, DESK + 4); g.lineTo(a[0], a[1]); g.lineTo(a[0] + (b[0] - a[0]) * 0.18, a[1]); g.lineTo(x0 + (x1 - x0) * 0.18, DESK + 4); g.closePath(); g.fill(); }
+  }
+  function skyline(g) {
+    var R = TN.rand(41), x;
+    for (x = -40; x < W + 40;) { var w = 70 + R() * 70, h = 150 + R() * 200; building(g, x, x + w, h, ['#B9D3FF', '#D6E6FF'], false, R); x += w - 6; }
+    var near = [[-30, 120, 420, ['#7FA6F2', '#A9C6FF']], [104, 200, 300, ['#F6B48E', '#FFD3B0']], [880, 990, 380, ['#F49AB8', '#FFC2D5']], [986, 1110, 270, ['#7FA6F2', '#A9C6FF']]];
+    near.forEach(function (b) { building(g, b[0], b[1], b[2], b[3], true, R); });
+    /* a water tower + an antenna on the near roofs (city detail) */
+    var lean = 380 / (DESK - VP[1]), tx = 935 + (VP[0] - 935) * lean, ty = DESK - 380;
+    g.lineWidth = 4; g.strokeStyle = INK; g.beginPath(); g.moveTo(tx, ty); g.lineTo(tx + 4, ty - 70); g.stroke(); g.fillStyle = '#FF5A47'; g.beginPath(); g.arc(tx + 4, ty - 74, 7, 0, TAU); g.fill(); g.stroke();
+    var wx = 40 + (VP[0] - 40) * (420 / (DESK - VP[1])), wy = DESK - 420; g.fillStyle = '#E8B07A'; g.fill(rr(wx - 26, wy - 62, 56, 46, 8)); g.lineWidth = 4; g.stroke(rr(wx - 26, wy - 62, 56, 46, 8)); g.beginPath(); g.moveTo(wx - 20, wy - 16); g.lineTo(wx - 24, wy); g.moveTo(wx + 24, wy - 16); g.lineTo(wx + 28, wy); g.stroke();
+    var hz = g.createLinearGradient(0, DESK - 200, 0, DESK); hz.addColorStop(0, 'rgba(255,240,210,0)'); hz.addColorStop(1, 'rgba(255,240,210,.55)'); g.fillStyle = hz; g.fillRect(0, DESK - 200, W, 200);
+  }
+  function lid(A) {   /* the laptop lid drawn flat; NXX.keystone squeezes it for the worm's-eye camera */
+    var x = SCR.x, y = SCR.y, w = SCR.w, h = SCR.h;
+    A.fillStyle = '#1B2342'; A.fill(rr(x, y, w, h, 24)); A.lineWidth = 6; A.strokeStyle = INK; A.stroke(rr(x, y, w, h, 24));
+    var dx = x + 22, dy = y + 22, dw = w - 44, dh = h - 40;
+    var bg = A.createLinearGradient(0, dy, 0, dy + dh); bg.addColorStop(0, '#F7F3FC'); bg.addColorStop(1, '#E6DDF2'); A.fillStyle = bg; A.fill(rr(dx, dy, dw, dh, 8));
+    /* a little top bar: apps menu + search + avatar */
+    A.fillStyle = '#714B67'; A.fill(rr(dx, dy, dw, 40, 8)); A.fillRect(dx, dy + 20, dw, 20);
+    A.fillStyle = '#FFFFFF'; for (var i = 0; i < 9; i++) A.fillRect(dx + 16 + (i % 3) * 8, dy + 10 + Math.floor(i / 3) * 8, 5, 5);
+    A1.tx(A, 'Apps', dx + 52, dy + 27, 17, 800, '#FFFFFF'); A.fillStyle = 'rgba(255,255,255,.22)'; A.fill(rr(dx + dw / 2 - 110, dy + 9, 220, 22, 11));
+    A.fillStyle = '#FFD23F'; A.beginPath(); A.arc(dx + dw - 22, dy + 20, 10, 0, TAU); A.fill();
+    A1.tx(A, 'sample', dx + dw - 44, dy + 26, 15, 700, 'rgba(255,255,255,.85)', 'right', 'Inter');
+    /* the app home grid: six slots are EMPTY - those apps just burst out of the screen */
+    APPS.forEach(function (a, k) { var p = slot(k), s = 62;
+      if (GONE[a]) { A.save(); A.setLineDash([8, 7]); A.lineWidth = 3; A.strokeStyle = 'rgba(113,75,103,.55)'; A.stroke(rr(p[0] - s / 2, p[1] - s / 2, s, s, 16)); A.restore();
+        A.strokeStyle = 'rgba(113,75,103,.45)'; A.lineWidth = 3; A.lineCap = 'round'; for (var j = 0; j < 6; j++) { var an = j / 6 * TAU + 0.3; A.beginPath(); A.moveTo(p[0] + Math.cos(an) * 40, p[1] + Math.sin(an) * 40); A.lineTo(p[0] + Math.cos(an) * 50, p[1] + Math.sin(an) * 50); A.stroke(); } }
+      else { A.fillStyle = 'rgba(60,40,90,.12)'; A.fill(rr(p[0] - s / 2 + 2, p[1] - s / 2 + 4, s, s, 16)); A.fillStyle = '#FFFFFF'; A.fill(rr(p[0] - s / 2, p[1] - s / 2, s, s, 16)); if (S.ic[a]) A.drawImage(S.ic[a], p[0] - 20, p[1] - 20, 40, 40); }
+      A1.tx(A, NAMES[k], p[0], p[1] + 52, 15, 700, GONE[a] ? 'rgba(80,60,100,.7)' : '#3A2F4A', 'center', 'Inter'); });
+    /* sticky note on the bezel + webcam */
+    A.fillStyle = '#3A4466'; A.beginPath(); A.arc(x + w / 2, y + 11, 5, 0, TAU); A.fill();
+    /* screen glare */
+    A.save(); A.clip(rr(dx, dy, dw, dh, 8)); A.fillStyle = 'rgba(255,255,255,.22)'; A.beginPath(); A.moveTo(dx + dw * 0.55, dy); A.lineTo(dx + dw * 0.72, dy); A.lineTo(dx + dw * 0.48, dy + dh); A.lineTo(dx + dw * 0.31, dy + dh); A.closePath(); A.fill(); A.restore();
+  }
+  function laptop(g) {
+    /* lid, squeezed to the top */
+    NXX.keystone(g, S, { x: SCR.x - 8, y: SCR.y - 8, w: SCR.w + 16, h: SCR.h + 8 }, [SCR.x + SCR.w / 2, SCR.y + SCR.h], KT, 1, 1, lid);
+    /* deck seen almost edge-on: hinge, keyboard lip, rubber feet */
+    var y = SCR.y + SCR.h; g.fillStyle = '#C9D3E6'; g.fill(rr(138, y - 4, 804, 26, 10)); g.lineWidth = 5; g.strokeStyle = INK; g.stroke(rr(138, y - 4, 804, 26, 10));
+    g.fillStyle = '#EEF2FA'; g.fillRect(146, y, 788, 7); g.fillStyle = '#8E9AB8'; g.fill(rr(470, y + 10, 140, 8, 4));
+    g.fillStyle = INK; [180, 900].forEach(function (fx) { g.fill(rr(fx - 22, y + 20, 44, 8, 4)); });
+    /* a sticky note stuck to the lid's right edge (heart doodle) */
+    var sn = ks(SCR.x + SCR.w - 4, SCR.y + 196); g.save(); g.translate(sn[0] + 18, sn[1]); g.rotate(0.12); g.fillStyle = 'rgba(16,28,69,.25)'; g.fillRect(-30, -28, 66, 62); g.fillStyle = '#FFE36E'; g.fillRect(-34, -34, 66, 62); g.lineWidth = 3; g.strokeStyle = INK; g.strokeRect(-34, -34, 66, 62);
+    g.fillStyle = 'rgba(255,255,255,.5)'; g.fillRect(-34, -34, 66, 10); g.strokeStyle = '#E8303F'; g.lineWidth = 4; g.beginPath(); g.moveTo(-20, -4); g.bezierCurveTo(-20, -20, 0, -20, 0, -6); g.bezierCurveTo(0, -20, 20, -20, 20, -4); g.lineTo(0, 16); g.closePath(); g.stroke(); g.restore();
+  }
+  function portal(g) {   /* where Nexi smashed out through the screen: cracked glass, a jagged glowing hole, shards */
+    var p = [NEXI.cx, SCR.y + 46], R = TN.rand(8), k;
+    var d0 = ks(SCR.x + 22, SCR.y + 22), d1 = ks(SCR.x + SCR.w - 22, SCR.y + 22), d2 = ks(SCR.x + SCR.w - 22, SCR.y + SCR.h - 18), d3 = ks(SCR.x + 22, SCR.y + SCR.h - 18);
+    g.save(); g.beginPath(); g.moveTo(d0[0], d0[1]); g.lineTo(d1[0], d1[1]); g.lineTo(d2[0], d2[1]); g.lineTo(d3[0], d3[1]); g.closePath(); g.clip();
+    g.strokeStyle = 'rgba(16,28,69,.55)'; g.lineWidth = 2.5; g.lineJoin = 'round';
+    [0.02, 0.1, 0.2, 0.3, 0.7, 0.8, 0.9, 0.98].forEach(function (f) { var a = f * Math.PI, x = p[0], y = p[1], L = 50 + R() * 60; g.beginPath(); g.moveTo(x + Math.cos(a) * 150, y + Math.sin(a) * 40);
+      for (var q = 1; q <= 3; q++) { var r = 150 + L * q / 3, j2 = (R() - 0.5) * 0.3; g.lineTo(x + Math.cos(a + j2) * r, y + Math.sin(a + j2) * r * 0.3); } g.stroke(); });
+    g.restore();
+    NXX.glow(g, p[0], p[1] - 30, 200, '255,240,190', 0.45);
+    var hole = new Path2D(); for (k = 0; k < 22; k++) { var aa = k / 22 * TAU, rr2 = k % 2 ? 0.78 : 1.06 + R() * 0.14; hole.lineTo(p[0] + Math.cos(aa) * 158 * rr2, p[1] + Math.sin(aa) * 44 * rr2); } hole.closePath();
+    var hg = g.createRadialGradient(p[0], p[1], 6, p[0], p[1], 160); hg.addColorStop(0, '#FFFFFF'); hg.addColorStop(0.45, '#FFF3B8'); hg.addColorStop(1, '#9FDBFF');
+    g.fillStyle = hg; g.fill(hole); g.lineWidth = 5; g.strokeStyle = INK; g.lineJoin = 'miter'; g.stroke(hole);
+    /* glass shards flung up and out */
+    [[-190, -12, 0.4, 16], [-140, -58, -0.6, 13], [162, -48, 0.9, 15], [214, -8, -0.3, 12]].forEach(function (sh) { g.save(); g.translate(p[0] + sh[0], p[1] + sh[1]); g.rotate(sh[2]); g.beginPath(); g.moveTo(-sh[3], sh[3] * 0.4); g.lineTo(-sh[3] * 0.1, -sh[3]); g.lineTo(sh[3], -sh[3] * 0.2); g.lineTo(sh[3] * 0.5, sh[3] * 0.8); g.closePath(); g.fillStyle = 'rgba(190,230,255,.95)'; g.fill(); g.lineWidth = 2.5; g.strokeStyle = INK; g.stroke(); g.strokeStyle = '#FFFFFF'; g.lineWidth = 2; g.beginPath(); g.moveTo(-sh[3] * 0.5, 0); g.lineTo(0, -sh[3] * 0.6); g.stroke(); g.restore(); });
+    /* speed lines streaming up out of the hole, behind her */
+    g.save(); g.lineCap = 'round'; for (k = 0; k < 16; k++) { var x2 = p[0] + (R() - 0.5) * 280, y0 = p[1] - 20 - R() * 30, l = 110 + R() * 200; g.strokeStyle = k % 3 ? 'rgba(255,255,255,.8)' : 'rgba(255,226,120,.85)'; g.lineWidth = 3 + R() * 4; g.beginPath(); g.moveTo(x2, y0); g.lineTo(x2 + (x2 - p[0]) * 0.12, y0 - l); g.stroke(); } g.restore();
+  }
+  function sparks(g, x, y, r, seed) {   /* a firework pop around a tile: short spark dashes + dots, no ink (keeps it clean) */
+    var R = TN.rand(seed); g.save(); g.lineCap = 'round';
+    for (var i = 0; i < 12; i++) { var a = i / 12 * TAU + R() * 0.2, r0 = r * 0.7 + R() * 8, r1 = r0 + r * (0.22 + R() * 0.25); g.strokeStyle = i % 3 === 0 ? '#FFFFFF' : (i % 3 === 1 ? '#FFE36E' : '#FFB3C8'); g.lineWidth = 4; g.beginPath(); g.moveTo(x + Math.cos(a) * r0, y + Math.sin(a) * r0); g.lineTo(x + Math.cos(a) * r1, y + Math.sin(a) * r1); g.stroke();
+      g.fillStyle = '#FFFFFF'; g.beginPath(); g.arc(x + Math.cos(a + 0.26) * (r1 + 8), y + Math.sin(a + 0.26) * (r1 + 8), 3, 0, TAU); g.fill(); }
+    g.restore();
+  }
+  function desk(g) {
+    var top = g.createLinearGradient(0, DESK, 0, DESK + 26); top.addColorStop(0, '#F2BE7E'); top.addColorStop(1, '#D9954F'); g.fillStyle = top; g.fillRect(-120, DESK, W + 240, 24);
+    g.fillStyle = INK; g.fillRect(-120, DESK - 3, W + 240, 6); g.fillRect(-120, DESK + 22, W + 240, 5);
+    var fr = g.createLinearGradient(0, DESK + 26, 0, H); fr.addColorStop(0, '#9E5E2C'); fr.addColorStop(1, '#4A2812'); g.fillStyle = fr; g.fillRect(-120, DESK + 27, W + 240, H);
+    g.strokeStyle = 'rgba(40,18,4,.35)'; g.lineWidth = 3; var R = TN.rand(9); for (var i = 0; i < 14; i++) { var y = DESK + 40 + R() * 520; g.beginPath(); g.moveTo(-10, y); g.bezierCurveTo(300, y + (R() - 0.5) * 30, 700, y + (R() - 0.5) * 30, W + 10, y + (R() - 0.5) * 20); g.stroke(); }
+    g.fillStyle = 'rgba(255,220,170,.18)'; g.fillRect(-10, DESK + 27, W + 20, 4);
+  }
+  function props(g) {
+    /* terracotta pot with a snake plant (left) */
+    A1.shadow(g, 84, DESK + 2, 78, 10, 0.3);
+    [[-0.32, 150, '#3E9B5A'], [-0.08, 196, '#57B36E'], [0.18, 170, '#3E9B5A'], [0.4, 120, '#6CC57F']].forEach(function (l) { g.save(); g.translate(84, DESK - 70); g.rotate(l[0]); var p = new Path2D(); p.moveTo(-14, 0); p.quadraticCurveTo(-20, -l[1] * 0.6, 0, -l[1]); p.quadraticCurveTo(20, -l[1] * 0.6, 14, 0); p.closePath(); g.fillStyle = l[2]; g.fill(p); g.lineWidth = 4; g.strokeStyle = INK; g.stroke(p); g.strokeStyle = 'rgba(255,255,160,.6)'; g.lineWidth = 2.5; g.beginPath(); g.moveTo(-6, -10); g.lineTo(-2, -l[1] * 0.7); g.stroke(); g.restore(); });
+    g.fillStyle = '#E07A4A'; g.beginPath(); g.moveTo(34, DESK - 76); g.lineTo(134, DESK - 76); g.lineTo(122, DESK); g.lineTo(46, DESK); g.closePath(); g.fill(); g.lineWidth = 5; g.strokeStyle = INK; g.stroke();
+    g.fillStyle = '#F29A6A'; g.fill(rr(28, DESK - 88, 112, 20, 6)); g.stroke(rr(28, DESK - 88, 112, 20, 6)); g.fillStyle = 'rgba(255,255,255,.3)'; g.fillRect(50, DESK - 64, 10, 54);
+    /* mug with the TechNext plane + steam (right) */
+    A1.shadow(g, 1002, DESK + 2, 64, 9, 0.3);
+    g.lineWidth = 9; g.strokeStyle = INK; g.beginPath(); g.arc(1046, DESK - 52, 22, -1.3, 1.3); g.stroke(); g.lineWidth = 4; g.strokeStyle = '#FFFFFF'; g.stroke();
+    g.fillStyle = '#FFFFFF'; g.fill(rr(958, DESK - 98, 90, 98, 12)); g.lineWidth = 5; g.strokeStyle = INK; g.stroke(rr(958, DESK - 98, 90, 98, 12));
+    g.fillStyle = '#3167CA'; g.fillRect(960, DESK - 30, 86, 14);
+    g.save(); g.translate(1003, DESK - 62); g.fillStyle = '#3167CA'; g.beginPath(); g.moveTo(-20, 2); g.lineTo(22, -14); g.lineTo(4, 16); g.lineTo(0, 4); g.closePath(); g.fill(); g.restore();
+    g.strokeStyle = 'rgba(255,255,255,.85)'; g.lineWidth = 5; g.lineCap = 'round'; [[984, 0], [1012, 10]].forEach(function (s) { g.beginPath(); g.moveTo(s[0], DESK - 110); g.bezierCurveTo(s[0] - 14, DESK - 134, s[0] + 14, DESK - 150, s[0], DESK - 176 + s[1]); g.stroke(); });
+  }
+  function tiles(g) {
+    TILES.forEach(function (t, k) { var i = APPS.indexOf(t[0]), s = ks(slot(i)[0], slot(i)[1]), b = [t[1], t[2]];
+      var c = [(s[0] + b[0]) / 2 + (b[0] > s[0] ? 1 : -1) * 40 - (b[1] - s[1]) * 0.12, Math.min(s[1], b[1]) - 120];
+      A1.comet(g, s, c, b, t[3] * 0.32, t[5], 11 + k); });
+    TILES.forEach(function (t, k) { NXX.glow(g, t[1], t[2], t[3] * 1.1, t[5], 0.55); sparks(g, t[1], t[2], t[3], 20 + k); NXX.tile(g, S.ic[t[0]], t[1], t[2], t[3], t[4]); });
+  }
+  function render(t) {
+    var g = S.g, dpr = S.dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+    g.save(); g.translate(PIV[0], PIV[1]); g.rotate(TILT); g.translate(-PIV[0], -PIV[1]);
+    var sun = sky(g);
+    skyline(g);
+    desk(g);
+    laptop(g);
+    props(g);
+    portal(g);
+    tiles(g);
+    /* Nexi blasting up, her fist punched into the sun */
+    var nw = NEXI.h * S.nexi.naturalWidth / S.nexi.naturalHeight, nx = NEXI.cx - nw * 0.38, ny = NEXI.bot - NEXI.h;
+    A1.nexi(S, g, S.nexi, nx, ny, NEXI.h, { px: 5 });
+    var fist = [nx + nw * 0.945, ny + NEXI.h * 0.28];
+    /* depth at the lens: big soft sparkles */
+    g.save(); g.filter = 'blur(7px)'; NXP.twinkle(g, 40, 330, 54, '#FFFFFF'); NXP.twinkle(g, 1046, 780, 40, '#FFE36E'); NXP.twinkle(g, 640, 60, 30, '#FFFFFF'); g.filter = 'none'; g.restore();
+    g.restore();
+    A1.finish(g, W, H, 920, 0.6);
+    var tip = NXX.rot([nx + nw * 0.14, ny + NEXI.h * 0.22], PIV, TILT);
+    NXX.balloon(g, S.post, S.post.querySelector('.xbal'), tip, { px: 30, py: 24 });
+    window.__dbg = { nexi: [nx, ny, nw, NEXI.h], fist: fist };
+  }
+  TN.boot({ slugs: { 87: 'nexi-explains-meet-nexi-hero-launch' }, setup: { 87: setup }, render: { 87: render }, poster: { 87: 0 }, loop: 8 });
+})();
+</script>
+</body>
+</html>

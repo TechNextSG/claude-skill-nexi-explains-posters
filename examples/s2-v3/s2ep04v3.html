@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Nexi Explains S2 EP04 - Is Odoo Watching Me? (v3)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Inter:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=block" rel="stylesheet">
+<link rel="stylesheet" href="kit.css"><link rel="stylesheet" href="nxe-v3.css">
+<style>
+/* S2EP04 v3 - THE CCTV FEED ITSELF. A high-corner fish-eye view over a bright office: a red target box locks onto Jun
+   (big head, small feet from up here), Mr. Lim sips coffee at the edge; then Nexi (investigator glasses) leans right into
+   the lens, huge, holding up the change log: the typo is found and fixed. Background: pale mint office floor in diagonal
+   perspective, CCTV overlays (REC, timestamp, corner brackets, scanlines) in white + red. */
+.p4{background:#DDEFE8}
+.p4 .vtag{left:60px;top:58px}
+.p4 .rec{position:absolute;z-index:44;right:62px;top:62px;display:flex;align-items:center;gap:10px;font:800 26px/1 var(--display);letter-spacing:.08em;color:#fff;text-shadow:0 2px 0 rgba(16,28,69,.6)}
+.p4 .rec i{width:20px;height:20px;border-radius:50%;background:#FF2D2D;box-shadow:0 0 14px #FF2D2D}
+.p4 .tgt{position:absolute;z-index:43;padding:5px 10px 4px;background:#FF2D2D;color:#fff;font:800 17px/1 var(--display);letter-spacing:.08em;white-space:nowrap}
+.p4 .log{position:absolute;z-index:44;left:96px;top:640px;width:400px;transform:rotate(-5deg);background:#fff;border:5px solid var(--ink);border-radius:20px;box-shadow:8px 10px 0 var(--ink);overflow:hidden}
+.p4 .log header{display:flex;align-items:center;gap:10px;padding:12px 16px 10px;background:#F28C28;color:#fff;font:400 30px/1 var(--comic);letter-spacing:.05em;border-bottom:4px solid var(--ink)}
+.p4 .log header img{width:34px;height:34px;background:#fff;border-radius:9px;border:3px solid var(--ink);padding:2px}
+.p4 .log .bd{padding:12px 18px 16px;font:700 21px/1.3 var(--display);color:var(--ink)}
+.p4 .log .bd small{display:block;font:600 15px/1 var(--text);color:#6A6A84;margin-bottom:8px}
+.p4 .log .ch{display:flex;justify-content:space-between;padding:6px 0;border-bottom:2px dashed rgba(16,28,69,.15)}
+.p4 .log .ch s{color:#D9363E}.p4 .log .ch b{color:#137A4A}
+.p4 .log .st{display:inline-block;margin-top:12px;padding:6px 12px 4px;border:3px solid #137A4A;border-radius:8px;color:#137A4A;font:400 24px/1 var(--comic);letter-spacing:.06em;transform:rotate(-3deg)}
+.p4 .vtt{left:56px;top:1000px}
+.p4 .vtt .a{font-size:110px;transform:rotate(-3deg)}
+.p4 .vtt .b{font-size:110px;transform:rotate(-1.5deg) translateY(2px)}
+.p4 .vapps{left:62px;top:1226px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><symbol id="yt" viewBox="0 0 24 24"><path d="M8 5.5 19 12 8 18.5Z" fill="#fff"/></symbol></defs></svg>
+<section class="post p4 v3 grain" data-p="4">
+  <canvas></canvas>
+  <span class="vtag" data-qa="text"><i></i>NEXI EXPLAINS <b>S2 &middot; EP 04</b></span>
+  <span class="rec" data-qa="text"><i></i>REC &middot; CAM 04</span>
+  <span class="tgt" data-qa="text">TARGET: JUN?!</span>
+  <div class="log" data-qa="text"><header><img src="assets/odoo/sale.svg" alt="">THE LOG, NOT A SPY</header><div class="bd"><small>S00042 &middot; sample order &middot; changed by Jun</small>
+    <div class="ch"><span>Chairs</span><span><s>10</s> &rarr; <b>100</b></span></div><div class="ch"><span>Total</span><span><s>S$1,620</s> &rarr; <b>S$16,200</b></span></div>
+    <span class="st">TYPO FOUND &middot; FIXED</span></div></div>
+  <h1 class="vtt" data-qa="text"><span class="a">Is Odoo</span><br><span class="b y">watching me?!</span></h1>
+  <div class="vapps" data-qa="text"><span class="k">ODOO APP</span><span class="ap"><img src="assets/odoo/sale.svg" alt="">Sales &middot; change log</span></div>
+  <div class="vft" data-qa="text"><span class="ytb"><svg><use href="#yt"/></svg>Subscribe on YouTube</span><span class="vsite">technext.asia<small>Season 2 &middot; coming in 2027</small></span></div>
+</section>
+<script src="kit.js"></script><script src="nxe-page.js"></script><script src="s2cast-f3.js"></script><script src="nxe-x.js"></script>
+<script>
+(function () {
+  var W = TN.W, H = TN.H, TAU = Math.PI * 2, INK = NXX.INK, rr = NXP.rr, S = {};
+  var JUN = [560, 560], LIM = [870, 420], NEXI = { x: 560, y: 560, h: 560 };
+  function img(src) { return new Promise(function (res) { var i = new Image(); i.onload = function () { res(i); }; i.onerror = function () { res(null); }; i.src = src; }); }
+  function setup(post) {
+    var dpr = window.devicePixelRatio || 1; S.dpr = dpr; S.post = post;
+    var c = post.querySelector('canvas'); c.width = W * dpr; c.height = H * dpr; S.g = c.getContext('2d'); NXP.offscreen(S, W, H);
+    return Promise.all([img('assets/nexi/nexi-s2x4.png'), document.fonts.load('60px Bangers')]).then(function (a) { S.nexi = a[0]; });
+  }
+  function floor(g) {
+    g.fillStyle = '#E4F3EC'; g.fillRect(0, 0, W, H);
+    /* diagonal tiles from a high corner: two vanishing points far off left and right */
+    var V1 = [-1600, -900], V2 = [2700, -700], C = [520, 1500];
+    g.strokeStyle = 'rgba(70,140,120,.22)'; g.lineWidth = 3;
+    for (var i = -30; i <= 30; i++) { var a = [C[0] + i * 120, C[1]]; g.beginPath(); g.moveTo(a[0], a[1]); g.lineTo(V1[0], V1[1]); g.stroke(); g.beginPath(); g.moveTo(a[0], a[1]); g.lineTo(V2[0], V2[1]); g.stroke(); }
+    /* desks (simple slabs) seen from above */
+    [[230, 330, 260, 130, -0.32], [820, 640, 240, 120, 0.28], [300, 860, 230, 110, -0.32]].forEach(function (d) { g.save(); g.translate(d[0], d[1]); g.rotate(d[4]);
+      g.fillStyle = 'rgba(16,28,69,.18)'; g.fill(rr(-d[2] / 2 + 10, -d[3] / 2 + 16, d[2], d[3], 12)); g.fillStyle = '#FFFFFF'; g.fill(rr(-d[2] / 2, -d[3] / 2, d[2], d[3], 12)); g.lineWidth = 4; g.strokeStyle = 'rgba(16,28,69,.45)'; g.stroke(rr(-d[2] / 2, -d[3] / 2, d[2], d[3], 12));
+      g.fillStyle = '#C9D6EE'; g.fill(rr(-40, -d[3] / 2 + 14, 80, 46, 6)); g.restore(); });
+    /* the red camera light pool on Jun */
+    var sp = g.createRadialGradient(JUN[0], JUN[1] + 120, 20, JUN[0], JUN[1] + 120, 300); sp.addColorStop(0, 'rgba(255,60,60,.35)'); sp.addColorStop(1, 'rgba(255,60,60,0)'); g.fillStyle = sp; g.fillRect(0, 200, W, 800);
+  }
+  function overlays(g) {
+    /* fish-eye vignette, scanlines, corner brackets */
+    var v = g.createRadialGradient(W / 2, H * 0.42, H * 0.3, W / 2, H * 0.45, H * 0.78); v.addColorStop(0, 'rgba(10,30,30,0)'); v.addColorStop(1, 'rgba(10,30,30,.55)'); g.fillStyle = v; g.fillRect(0, 0, W, H);
+    g.fillStyle = 'rgba(255,255,255,.05)'; for (var y = 0; y < 980; y += 6) g.fillRect(0, y, W, 2);
+    g.strokeStyle = 'rgba(255,255,255,.9)'; g.lineWidth = 6; g.lineCap = 'square';
+    [[40, 150, 1, 1], [W - 40, 150, -1, 1], [40, 960, 1, -1], [W - 40, 960, -1, -1]].forEach(function (c) { g.beginPath(); g.moveTo(c[0], c[1] + c[3] * 70); g.lineTo(c[0], c[1]); g.lineTo(c[0] + c[2] * 70, c[1]); g.stroke(); });
+    g.fillStyle = 'rgba(255,255,255,.9)'; g.font = '700 20px "Plus Jakarta Sans"'; g.textAlign = 'right'; g.fillText('MON 09:41:07', W - 64, 128); g.textAlign = 'left';
+  }
+  function target(g) {   /* the red target box tracking Jun */
+    var x0 = JUN[0] - 150, y0 = JUN[1] - 250, w = 300, h = 470;
+    g.strokeStyle = '#FF2D2D'; g.lineWidth = 6; g.setLineDash([26, 14]); g.strokeRect(x0, y0, w, h); g.setLineDash([]);
+    g.lineWidth = 3; g.beginPath(); g.moveTo(JUN[0], y0 - 30); g.lineTo(JUN[0], y0 + 20); g.moveTo(JUN[0], y0 + h - 20); g.lineTo(JUN[0], y0 + h + 30); g.stroke();
+    var t = S.post.querySelector('.tgt'); t.style.left = x0 + 'px'; t.style.top = (y0 - 34) + 'px';
+  }
+  function render(t) {
+    var g = S.g, dpr = S.dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+    floor(g);
+    /* Mr. Lim at the edge of frame, calm, coffee (high angle keystone) */
+    NXX.keystone(g, S, { x: 700, y: 100, w: 340, h: 420 }, [LIM[0], 560], 1.2, 0.7, 0.86, function (A) { var m = F3.cast.lim, k = { mood: m.mood, pose: m.pose, prop: m.prop }; m.mood = 'happy'; m.pose = [0.2, 0.42]; m.prop = 'mug'; F3.use(A); F3.figure(m, 870, 510, 400); m.mood = k.mood; m.pose = k.pose; m.prop = k.prop; }, 4);
+    /* Jun frozen, hands up, seen from above */
+    NXX.keystone(g, S, { x: 360, y: 160, w: 400, h: 560 }, [JUN[0], JUN[1] + 220], 1.24, 0.66, 0.82, function (A) { var m = F3.cast.jun, k = { mood: m.mood, pose: m.pose, prop: m.prop }; m.mood = 'wow'; m.pose = [2.7, 2.66]; m.prop = null; F3.use(A); F3.figure(m, 560, 700, 520); m.mood = k.mood; m.pose = k.pose; m.prop = k.prop; }, 5);
+    target(g);
+    overlays(g);
+    /* Nexi leans into the lens: huge, bottom-right, glow on the visor */
+    if (S.nexi) { var nw = NEXI.h * S.nexi.naturalWidth / S.nexi.naturalHeight; g.save(); g.shadowColor = 'rgba(255,255,255,.75)'; g.shadowBlur = 30; g.drawImage(S.nexi, NEXI.x, NEXI.y, nw, NEXI.h); g.restore(); }
+    var bd = g.createLinearGradient(0, 960, 0, H); bd.addColorStop(0, 'rgba(16,28,69,0)'); bd.addColorStop(0.28, 'rgba(16,28,69,.82)'); bd.addColorStop(1, 'rgba(16,28,69,.96)'); g.fillStyle = bd; g.fillRect(0, 960, W, H - 960);
+    window.__dbg = {};
+  }
+  TN.boot({ slugs: { 4: 'nexi-explains-s2-ep04-is-odoo-watching-me' }, setup: { 4: setup }, render: { 4: render }, poster: { 4: 0 }, loop: 8 });
+})();
+</script>
+</body>
+</html>

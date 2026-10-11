@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Nexi Explains S2 EP00 - Season 2 Introduction (comic poster)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=block" rel="stylesheet">
+<link rel="stylesheet" href="kit.css">
+<style>
+/* S2EP00 "Season 2 Introduction" (hook: Training, adapting and improving: the map of the season.) - Season 2 is "Coming in
+   2027" on technext.asia/nexi-explains; no YouTube date yet, so no date on the poster.
+   OWNER (2026-10-07): "create a poster commercial for season 2 ep 00. more comical style. similar in first image you created,
+   but dont use technext logo, or any templated technext logo above (below cta already good, make it comic style). more
+   like comic poster. do sample" -> NO logo row at the top; the series masthead takes its place; the CTA + technext.asia stay
+   at the bottom, drawn as comic lettering.
+   CONCEPT: archetype comic splash page with panel strip | camera eye-level group shot, low for Mr. Lim | light bright
+   sunburst daylight | palette comic paper, yellow-orange burst, ink blue | text masthead top + balloons + panel captions |
+   type Bangers masthead + balloon lettering | build 2D canvas + F3 cast painter + nexi-cam | nexi bow-tie host celebrating |
+   device spreadsheet storm + sticker ink outlines + panel gutters.
+   Film idea: the episode's question as a comic splash: the Bluebay Trading team (sample company, F3 cast) caught in a storm
+   of spreadsheets, Mr. Lim shouting "EVERYONE STILL IN EXCEL?!", host Nexi (bow tie) flying in with Odoo apps; below, three
+   panels = the episode's three big topics: training (little and often), adapting (plan for the dip), improving (a garden). */
+.p0{background:#FFF6E0}
+.p0 canvas{position:absolute;left:0;top:0;width:1080px;height:100%}
+:root{--ink:#14183A}
+
+/* masthead (replaces the logo row on this poster, owner's call) */
+.p0 .mast{position:absolute;z-index:44;left:58px;top:62px;transform:rotate(-2.2deg);transform-origin:left top}
+.p0 .mast h1{position:relative;margin:0;font:400 142px/.86 Bangers,sans-serif;letter-spacing:.012em;white-space:nowrap}
+.p0 .mast h1 span{display:block}
+.p0 .mast .bk{color:var(--ink);-webkit-text-stroke:17px var(--ink);text-shadow:3px 3px 0 var(--ink),6px 6px 0 var(--ink),9px 9px 0 var(--ink),12px 12px 0 var(--ink)}
+.p0 .mast .fr{position:absolute;left:0;top:0;background:linear-gradient(180deg,#FFF6A8 6%,#FFD84A 46%,#FF9F1A 94%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.p0 .rib{position:absolute;z-index:43;left:92px;top:206px;display:flex;align-items:center;gap:14px;transform:rotate(-1.2deg)}
+.p0 .rib .bn{position:relative;padding:12px 30px 11px;background:#2F6FE0;border:5px solid var(--ink);color:#fff;font:800 28px/1 var(--display);letter-spacing:.07em;box-shadow:6px 6px 0 var(--ink)}
+.p0 .rib .ep{padding:10px 16px 9px;background:#FFF;border:4px solid var(--ink);border-radius:10px;font:800 19px/1 var(--display);letter-spacing:.08em;color:var(--ink);box-shadow:4px 4px 0 var(--ink);transform:rotate(2deg)}
+
+/* "SEASON 2!" starburst */
+.p0 .burst{position:absolute;z-index:46;width:270px;height:250px;display:grid;place-items:center}
+.p0 .burst::before,.p0 .burst::after{content:"";position:absolute;inset:0;clip-path:polygon(50% 0,59% 22%,80% 6%,75% 30%,100% 26%,83% 46%,100% 62%,76% 66%,84% 92%,60% 78%,50% 100%,40% 78%,16% 92%,24% 66%,0 62%,17% 46%,0 26%,25% 30%,20% 6%,41% 22%)}
+.p0 .burst::before{background:var(--ink);transform:scale(1.07)}
+.p0 .burst::after{background:linear-gradient(160deg,#FF6A6A,#E8303F)}
+.p0 .burst b{position:relative;z-index:1;text-align:center;font:400 54px/.86 Bangers,sans-serif;color:#fff;letter-spacing:.02em;-webkit-text-stroke:3px var(--ink);paint-order:stroke fill;transform:rotate(9deg)}
+.p0 .burst b small{display:block;margin-top:4px;font-size:27px;color:#FFE36E}
+.p0 .b1{left:772px;top:40px;width:262px;height:240px}
+.p0 .stamp{position:absolute;z-index:42;right:64px;top:1186px;padding:10px 18px 8px;border:5px double #E8303F;border-radius:12px;color:#E8303F;text-align:center;
+  font:400 36px/1 Bangers,sans-serif;letter-spacing:.05em;transform:rotate(-6deg);background:rgba(255,246,224,.6)}
+.p0 .stamp small{display:block;margin-bottom:4px;font:800 14px/1 var(--text);letter-spacing:.3em}
+
+/* comic lettering in the splash */
+.p0 .cap{position:absolute;z-index:42;padding:10px 16px 9px;background:#FFE36E;border:4px solid var(--ink);font:400 27px/1 Bangers,sans-serif;letter-spacing:.06em;color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.p0 .cap small{display:inline-block;margin-left:10px;padding:3px 8px 2px;background:#fff;border:2px solid var(--ink);border-radius:6px;font:800 13px/1 var(--text);letter-spacing:.08em;vertical-align:4px}
+.p0 .bal{position:absolute;z-index:42;text-align:center;font:400 56px/.92 Bangers,sans-serif;letter-spacing:.02em;color:var(--ink);white-space:nowrap}
+.p0 .bal em{font-style:normal;color:#E8303F}
+
+/* the three panels' captions */
+.p0 .pc{position:absolute;z-index:42;padding:7px 12px 6px;background:#FFE36E;border:3.5px solid var(--ink);font:400 26px/1 Bangers,sans-serif;letter-spacing:.06em;color:var(--ink);box-shadow:3px 3px 0 var(--ink);white-space:nowrap}
+.p0 .pl{position:absolute;z-index:42;padding:6px 12px 5px;background:#fff;border:3px solid var(--ink);border-radius:8px;font:800 19px/1.1 var(--display);color:var(--ink);white-space:nowrap;text-align:center}
+
+/* takeaway */
+.p0 .take{position:absolute;z-index:42;left:62px;top:1190px;font:800 33px/1.18 var(--display);letter-spacing:-.01em;color:var(--ink)}
+.p0 .take b{display:block;color:#2F6FE0}
+
+/* footer in comic lettering (CTA + technext.asia; no logo) */
+.p0 .cfoot{position:absolute;z-index:45;left:62px;right:62px;bottom:46px;display:flex;align-items:center;justify-content:space-between}
+.p0 .cbtn{display:inline-flex;align-items:center;gap:14px;height:82px;padding:0 30px 0 32px;background:#FFD84A;border:5px solid var(--ink);border-radius:18px;box-shadow:7px 7px 0 var(--ink);
+  font:400 40px/1 Bangers,sans-serif;letter-spacing:.05em;color:var(--ink);transform:rotate(-1.5deg)}
+.p0 .cbtn svg{width:36px;height:36px}
+.p0 .csite{text-align:right}
+.p0 .csite b{display:block;font:400 52px/.9 Bangers,sans-serif;letter-spacing:.04em;color:#fff;-webkit-text-stroke:8px var(--ink);paint-order:stroke fill;text-shadow:4px 4px 0 var(--ink)}
+.p0 .csite small{display:block;margin-top:8px;font:800 18px/1 var(--text);color:var(--ink)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <symbol id="i-play" viewBox="0 0 24 24"><rect x="1" y="3" width="22" height="18" rx="6" fill="#E8303F" stroke="#14183A" stroke-width="2"/><path d="M9.5 8 16.5 12 9.5 16Z" fill="#fff"/></symbol>
+</defs></svg>
+
+<section class="post p0 grain" data-p="0">
+  <canvas></canvas>
+
+  <div class="mast" data-qa="text"><h1><span class="bk" aria-hidden="true">NEXI EXPLAINS</span><span class="fr">NEXI EXPLAINS</span></h1></div>
+  <div class="rib"><span class="bn" data-qa="text">EP 00 &middot; THE HUMAN SIDE OF ODOO</span></div>
+  <div class="burst b1" data-qa="text"><b>SEASON<br>2!<small>COMING 2027</small></b></div>
+
+  <div class="cap c1" data-qa="text">MEANWHILE, AT BLUEBAY TRADING&hellip;<small>SAMPLE COMPANY</small></div>
+  <div class="bal" data-qa="text">EVERYONE STILL<br>IN <em>EXCEL?!</em></div>
+
+  <div class="pc k1" data-qa="text">1 &middot; TRAINING</div>
+  <div class="pc k2" data-qa="text">2 &middot; ADAPTING</div>
+  <div class="pc k3" data-qa="text">3 &middot; IMPROVING</div>
+  <div class="pl l1" data-qa="text">Little and often</div>
+  <div class="pl l2" data-qa="text">Plan for the dip</div>
+  <div class="pl l3" data-qa="text">Care for it weekly</div>
+
+  <div class="take" data-qa="text">Installing Odoo is easy.<b>Changing habits is the hard part.</b></div>
+  <div class="stamp" data-qa="text"><small>PSYCH FILE</small>STATUS QUO BIAS</div>
+
+  <div class="cfoot" data-qa="text"><span class="cbtn">FOLLOW NEXI ON YOUTUBE<svg><use href="#i-play"/></svg></span><span class="csite"><b>technext.asia</b><small>All episodes: /nexi-explains</small></span></div>
+</section>
+
+<script src="kit.js"></script>
+<script src="s2cast-f3.js"></script>
+<script>
+(function () {
+  var W = TN.W, H = TN.H, TAU = Math.PI * 2, INK = '#14183A', S = {};
+  var SP = { x: 48, y: 300, w: 984, h: 640 };                     // the splash panel
+  var PN = [{ x: 48, y: 962, w: 316, h: 206, bg: '#D9ECFF' }, { x: 382, y: 962, w: 316, h: 206, bg: '#FFF1C2' }, { x: 716, y: 962, w: 316, h: 206, bg: '#DDF5E4' }];
+  var NEXI = { x: 742, y: 312, h: 286, bx: 0.45 };
+  var CAST = [   // id, foot x, height, mood, arm pose [left, right], prop
+    ['maria', 214, 352, 'worried', [0.32, 0.14], 'clipboard'], ['ben', 770, 360, 'wow', [0.5, 0.45], null], ['jun', 942, 322, 'worried', [0.18, 0.55], 'phone'], ['lim', 488, 478, 'wow', [2.72, 2.66], null]];
+
+  function img(src) { return new Promise(function (res) { var i = new Image(); i.onload = function () { res(i); }; i.onerror = function () { res(null); }; i.src = src; }); }
+  function rr(x, y, w, h, r) { var p = new Path2D(); r = Math.min(r, w / 2, h / 2); p.moveTo(x + r, y); p.arcTo(x + w, y, x + w, y + h, r); p.arcTo(x + w, y + h, x, y + h, r); p.arcTo(x, y + h, x, y, r); p.arcTo(x, y, x + w, y, r); p.closePath(); return p; }
+
+  function setup(post) {
+    var dpr = window.devicePixelRatio || 1; S.dpr = dpr; S.post = post;
+    var c = post.querySelector('canvas'); c.width = W * dpr; c.height = H * dpr; S.g = c.getContext('2d');
+    S.a = document.createElement('canvas'); S.b = document.createElement('canvas'); S.a.width = S.b.width = W * dpr; S.a.height = S.b.height = H * dpr;
+    var icons = ['website_slides', 'helpdesk', 'approvals', 'project'];
+    return Promise.all([img('assets/nexi/nexi-s2-host.png'), document.fonts.load('60px Bangers')].concat(icons.map(function (k) { return img('assets/odoo/' + k + '.svg'); })))
+      .then(function (a) { S.nexi = a[0]; S.icons = a.slice(2); });
+  }
+
+  /* sticker outline: draw something on the offscreen canvas, then stamp its silhouette in ink around it, then the thing */
+  function sticker(g, px, draw) {
+    var dpr = S.dpr, A = S.a.getContext('2d'), B = S.b.getContext('2d');
+    A.setTransform(1, 0, 0, 1, 0, 0); A.clearRect(0, 0, S.a.width, S.a.height); A.setTransform(dpr, 0, 0, dpr, 0, 0); draw(A);
+    B.setTransform(1, 0, 0, 1, 0, 0); B.clearRect(0, 0, S.b.width, S.b.height); B.globalCompositeOperation = 'source-over'; B.drawImage(S.a, 0, 0);
+    B.globalCompositeOperation = 'source-in'; B.fillStyle = INK; B.fillRect(0, 0, S.b.width, S.b.height); B.globalCompositeOperation = 'source-over';
+    g.save(); g.setTransform(1, 0, 0, 1, 0, 0);
+    g.globalAlpha = 0.9; g.drawImage(S.b, 7 * dpr, 7 * dpr); g.globalAlpha = 1;                       // hard comic drop shadow
+    for (var i = 0; i < 16; i++) { var a = i / 16 * TAU; g.drawImage(S.b, Math.cos(a) * px * dpr, Math.sin(a) * px * dpr); }
+    g.drawImage(S.a, 0, 0); g.restore();
+  }
+  function panelFrame(g, x, y, w, h) { g.lineJoin = 'miter'; g.strokeStyle = INK; g.lineWidth = 7; g.strokeRect(x, y, w, h); }
+  function halftone(g, x0, y0, w, h, col, st, fx, fy) {
+    var p = new Path2D();
+    for (var yy = y0, r = 0; yy < y0 + h + st; yy += st, r++) for (var xx = x0 + (r % 2 ? st / 2 : 0); xx < x0 + w + st; xx += st) {
+      var d = Math.hypot((xx - fx) / w, (yy - fy) / h), rad = Math.min(st * 0.46, Math.max(0, (d - 0.25) * st * 0.9)); if (rad < 0.5) continue; p.moveTo(xx + rad, yy); p.arc(xx, yy, rad, 0, TAU); }
+    g.fillStyle = col; g.fill(p);
+  }
+  function sheet(g, x, y, w, rot, blur) {
+    var h = w * 0.78; g.save(); g.translate(x, y); g.rotate(rot); if (blur) g.filter = 'blur(' + blur + 'px)';
+    g.fillStyle = '#FFFFFF'; g.fill(rr(-w / 2, -h / 2, w, h, 6)); g.fillStyle = '#21A366'; g.fill(rr(-w / 2, -h / 2, w, h * 0.17, 6)); g.fillRect(-w / 2, -h / 2 + h * 0.1, w, h * 0.07);
+    var cols = ['#FFB3C1', '#FFE36E', '#BFE3FF', '#FFB3C1'];
+    for (var r = 0; r < 4; r++) for (var c = 0; c < 4; c++) if ((r * 3 + c * 5) % 4 === 0) { g.fillStyle = cols[(r + c) % 4]; g.fillRect(-w / 2 + w * 0.06 + c * w * 0.22, -h / 2 + h * 0.26 + r * h * 0.17, w * 0.2, h * 0.14); }
+    g.strokeStyle = 'rgba(33,163,102,.45)'; g.lineWidth = Math.max(1.5, w * 0.012); g.beginPath();
+    for (var i = 1; i < 4; i++) { var gx = -w / 2 + w * 0.06 + i * w * 0.22; g.moveTo(gx - 1, -h / 2 + h * 0.24); g.lineTo(gx - 1, h / 2 - h * 0.06); }
+    for (var j = 0; j <= 4; j++) { var gy = -h / 2 + h * 0.25 + j * h * 0.17; g.moveTo(-w / 2 + w * 0.05, gy); g.lineTo(w / 2 - w * 0.05, gy); } g.stroke();
+    if (!blur) { g.lineWidth = Math.max(3, w * 0.035); g.strokeStyle = INK; g.stroke(rr(-w / 2, -h / 2, w, h, 6)); }
+    g.restore();
+  }
+  function appTile(g, ic, x, y, w, rot) {
+    g.save(); g.translate(x, y); g.rotate(rot); g.fillStyle = '#FFFFFF'; g.fill(rr(-w / 2, -w / 2, w, w, w * 0.24)); g.lineWidth = 4; g.strokeStyle = INK; g.stroke(rr(-w / 2, -w / 2, w, w, w * 0.24));
+    if (ic) g.drawImage(ic, -w * 0.34, -w * 0.34, w * 0.68, w * 0.68); g.restore();
+  }
+  function speed(g, x0, y0, x1, y1, n, seed) {
+    var R = TN.rand(seed); g.save(); g.strokeStyle = INK; g.lineCap = 'round';
+    for (var i = 0; i < n; i++) { var u = R(), off = (R() - 0.5) * 40, len = 30 + R() * 70, a = Math.atan2(y1 - y0, x1 - x0), nx = -Math.sin(a) * off, ny = Math.cos(a) * off;
+      var sx = x0 + (x1 - x0) * u + nx, sy = y0 + (y1 - y0) * u + ny; g.lineWidth = 3 + R() * 3; g.beginPath(); g.moveTo(sx, sy); g.lineTo(sx - Math.cos(a) * len, sy - Math.sin(a) * len); g.stroke(); }
+    g.restore();
+  }
+  function sfx(g, word, x, y, size, rot, fill) {
+    g.save(); g.translate(x, y); g.rotate(rot); g.font = size + 'px Bangers'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round';
+    g.lineWidth = size * 0.22; g.strokeStyle = INK; g.strokeText(word, 4, 6); g.strokeText(word, 0, 0); g.fillStyle = fill || '#FFFFFF'; g.fillText(word, 0, 0); g.restore();
+  }
+
+  function splash(g) {
+    var x = SP.x, y = SP.y, w = SP.w, h = SP.h, cx = 520, cy = 640;
+    g.save(); g.beginPath(); g.rect(x, y, w, h); g.clip();
+    /* sunburst */
+    var bg = g.createRadialGradient(cx, cy, 20, cx, cy, 760); bg.addColorStop(0, '#FFFBE0'); bg.addColorStop(0.35, '#FFD84A'); bg.addColorStop(1, '#FF9A2E'); g.fillStyle = bg; g.fillRect(x, y, w, h);
+    g.fillStyle = 'rgba(255,255,255,.34)'; var N = 26; for (var i = 0; i < N; i += 2) { var a0 = i / N * TAU, a1 = (i + 1) / N * TAU; g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + Math.cos(a0) * 1400, cy + Math.sin(a0) * 1400); g.lineTo(cx + Math.cos(a1) * 1400, cy + Math.sin(a1) * 1400); g.closePath(); g.fill(); }
+    halftone(g, x, y, w, h, 'rgba(232,48,63,.22)', 18, cx, cy);
+    /* the spreadsheet storm swirls from the left round the team; Odoo apps fly in behind Nexi */
+    [[120, 660, 110, -0.5, 6], [300, 470, 70, 0.4, 3], [980, 870, 120, 0.7, 7], [640, 420, 64, -0.3, 0], [170, 470, 92, 0.25, 0], [330, 850, 86, -0.6, 0],
+     [620, 860, 78, 0.5, 0], [84, 870, 72, -0.2, 0], [690, 560, 70, 0.9, 0], [250, 370, 60, -0.8, 0]].forEach(function (s) { sheet(g, s[0], s[1], s[2], s[3], s[4]); });
+    speed(g, 60, 700, 700, 420, 26, 9);
+    [[1000, 360, 0], [880, 690, 1], [1004, 610, 2], [620, 352, 3]].forEach(function (t, k) { appTile(g, S.icons[t[2]], t[0], t[1], 70, (k - 1.5) * 0.18); });
+    /* the team (F3 cast, the real Season 2 models) with ink sticker outlines */
+    CAST.forEach(function (c) { var m = F3.cast[c[0]], keep = { mood: m.mood, pose: m.pose, prop: m.prop };
+      m.mood = c[3]; m.pose = c[4]; m.prop = c[5];
+      sticker(g, 5, function (A) { F3.use(A); F3.figure(m, c[1], y + h - 8, c[2]); });
+      m.mood = keep.mood; m.pose = keep.pose; m.prop = keep.prop; });
+    /* Nexi, the host, flying in with speed lines */
+    if (S.nexi) { var nw = NEXI.h * S.nexi.naturalWidth / S.nexi.naturalHeight; speed(g, 1060, 300, NEXI.x + nw * 0.6, NEXI.y + NEXI.h * 0.5, 14, 4);
+      sticker(g, 5, function (A) { A.drawImage(S.nexi, NEXI.x, NEXI.y, nw, NEXI.h); }); }
+    var lim = CAST[3], lh = lim[2] * F3.cast.lim.h, hr = lh * 0.33 * 0.5, hy = y + h - 8 - lh + hr;
+    g.save(); g.strokeStyle = INK; g.lineCap = 'round'; g.lineWidth = 6; [-2.1, -1.57, -1.04].forEach(function (a) { var r0 = hr * 1.32, r1 = hr * 1.7; g.beginPath(); g.moveTo(lim[1] + Math.cos(a) * r0, hy + Math.sin(a) * r0); g.lineTo(lim[1] + Math.cos(a) * r1, hy + Math.sin(a) * r1); g.stroke(); }); g.restore();
+    sfx(g, '?!', lim[1] + hr * 1.55, hy - hr * 1.25, 64, 0.2, '#E8303F');
+    g.restore();
+    panelFrame(g, x, y, w, h);
+  }
+  /* the three topic panels */
+  function panels(g) {
+    PN.forEach(function (p, k) {
+      g.save(); g.beginPath(); g.rect(p.x, p.y, p.w, p.h); g.clip(); g.fillStyle = p.bg; g.fillRect(p.x, p.y, p.w, p.h);
+      halftone(g, p.x, p.y, p.w, p.h, 'rgba(20,24,58,.08)', 14, p.x + p.w * 0.3, p.y + p.h * 0.4);
+      var cx = p.x + p.w / 2, cy = p.y + p.h / 2 - 4;
+      if (k === 0) {   // the forgetting curve + a dumbbell
+        g.lineWidth = 4; g.strokeStyle = INK; g.beginPath(); g.moveTo(cx - 110, cy - 40); g.lineTo(cx - 110, cy + 50); g.lineTo(cx + 60, cy + 50); g.stroke();
+        g.strokeStyle = '#E8303F'; g.lineWidth = 6; g.beginPath(); g.moveTo(cx - 104, cy - 34); g.bezierCurveTo(cx - 80, cy + 30, cx - 20, cy + 40, cx + 56, cy + 42); g.stroke();
+        g.strokeStyle = '#2F6FE0'; g.lineWidth = 5; g.setLineDash([2, 9]); g.beginPath(); g.moveTo(cx - 104, cy - 34); g.lineTo(cx - 60, cy - 2); g.lineTo(cx - 58, cy - 32); g.lineTo(cx - 14, cy - 6); g.lineTo(cx - 12, cy - 32); g.lineTo(cx + 30, cy - 10); g.lineTo(cx + 32, cy - 34); g.stroke(); g.setLineDash([]);
+        g.save(); g.translate(cx + 104, cy + 2); g.rotate(-0.5); g.fillStyle = INK; g.fillRect(-40, -5, 80, 10); [-1, 1].forEach(function (s) { g.fillStyle = '#2F6FE0'; g.fill(rr(s * 40 - 13, -24, 26, 48, 6)); g.lineWidth = 3.5; g.strokeStyle = INK; g.stroke(rr(s * 40 - 13, -24, 26, 48, 6)); }); g.restore();
+      } else if (k === 1) {   // the change road with a dip, a van, the go-live flag
+        g.lineCap = 'round'; g.strokeStyle = INK; g.lineWidth = 34; var road = function (gg) { gg.beginPath(); gg.moveTo(p.x - 10, cy - 20); gg.bezierCurveTo(cx - 70, cy - 20, cx - 60, cy + 56, cx, cy + 56); gg.bezierCurveTo(cx + 70, cy + 56, cx + 60, cy - 50, p.x + p.w + 10, cy - 54); };
+        road(g); g.stroke(); g.strokeStyle = '#8E95A8'; g.lineWidth = 26; road(g); g.stroke(); g.strokeStyle = '#FFFFFF'; g.lineWidth = 3; g.setLineDash([12, 12]); road(g); g.stroke(); g.setLineDash([]);
+        g.save(); g.translate(cx + 8, cy + 30); g.fillStyle = '#2F6FE0'; g.fill(rr(-30, -26, 60, 30, 7)); g.fillStyle = '#BFE3FF'; g.fill(rr(10, -21, 15, 11, 3)); g.lineWidth = 3.5; g.strokeStyle = INK; g.stroke(rr(-30, -26, 60, 30, 7));
+        [-16, 16].forEach(function (wx) { g.fillStyle = INK; g.beginPath(); g.arc(wx, 4, 8, 0, TAU); g.fill(); }); g.restore();
+        g.save(); g.translate(p.x + p.w - 54, cy - 72); g.fillStyle = INK; g.fillRect(0, 0, 4, 46); g.fillStyle = '#21A366'; g.beginPath(); g.moveTo(4, 2); g.lineTo(38, 12); g.lineTo(4, 22); g.closePath(); g.fill(); g.lineWidth = 2.5; g.strokeStyle = INK; g.stroke(); g.restore();
+      } else {   // Spike the cactus blooms under the watering can
+        var px = cx + 40, py = cy + 52;
+        g.fillStyle = '#E0784A'; g.beginPath(); g.moveTo(px - 34, py - 30); g.lineTo(px + 34, py - 30); g.lineTo(px + 26, py + 14); g.lineTo(px - 26, py + 14); g.closePath(); g.fill(); g.lineWidth = 3.5; g.strokeStyle = INK; g.stroke();
+        g.fillStyle = '#3FB37A'; g.fill(rr(px - 16, py - 100, 32, 74, 16)); g.fill(rr(px - 40, py - 74, 18, 34, 9)); g.fill(rr(px + 22, py - 84, 18, 40, 9)); g.stroke(rr(px - 16, py - 100, 32, 74, 16)); g.stroke(rr(px - 40, py - 74, 18, 34, 9)); g.stroke(rr(px + 22, py - 84, 18, 40, 9));
+        for (var f = 0; f < 5; f++) { var a = f / 5 * TAU; g.fillStyle = '#FF77C8'; g.beginPath(); g.ellipse(px + Math.cos(a) * 9, py - 108 + Math.sin(a) * 9, 9, 6, a, 0, TAU); g.fill(); }
+        g.fillStyle = '#FFE36E'; g.beginPath(); g.arc(px, py - 108, 6, 0, TAU); g.fill();
+        g.fillStyle = INK; g.beginPath(); g.arc(px - 6, py - 74, 3, 0, TAU); g.arc(px + 6, py - 74, 3, 0, TAU); g.fill();
+        g.save(); g.translate(cx - 88, cy - 44); g.rotate(0.35); g.fillStyle = '#2F6FE0'; g.fill(rr(-34, -20, 60, 44, 10)); g.lineWidth = 3.5; g.strokeStyle = INK; g.stroke(rr(-34, -20, 60, 44, 10));
+        g.beginPath(); g.moveTo(24, -6); g.lineTo(62, -24); g.lineWidth = 8; g.strokeStyle = INK; g.stroke(); g.lineWidth = 4; g.strokeStyle = '#2F6FE0'; g.stroke(); g.restore();
+        g.fillStyle = '#5FB8FF'; [[0, 0], [12, 16], [-6, 26], [18, 36], [4, 46]].forEach(function (d) { g.beginPath(); g.ellipse(cx - 10 + d[0], cy - 50 + d[1], 3.5, 6, 0.3, 0, TAU); g.fill(); });
+      }
+      g.restore(); panelFrame(g, p.x, p.y, p.w, p.h);
+    });
+  }
+  /* the balloon tail and the caption positions */
+  function balloon(g, b, tip) {
+    var r = b.getBoundingClientRect(), pr = S.post.getBoundingClientRect(), x = r.left - pr.left, y = r.top - pr.top, w = r.width, h = r.height, cx = x + w / 2, cy = y + h / 2;
+    var p = new Path2D(); p.ellipse(cx, cy, w / 2 + 40, h / 2 + 30, 0, 0, TAU);
+    var t = new Path2D(); t.moveTo(cx + w * 0.12, cy + h / 2 + 18); t.lineTo(tip[0], tip[1]); t.lineTo(cx + w * 0.3, cy + h / 2 + 6); t.closePath();
+    g.save(); g.fillStyle = INK; g.translate(6, 7); g.fill(p); g.fill(t); g.restore();
+    g.lineJoin = 'round'; g.lineWidth = 12; g.strokeStyle = INK; g.stroke(p); g.stroke(t); g.fillStyle = '#FFFFFF'; g.fill(p); g.fill(t);
+  }
+
+  function render(t) {
+    var g = S.g, dpr = S.dpr, P = S.post;
+    g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+    /* comic paper with halftone corners */
+    g.fillStyle = '#FFF6E0'; g.fillRect(0, 0, W, H);
+    halftone(g, 0, 0, W, 300, 'rgba(47,111,224,.16)', 16, W * 0.42, 150);
+    halftone(g, 0, 1170, W, 270, 'rgba(232,48,63,.12)', 16, W * 0.4, 1260);
+    /* masthead speed lines behind the title */
+    speed(g, -40, 160, 1100, 100, 16, 21);
+    splash(g); panels(g);
+    /* place the lettering */
+    var q = function (s) { return P.querySelector(s); };
+    q('.c1').style.left = (SP.x + 18) + 'px'; q('.c1').style.top = (SP.y + 18) + 'px';
+    var b = q('.bal'); b.style.left = '84px'; b.style.top = (SP.y + 102) + 'px';
+    var lim = CAST[3], limTop = SP.y + SP.h - 8 - lim[2] * F3.cast.lim.h;
+    var hrL = lim[2] * F3.cast.lim.h * 0.33 * 0.5; balloon(g, b, [lim[1] - hrL * 1.02, limTop + hrL * 1.5]);
+    PN.forEach(function (p, k) { var c = q('.k' + (k + 1)), l = q('.l' + (k + 1)); c.style.left = (p.x + 12) + 'px'; c.style.top = (p.y + 12) + 'px'; l.style.left = (p.x + p.w / 2 - l.offsetWidth / 2) + 'px'; l.style.top = (p.y + p.h - 44) + 'px'; });
+    window.__dbg = { limHead: [lim[1], limTop] };
+  }
+
+  TN.boot({ slugs: { 0: 'nexi-explains-s2-ep00-season-2-introduction' }, setup: { 0: setup }, render: { 0: render }, poster: { 0: 0 }, loop: 8 });
+})();
+</script>
+</body>
+</html>

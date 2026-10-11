@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Nexi Explains S2 EP03 - Scared to Click the Wrong Button? (v3)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Inter:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=block" rel="stylesheet">
+<link rel="stylesheet" href="kit.css"><link rel="stylesheet" href="nxe-v3.css">
+<style>
+/* S2EP03 v3 - FIRST-PERSON POV FROM JUN'S PILOT SEAT. We are Jun: our own trembling hand reaches from the right for a giant
+   purple CONFIRM button on the simulator's panel; through the windshield the horizon banks 18 deg in bright daylight with
+   clouds streaking past; Nexi the flight instructor (pilot cap) in the co-pilot seat says it's a test copy; the rubber
+   chicken rides the dashboard. Background: high bright sky, sun glare. */
+.p3{background:#7CC4FF}
+.p3 .vtag{left:60px;top:58px}
+.p3 .vbal{left:430px;top:226px;font-size:38px}
+.p3 .vtt{left:56px;top:1000px}
+.p3 .vtt .a{font-size:112px;transform:rotate(-3deg)}
+.p3 .vtt .b{font-size:112px;transform:rotate(-1.5deg) translateY(2px)}
+.p3 .vapps{left:62px;top:1226px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><symbol id="yt" viewBox="0 0 24 24"><path d="M8 5.5 19 12 8 18.5Z" fill="#fff"/></symbol></defs></svg>
+<section class="post p3 v3 grain" data-p="3">
+  <canvas></canvas>
+  <span class="vtag" data-qa="text"><i></i>NEXI EXPLAINS <b>S2 &middot; EP 03</b></span>
+  <div class="vbal" data-qa="text">IT&rsquo;S A <em>TEST COPY!</em><br>CLICK AWAY!</div>
+  <h1 class="vtt" data-qa="text"><span class="a">Scared</span><br><span class="b y">to click?!</span></h1>
+  <div class="vapps" data-qa="text"><span class="k">ODOO APP</span><span class="ap"><img src="assets/odoo/sale.svg" alt="">Sales &middot; test database</span></div>
+  <div class="vft" data-qa="text"><span class="ytb"><svg><use href="#yt"/></svg>Subscribe on YouTube</span><span class="vsite">technext.asia<small>Season 2 &middot; coming in 2027</small></span></div>
+</section>
+<script src="kit.js"></script><script src="nxe-page.js"></script><script src="s2cast-f3.js"></script><script src="nxe-x.js"></script>
+<script>
+(function () {
+  var W = TN.W, H = TN.H, TAU = Math.PI * 2, INK = NXX.INK, rr = NXP.rr, S = {};
+  var BTN = { x: 470, y: 820, rx: 250, ry: 70, dep: 54 }, NEXI = { x: 770, y: 360, h: 380 };
+  function img(src) { return new Promise(function (res) { var i = new Image(); i.onload = function () { res(i); }; i.onerror = function () { res(null); }; i.src = src; }); }
+  function setup(post) {
+    var dpr = window.devicePixelRatio || 1; S.dpr = dpr; S.post = post;
+    var c = post.querySelector('canvas'); c.width = W * dpr; c.height = H * dpr; S.g = c.getContext('2d'); NXP.offscreen(S, W, H);
+    return Promise.all([img('assets/nexi/nexi-s2x3.png'), img('assets/odoo/sale.svg'), document.fonts.load('60px Bangers')]).then(function (a) { S.nexi = a[0]; S.sale = a[1]; });
+  }
+  function cloud(g, x, y, s, a) { g.save(); g.globalAlpha = a; g.fillStyle = '#FFFFFF'; g.beginPath(); [[0, 0, 60], [66, -26, 76], [140, 0, 58], [70, 22, 60]].forEach(function (k) { g.moveTo(x + k[0] * s + k[2] * s, y + k[1] * s); g.arc(x + k[0] * s, y + k[1] * s, k[2] * s, 0, TAU); }); g.fill(); g.restore(); }
+  function outside(g) {
+    g.save(); g.translate(540, 560); g.rotate(-0.32);
+    var sky = g.createLinearGradient(0, -900, 0, 40); sky.addColorStop(0, '#2D7BEA'); sky.addColorStop(0.6, '#8FD0FF'); sky.addColorStop(1, '#E4F6FF'); g.fillStyle = sky; g.fillRect(-1200, -1200, 2400, 1240);
+    var gr = g.createLinearGradient(0, 40, 0, 900); gr.addColorStop(0, '#9ED98C'); gr.addColorStop(1, '#3E8E5E'); g.fillStyle = gr; g.fillRect(-1200, 40, 2400, 1200);
+    g.strokeStyle = 'rgba(255,255,255,.35)'; g.lineWidth = 3; for (var i = -12; i <= 12; i++) { g.beginPath(); g.moveTo(i * 50, 40); g.lineTo(i * 320, 900); g.stroke(); }
+    [[-700, -320, 1.5, 0.95], [-200, -520, 1.1, 0.9], [300, -260, 1.3, 0.95], [-420, -120, 0.8, 0.8], [520, -620, 1.0, 0.85]].forEach(function (c) { cloud(g, c[0], c[1], c[2], c[3]); });
+    g.restore();
+    NXX.glow(g, 120, 160, 420, '255,250,220', 0.8);
+    NXX.speed(g, 1000, 420, Math.PI + 0.32 - 0.05, 220, 18, 500, 3, 'rgba(255,255,255,.75)');
+  }
+  function canopy(g) {
+    /* dark canopy frame: curved top corners, a centre strut, the panel's hood */
+    g.fillStyle = '#1B2547';
+    g.beginPath(); g.moveTo(0, 0); g.lineTo(300, 0); g.quadraticCurveTo(80, 120, 40, 560); g.lineTo(0, 600); g.closePath(); g.fill();
+    g.beginPath(); g.moveTo(W, 0); g.lineTo(W - 260, 0); g.quadraticCurveTo(W - 60, 140, W - 30, 560); g.lineTo(W, 600); g.closePath(); g.fill();
+    g.strokeStyle = INK; g.lineWidth = 6; g.beginPath(); g.moveTo(300, 0); g.quadraticCurveTo(80, 120, 40, 560); g.moveTo(W - 260, 0); g.quadraticCurveTo(W - 60, 140, W - 30, 560); g.stroke();
+    /* panel (seen from the seat: a big curved hood) */
+    var pg = g.createLinearGradient(0, 660, 0, H); pg.addColorStop(0, '#2B3A6E'); pg.addColorStop(0.3, '#1B2547'); pg.addColorStop(1, '#0E1530'); g.fillStyle = pg;
+    g.beginPath(); g.moveTo(-20, 720); g.quadraticCurveTo(540, 600, W + 20, 700); g.lineTo(W + 20, H); g.lineTo(-20, H); g.closePath(); g.fill(); g.lineWidth = 7; g.strokeStyle = INK; g.stroke();
+    g.strokeStyle = 'rgba(160,200,255,.4)'; g.lineWidth = 3; g.beginPath(); g.moveTo(-20, 734); g.quadraticCurveTo(540, 616, W + 20, 714); g.stroke();
+    /* a few dials glowing */
+    [[120, 760, 30, '#21A366'], [870, 770, 30, '#FFD23F'], [960, 820, 20, '#5FD3FF']].forEach(function (d) { NXX.glow(g, d[0], d[1], d[2] * 2.2, '120,200,255', 0.3); g.fillStyle = '#0E1530'; g.beginPath(); g.arc(d[0], d[1], d[2], 0, TAU); g.fill(); g.lineWidth = 4; g.strokeStyle = d[3]; g.stroke(); g.beginPath(); g.moveTo(d[0], d[1]); g.lineTo(d[0] + d[2] * 0.7, d[1] - d[2] * 0.4); g.stroke(); });
+  }
+  function button(g) {
+    var b = BTN, top = b.y - b.dep;
+    NXX.glow(g, b.x, top, 260, '180,120,255', 0.35);
+    g.fillStyle = INK; g.beginPath(); g.ellipse(b.x, b.y + 8, b.rx + 26, b.ry + 18, 0, 0, TAU); g.fill(); g.fillStyle = '#C9D1E6'; g.beginPath(); g.ellipse(b.x, b.y + 3, b.rx + 20, b.ry + 13, 0, 0, TAU); g.fill();
+    var sd = g.createLinearGradient(b.x - b.rx, 0, b.x + b.rx, 0); sd.addColorStop(0, '#4E2F49'); sd.addColorStop(0.35, '#8A5C80'); sd.addColorStop(1, '#3E2539'); g.fillStyle = sd;
+    g.beginPath(); g.moveTo(b.x - b.rx, top); g.lineTo(b.x - b.rx, b.y); g.ellipse(b.x, b.y, b.rx, b.ry, 0, Math.PI, 0, true); g.lineTo(b.x + b.rx, top); g.closePath(); g.fill(); g.lineWidth = 7; g.strokeStyle = INK; g.stroke();
+    var tf = g.createRadialGradient(b.x - 90, top - 30, 20, b.x, top, b.rx); tf.addColorStop(0, '#C59ABA'); tf.addColorStop(0.55, '#94668C'); tf.addColorStop(1, '#714B67'); g.fillStyle = tf; g.beginPath(); g.ellipse(b.x, top, b.rx, b.ry, 0, 0, TAU); g.fill(); g.stroke();
+    g.fillStyle = 'rgba(255,255,255,.35)'; g.beginPath(); g.ellipse(b.x - 100, top - 26, 90, 16, -0.1, 0, TAU); g.fill();
+    g.save(); g.translate(b.x - 40, top + 4); g.scale(1, 0.6); g.font = '800 78px "Plus Jakarta Sans"'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round'; g.lineWidth = 11; g.strokeStyle = INK; g.strokeText('CONFIRM', 0, 0); g.fillStyle = '#FFFFFF'; g.fillText('CONFIRM', 0, 0); g.restore();
+    /* TEST COPY tape across the button's side + the Sales app sticker */
+    g.save(); g.translate(b.x - 120, b.y - 12); g.rotate(0.1); g.fillStyle = INK; g.fillRect(-84 + 4, -22 + 5, 168, 44); g.fillStyle = '#FFD23F'; g.fillRect(-84, -22, 168, 44); g.lineWidth = 4; g.strokeStyle = INK; g.strokeRect(-84, -22, 168, 44); g.fillStyle = INK; g.font = '400 32px Bangers'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('TEST COPY', 0, 3); g.restore();
+    NXX.tile(g, S.sale, 130, 880, 84, -0.14);
+  }
+  function hand(g) {   /* our own (Jun's) arm from the bottom-right, finger trembling over the button */
+    var tipX = BTN.x + 196, tipY = BTN.y - BTN.dep - 30;
+    var sl = new Path2D(); sl.moveTo(1120, 860); sl.lineTo(1120, 1010); sl.lineTo(tipX + 150, tipY + 140); sl.lineTo(tipX + 110, tipY + 40); sl.closePath();
+    g.fillStyle = '#8EC5FF'; g.fill(sl); g.lineWidth = 7; g.strokeStyle = INK; g.lineJoin = 'round'; g.stroke(sl);
+    g.fillStyle = '#FFFFFF'; g.beginPath(); g.moveTo(tipX + 110, tipY + 40); g.lineTo(tipX + 150, tipY + 140); g.lineTo(tipX + 128, tipY + 146); g.lineTo(tipX + 90, tipY + 46); g.closePath(); g.fill(); g.stroke();
+    var hd = new Path2D(); hd.moveTo(tipX + 100, tipY + 40); hd.bezierCurveTo(tipX + 60, tipY + 10, tipX + 30, tipY + 10, tipX + 14, tipY + 4); hd.lineTo(tipX - 6, tipY - 2); hd.quadraticCurveTo(tipX - 18, tipY + 14, tipX + 2, tipY + 22); hd.lineTo(tipX + 30, tipY + 38);
+    hd.bezierCurveTo(tipX + 34, tipY + 70, tipX + 70, tipY + 110, tipX + 124, tipY + 124); hd.closePath();
+    g.fillStyle = '#F5CBA7'; g.fill(hd); g.lineWidth = 6; g.stroke(hd);
+    g.strokeStyle = 'rgba(16,28,69,.35)'; g.lineWidth = 3; [[50, 60, 70, 84], [70, 52, 92, 70]].forEach(function (l) { g.beginPath(); g.moveTo(tipX + l[0], tipY + l[1]); g.lineTo(tipX + l[2], tipY + l[3]); g.stroke(); });
+    g.strokeStyle = '#FFFFFF'; g.lineWidth = 5; g.lineCap = 'round'; for (var k = 0; k < 3; k++) { g.beginPath(); g.arc(tipX, tipY + 4, 34 + k * 16, Math.PI * 0.9, Math.PI * 1.25); g.stroke(); g.beginPath(); g.arc(tipX, tipY + 4, 34 + k * 16, Math.PI * 1.55, Math.PI * 1.85); g.stroke(); }
+    g.fillStyle = '#8FD0FF'; [[tipX + 170, tipY - 60, 14], [tipX + 210, tipY - 20, 10]].forEach(function (d) { g.beginPath(); g.moveTo(d[0], d[1] - d[2]); g.quadraticCurveTo(d[0] + d[2], d[1] + d[2] * 0.4, d[0], d[1] + d[2]); g.quadraticCurveTo(d[0] - d[2], d[1] + d[2] * 0.4, d[0], d[1] - d[2]); g.fill(); g.lineWidth = 3; g.strokeStyle = INK; g.stroke(); });
+  }
+  function chicken(g, x, y, s) {
+    g.save(); g.translate(x, y); g.scale(s, s); g.rotate(-0.12); g.lineWidth = 5; g.strokeStyle = INK; g.lineJoin = 'round';
+    g.fillStyle = '#FFD23F'; g.beginPath(); g.ellipse(0, 50, 64, 74, 0, 0, TAU); g.fill(); g.stroke();
+    g.fill(rr(-20, -70, 40, 100, 20)); g.stroke(rr(-20, -70, 40, 100, 20)); g.beginPath(); g.ellipse(0, 50, 60, 70, 0, 0, TAU); g.fill();
+    g.beginPath(); g.ellipse(4, -92, 38, 40, 0, 0, TAU); g.fill(); g.stroke();
+    g.fillStyle = '#FF5A47'; g.beginPath(); g.moveTo(-14, -128); g.quadraticCurveTo(-6, -158, 4, -130); g.quadraticCurveTo(12, -160, 22, -128); g.closePath(); g.fill(); g.stroke();
+    g.fillStyle = '#F28C28'; g.beginPath(); g.moveTo(36, -104); g.lineTo(92, -118); g.lineTo(84, -92); g.lineTo(92, -70); g.lineTo(36, -82); g.closePath(); g.fill(); g.stroke();
+    g.fillStyle = INK; g.beginPath(); g.arc(18, -102, 7, 0, TAU); g.fill();
+    g.fillStyle = '#FFE36E'; g.beginPath(); g.ellipse(-34, 50, 28, 42, -0.4, 0, TAU); g.fill(); g.stroke();
+    g.restore();
+  }
+  function render(t) {
+    var g = S.g, dpr = S.dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+    outside(g);
+    if (S.nexi) { var nw = NEXI.h * S.nexi.naturalWidth / S.nexi.naturalHeight; g.save(); g.shadowColor = 'rgba(255,255,255,.7)'; g.shadowBlur = 24; g.drawImage(S.nexi, NEXI.x, NEXI.y, nw, NEXI.h); g.restore(); }
+    canopy(g);
+    NXP.sticker(g, S, 4, function (A) { chicken(A, 190, 640, 0.8); });
+    g.save(); g.font = '400 44px Bangers'; g.lineJoin = 'round'; g.lineWidth = 9; g.strokeStyle = INK; g.strokeText('SQUEAK!', 110, 470); g.fillStyle = '#FFD23F'; g.fillText('SQUEAK!', 110, 470); g.restore();
+    button(g);
+    hand(g);
+    var bd = g.createLinearGradient(0, 960, 0, H); bd.addColorStop(0, 'rgba(10,16,40,0)'); bd.addColorStop(0.3, 'rgba(10,16,40,.6)'); bd.addColorStop(1, 'rgba(10,16,40,.9)'); g.fillStyle = bd; g.fillRect(0, 960, W, H - 960);
+    NXX.balloon(g, S.post, S.post.querySelector('.vbal'), [NEXI.x + 60, NEXI.y + 90], { px: 30, py: 24 });
+    window.__dbg = {};
+  }
+  TN.boot({ slugs: { 3: 'nexi-explains-s2-ep03-scared-to-click-the-wrong-button' }, setup: { 3: setup }, render: { 3: render }, poster: { 3: 0 }, loop: 8 });
+})();
+</script>
+</body>
+</html>

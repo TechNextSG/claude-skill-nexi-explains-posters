@@ -1,0 +1,45 @@
+/* NXE PAGE STYLE for posters: the look of technext.asia/nexi-explains (assets/css/nexi-explains.css), scaled for a
+   1080 px poster. Owner, 2026-10-07: "the design of poster should be https://technext.asia/nexi-explains similar to
+   this style." Tokens and components only: every poster still lays itself out. */
+.nxp{--ink:#101C45;--yel:#FFD23F;--yel7:#F2B705;--red:#FF5A47;--deep:#0B1D52;--blu:#2F5FC4;
+  --comic:"Bangers","Plus Jakarta Sans",system-ui,sans-serif;--hand:Caveat,cursive;background:var(--deep);color:#fff}
+.nxp canvas{position:absolute;left:0;top:0;width:1080px;height:100%}
+
+/* the hero title: white line + yellow line, ink outline + hard drop (page .nxe-t1/.nxe-t2, x1.7) */
+.nxp .tt{margin:0;font:800 120px/.92 var(--display);letter-spacing:-.03em;text-transform:uppercase;color:#fff;white-space:nowrap}
+.nxp .tt span{display:inline-block;text-shadow:5px 0 0 var(--ink),-5px 0 0 var(--ink),0 5px 0 var(--ink),0 -5px 0 var(--ink),3.6px 3.6px 0 var(--ink),-3.6px 3.6px 0 var(--ink),3.6px -3.6px 0 var(--ink),-3.6px -3.6px 0 var(--ink),0 13px 0 var(--ink)}
+.nxp .tt .y{color:var(--yel)}
+.nxp .hand{position:relative;z-index:auto;font:700 46px/1 var(--hand);color:var(--yel);white-space:nowrap}
+
+/* stat chips (page "2 seasons" pills) */
+.nxp .chip{display:inline-flex;align-items:center;gap:10px;height:66px;padding:0 22px;background:#fff;color:var(--ink);border:4px solid var(--ink);border-radius:16px;box-shadow:0 7px 0 var(--ink);font:800 27px/1 var(--display);white-space:nowrap}
+.nxp .chip i{font:400 42px/1 var(--comic);font-style:normal;color:var(--blu);letter-spacing:.02em;transform:translateY(2px)}
+.nxp .chip .dot{align-self:center;width:14px;height:14px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(255,90,71,.25)}
+
+/* comic tags (page "SEASON 2" / "COMING IN 2027" tags) */
+.nxp .tag{display:inline-block;padding:9px 16px 7px;background:var(--yel);color:var(--ink);border:4px solid var(--ink);border-radius:12px;box-shadow:4px 5px 0 var(--ink);font:400 32px/1 var(--comic);letter-spacing:.05em;white-space:nowrap}
+.nxp .tag.w{background:#fff}
+.nxp .tag.r{background:var(--red);color:#fff;-webkit-text-stroke:0}
+
+/* buttons that press into their hard shadow */
+.nxp .btn-y,.nxp .btn-w{display:inline-flex;align-items:center;gap:16px;height:92px;padding:0 40px;border-radius:20px;border:4px solid var(--ink);box-shadow:0 9px 0 var(--ink);font:800 34px/1 var(--display);white-space:nowrap}
+.nxp .btn-y{background:var(--yel);color:var(--ink)}
+.nxp .btn-w{background:#fff;color:var(--ink)}
+.nxp .btn-y svg,.nxp .btn-w svg{width:30px;height:30px}
+
+/* speech bubble (page "One idea per episode. Promise!") */
+.nxp .bub{position:absolute;background:#fff;color:var(--ink);border:4px solid var(--ink);border-radius:26px;padding:18px 26px;font:800 30px/1.2 var(--display);box-shadow:6px 7px 0 rgba(5,12,40,.45)}
+.nxp .bub b{color:var(--blu)}
+
+/* comic sound word (page .nxe-boom): the wrapper casts the hard shadow, the child is clipped to the burst */
+.nxp .boom{position:absolute;filter:drop-shadow(6px 6px 0 var(--ink))}
+.nxp .boom span{display:grid;place-items:center;padding:30px 34px;background:var(--yel);color:var(--ink);font:400 46px/1 var(--comic);letter-spacing:.04em;white-space:nowrap;
+  clip-path:polygon(50% 0,61% 22%,86% 8%,78% 34%,100% 42%,79% 57%,92% 82%,64% 74%,52% 100%,40% 76%,13% 90%,21% 62%,0 50%,21% 37%,9% 12%,38% 22%)}
+.nxp .boom.w span{background:#fff}
+.nxp .boom.r span{background:var(--red);color:#fff}
+
+/* white card with an ink border (page season card) */
+.nxp .card{position:absolute;background:#fff;color:var(--ink);border:5px solid var(--ink);border-radius:26px;box-shadow:0 10px 0 var(--ink)}
+
+.nxp .site{font:800 30px/1 var(--display);color:#fff;letter-spacing:-.01em}
+.nxp .site small{display:block;margin-top:8px;font:600 19px/1 var(--text);color:rgba(255,255,255,.78)}

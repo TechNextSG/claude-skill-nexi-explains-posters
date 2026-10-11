@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Nexi Explains S2 EP05 - Will Odoo Fix Our Mess? (exaggerated)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Inter:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=block" rel="stylesheet">
+<link rel="stylesheet" href="kit.css"><link rel="stylesheet" href="nxe-page.css"><link rel="stylesheet" href="nxe-x.css">
+<style>
+/* S2EP05 "Will Odoo Fix Our Mess?" EXAGGERATED (series nxe-page). Hook: a race car on the wrong road only gets you lost
+   faster. Psych: silver-bullet thinking. Takeaway: fix the process first, then automate it. Apps: Sales + Invoicing
+   (the episode sets the Invoicing Policy in Sales settings); TechNext Discovery maps the process.
+   ONE CLASH: Mr. Lim (sticky note on his forehead) floors a shiny race car down the pier toward the end, the mess flying
+   out behind; Nexi (goggles) hovers at the edge with a STOP sign: MAP IT FIRST! The parrot squawks NOT ME! Camera: three-
+   quarter low along the pier; light: sunset over the sea; device: SCREECH! skid smoke + app decals as racing sponsors. */
+.p5 .tt{position:absolute;z-index:44;left:56px;top:46px}
+.p5 .tt .a{font-size:100px;transform:rotate(-3deg)}
+.p5 .tt .b{font-size:104px;transform:rotate(-1.5deg) translateY(4px)}
+.p5 .xe{right:40px;top:300px;transform:rotate(4deg)}
+.p5 .screech{left:206px;top:806px;rotate:-10deg}
+.p5 .screech span{font-size:50px;padding:28px 34px}
+.p5 .xbal{left:560px;top:330px;font-size:30px}
+.p5 .xans{left:62px;top:1056px}
+.p5 .xapps{left:62px;top:1112px}
+.p5 .row{position:absolute;z-index:44;left:62px;top:1192px;display:flex;gap:18px;align-items:center}
+.p5 .row .tag{transform:rotate(-2deg)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5 19 12 7 19.5Z" fill="currentColor"/></symbol></defs></svg>
+<section class="post p5 nxp nxx grain" data-p="5">
+  <canvas></canvas>
+  <h1 class="tt" data-qa="text"><span class="a">Will Odoo</span><br><span class="b y">fix our mess?</span></h1>
+  <span class="xe" data-qa="text">NEXI EXPLAINS <b>S2 &middot; 05</b></span>
+  <div class="boom w screech" data-qa="text"><span>SCREECH!</span></div>
+  <div class="xbal" data-qa="text">WRONG ROAD!<br><em>MAP IT FIRST!</em></div>
+  <p class="xans" data-qa="text"><b>Fix the process first,</b> <b class="y">then automate it.</b></p>
+  <div class="xapps" data-qa="text"><span class="k">ODOO APPS</span><span class="ap"><img src="assets/odoo/sale.svg" alt="">Sales</span><span class="ap"><img src="assets/odoo/account.svg" alt="">Invoicing</span></div>
+  <div class="row" data-qa="text"><span class="tag">PSYCH FILE &middot; SILVER-BULLET THINKING</span><span class="tag r">COMING IN 2027</span></div>
+  <div class="xft" data-qa="text"><span class="btn-y"><svg><use href="#i-play"/></svg>Subscribe on YouTube</span><span class="site">technext.asia<small>All episodes: /nexi-explains</small></span></div>
+</section>
+<script src="kit.js"></script><script src="nxe-page.js"></script><script src="s2cast-f3.js"></script><script src="nxe-x.js"></script>
+<script>
+(function () {
+  var W = TN.W, H = TN.H, TAU = Math.PI * 2, INK = NXX.INK, rr = NXP.rr, S = {};
+  var HZ = 640, CAR = { x: 600, y: 846, rot: -0.3 }, NEXI = { x: 838, y: 470, h: 310 };
+  function img(src) { return new Promise(function (res) { var i = new Image(); i.onload = function () { res(i); }; i.onerror = function () { res(null); }; i.src = src; }); }
+  function setup(post) {
+    var dpr = window.devicePixelRatio || 1; S.dpr = dpr; S.post = post;
+    var c = post.querySelector('canvas'); c.width = W * dpr; c.height = H * dpr; S.g = c.getContext('2d'); NXP.offscreen(S, W, H);
+    return Promise.all([img('assets/nexi/nexi-s2x5.png'), img('assets/odoo/sale.svg'), img('assets/odoo/account.svg'), document.fonts.load('60px Bangers')]).then(function (a) { S.nexi = a[0]; S.sale = a[1]; S.inv = a[2]; });
+  }
+  function seaAndSun(g) {
+    NXX.glow(g, 840, HZ - 10, 420, '255,170,110', 0.7); NXX.glow(g, 840, HZ - 10, 180, '255,235,190', 0.9);
+    g.fillStyle = '#FFE7B0'; g.beginPath(); g.arc(840, HZ - 10, 90, Math.PI, 0); g.fill();
+    var sea = g.createLinearGradient(0, HZ, 0, H); sea.addColorStop(0, '#2C5DC8'); sea.addColorStop(0.5, '#173E9A'); sea.addColorStop(1, '#0B1D52'); g.fillStyle = sea; g.fillRect(0, HZ, W, H - HZ);
+    g.save(); g.globalCompositeOperation = 'lighter'; var R = TN.rand(14); for (var i = 0; i < 46; i++) { var x = 840 + (R() - 0.5) * 360 * (1 + i / 30), y = HZ + 8 + i * 8, w = 30 + R() * 60; g.fillStyle = 'rgba(255,214,150,' + (0.5 - i * 0.008) + ')'; g.fillRect(x - w / 2, y, w, 3); } g.restore();
+    g.fillStyle = INK; g.fillRect(0, HZ - 2, W, 4);
+    [[160, 470, 1], [380, 420, 0.7]].forEach(function (c) { g.fillStyle = 'rgba(255,255,255,.85)'; g.beginPath(); [[0, 0, 40], [44, -18, 52], [94, 0, 38], [46, 14, 40]].forEach(function (k) { g.moveTo(c[0] + k[0] * c[2] + k[2] * c[2], c[1] + k[1] * c[2]); g.arc(c[0] + k[0] * c[2], c[1] + k[1] * c[2], k[2] * c[2], 0, TAU); }); g.fill(); });
+    g.strokeStyle = INK; g.lineWidth = 4; g.lineCap = 'round'; [[520, 380], [580, 350], [640, 400]].forEach(function (b) { g.beginPath(); g.moveTo(b[0] - 16, b[1]); g.quadraticCurveTo(b[0] - 8, b[1] - 10, b[0], b[1]); g.quadraticCurveTo(b[0] + 8, b[1] - 10, b[0] + 16, b[1]); g.stroke(); });
+  }
+  function pier(g) {
+    var top = new Path2D(); top.moveTo(-60, 1100); top.lineTo(560, 1100); top.lineTo(940, 760); top.lineTo(800, 736); top.closePath();
+    /* posts into the water */
+    g.fillStyle = '#5A3A22'; [[60, 1100], [300, 1100], [700, 940], [860, 830], [920, 790]].forEach(function (pp) { g.fillRect(pp[0] - 14, pp[1] - 10, 28, 140); });
+    var wood = g.createLinearGradient(0, 740, 0, 1100); wood.addColorStop(0, '#D6A066'); wood.addColorStop(1, '#9A6434'); g.fillStyle = wood; g.fill(top);
+    g.save(); g.clip(top); g.strokeStyle = 'rgba(60,30,10,.35)'; g.lineWidth = 3; for (var k = 0; k < 22; k++) { var u = k / 22, ax = -60 + (800 + 60) * u, ay = 1100 + (736 - 1100) * u, bx = 560 + (940 - 560) * u, by = 1100 + (760 - 1100) * u; g.beginPath(); g.moveTo(ax, ay); g.lineTo(bx, by); g.stroke(); } g.restore();
+    g.lineJoin = 'round'; g.lineWidth = 7; g.strokeStyle = INK; g.stroke(top);
+    /* the END OF PIER sign */
+    g.save(); g.translate(930, 690); g.fillStyle = INK; g.fillRect(-5, 0, 10, 80); g.rotate(0.08); g.fillStyle = INK; g.fill(rr(-76, -50, 152, 56, 8)); g.fillStyle = '#FFD23F'; g.fill(rr(-72, -46, 144, 48, 6)); g.fillStyle = INK; g.font = '400 26px Bangers'; g.textAlign = 'center'; g.fillText('END OF PIER', 0, -14); g.restore();
+  }
+  function car(g) {
+    g.save(); g.translate(CAR.x, CAR.y); g.rotate(CAR.rot);
+    /* skid smoke behind */
+    NXX.foam(g, [[-330, 30], [-270, 10], [-210, 24]], 34, 22, 6);
+    /* open-top: Mr. Lim sits up in the cockpit (drawn first, the body hides his legs) */
+    var m = F3.cast.lim, keep = { mood: m.mood, pose: m.pose, prop: m.prop }; m.mood = 'wow'; m.pose = [2.5, 2.5]; m.prop = null; g.save(); g.beginPath(); g.rect(-300, -400, 600, 396); g.clip(); F3.use(g); F3.figure(m, 34, 116, 290); g.restore(); m.mood = keep.mood; m.pose = keep.pose; m.prop = keep.prop;
+    g.save(); g.translate(34, -160); g.rotate(0.12); g.fillStyle = INK; g.fillRect(-25 + 3, -18 + 4, 50, 38); g.fillStyle = '#FFE36E'; g.fillRect(-25, -18, 50, 38); g.lineWidth = 3; g.strokeStyle = INK; g.strokeRect(-25, -18, 50, 38); g.restore();
+    var body = new Path2D(); body.moveTo(-230, 10); body.lineTo(-214, -58); body.lineTo(-60, -66); body.lineTo(-40, -74); body.lineTo(108, -74); body.lineTo(150, -66); body.lineTo(250, -58); body.quadraticCurveTo(290, -40, 284, 4); body.lineTo(-230, 10); body.closePath();
+    g.fillStyle = INK; g.save(); g.translate(8, 10); g.fill(body); g.restore();
+    var bg = g.createLinearGradient(0, -80, 0, 10); bg.addColorStop(0, '#FF7A6A'); bg.addColorStop(0.5, '#E8303F'); bg.addColorStop(1, '#A81E2A'); g.fillStyle = bg; g.fill(body); g.lineWidth = 7; g.strokeStyle = INK; g.stroke(body);
+    g.fillStyle = '#FFFFFF'; g.fillRect(-224, -36, 500, 12);
+    /* windshield */
+    var ws = new Path2D(); ws.moveTo(104, -72); ws.lineTo(132, -128); ws.lineTo(146, -124); ws.lineTo(122, -70); ws.closePath(); g.fillStyle = 'rgba(191,227,255,.8)'; g.fill(ws); g.lineWidth = 5; g.stroke(ws);
+    /* spoiler */
+    g.fillStyle = '#E8303F'; g.fill(rr(-262, -118, 96, 22, 6)); g.lineWidth = 6; g.stroke(rr(-262, -118, 96, 22, 6)); g.fillRect(-222, -98, 12, 40);
+    /* Odoo app decals as racing sponsors */
+    NXX.tile(g, S.sale, 0, -28, 62, -0.06); NXX.tile(g, S.inv, 74, -28, 62, 0.04);
+    g.fillStyle = '#FFFFFF'; g.beginPath(); g.arc(178, -34, 28, 0, TAU); g.fill(); g.lineWidth = 5; g.stroke(); g.fillStyle = INK; g.font = '400 34px Bangers'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('1', 178, -32);
+    /* wheels with motion */
+    [[-150, 14], [190, 14]].forEach(function (w) { g.fillStyle = INK; g.beginPath(); g.arc(w[0], w[1], 50, 0, TAU); g.fill(); g.fillStyle = '#9AA6C8'; g.beginPath(); g.arc(w[0], w[1], 24, 0, TAU); g.fill(); g.strokeStyle = 'rgba(255,255,255,.7)'; g.lineWidth = 4; g.beginPath(); g.arc(w[0], w[1], 38, -0.6, 1.2); g.stroke(); });
+    g.restore();
+  }
+  function parrot(g, x, y, s) {
+    g.save(); g.translate(x, y); g.scale(s, s); g.lineWidth = 5; g.strokeStyle = INK; g.lineJoin = 'round';
+    g.fillStyle = '#3FB37A'; g.beginPath(); g.ellipse(0, 20, 34, 50, -0.2, 0, TAU); g.fill(); g.stroke();
+    g.fillStyle = '#E8505B'; g.beginPath(); g.ellipse(-14, 24, 16, 30, 0.2, 0, TAU); g.fill(); g.stroke();
+    g.fillStyle = '#3FB37A'; g.beginPath(); g.arc(8, -36, 28, 0, TAU); g.fill(); g.stroke();
+    g.fillStyle = '#FFD23F'; g.beginPath(); g.moveTo(30, -46); g.quadraticCurveTo(60, -36, 46, -12); g.lineTo(32, -22); g.closePath(); g.fill(); g.stroke();
+    g.fillStyle = '#fff'; g.beginPath(); g.arc(14, -42, 9, 0, TAU); g.fill(); g.stroke(); g.fillStyle = INK; g.beginPath(); g.arc(17, -42, 4, 0, TAU); g.fill();
+    g.restore();
+  }
+  function stopSign(g, x, y, r) {
+    g.save(); g.translate(x, y); g.rotate(0.1); var p = new Path2D(); for (var i = 0; i < 8; i++) { var a = (i + 0.5) / 8 * TAU; p.lineTo(Math.cos(a) * r, Math.sin(a) * r); } p.closePath();
+    g.fillStyle = INK; g.save(); g.translate(6, 8); g.fill(p); g.restore(); g.fillStyle = '#E8303F'; g.fill(p); g.lineWidth = 7; g.strokeStyle = INK; g.stroke(p); g.lineWidth = 5; g.strokeStyle = '#FFFFFF'; g.save(); g.scale(0.88, 0.88); g.stroke(p); g.restore();
+    g.fillStyle = '#FFFFFF'; g.font = '400 52px Bangers'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('STOP', 0, 4); g.fillStyle = INK; g.fillRect(-6, r, 12, 90); g.restore();
+  }
+  function render(t) {
+    var g = S.g, dpr = S.dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+    NXP.bg(g, W, H, 840, 560);
+    seaAndSun(g);
+    /* Ben fishing from a rowboat, unbothered */
+    g.save(); g.translate(170, 760); g.fillStyle = INK; g.beginPath(); g.moveTo(-96, 0); g.lineTo(96, 0); g.lineTo(70, 40); g.lineTo(-70, 40); g.closePath(); g.fill(); g.fillStyle = '#C98B52'; g.beginPath(); g.moveTo(-90, 4); g.lineTo(90, 4); g.lineTo(66, 36); g.lineTo(-66, 36); g.closePath(); g.fill(); g.restore();
+    NXX.person(g, S, 'ben', 170, 770, 150, 'happy', [0.2, 2.5], null, 3);
+    g.strokeStyle = INK; g.lineWidth = 3; g.beginPath(); g.moveTo(206, 650); g.quadraticCurveTo(300, 600, 330, 700); g.stroke();
+    pier(g);
+    /* the mess flying out of the car */
+    NXX.speed(g, 380, 860, Math.PI + CAR.rot * -1 - 2.9, 160, 14, 160, 8);
+    [[300, 760, 70, -0.6], [230, 860, 60, 0.5], [400, 690, 56, 0.9], [160, 960, 64, -0.3]].forEach(function (s) { NXX.sheet(g, s[0], s[1], s[2], s[3], 0, 2.6); });
+    /* Mr. Lim at the wheel (drawn first, the car body covers his legs); sticky note on his forehead */
+    var lim = NXX.rot([CAR.x + 40, CAR.y - 100], [CAR.x, CAR.y], CAR.rot);
+    car(g);
+    var sp = NXX.rot([CAR.x - 230, CAR.y - 120], [CAR.x, CAR.y], CAR.rot); NXP.sticker(g, S, 3, function (A) { parrot(A, sp[0], sp[1] - 10, 0.7); });
+    /* Nexi at the edge with the STOP sign */
+    stopSign(g, 772, 560, 66);
+    if (S.nexi) { var nw = NEXI.h * S.nexi.naturalWidth / S.nexi.naturalHeight; g.save(); g.shadowColor = 'rgba(140,220,255,.6)'; g.shadowBlur = 24; g.drawImage(S.nexi, NEXI.x, NEXI.y, nw, NEXI.h); g.restore(); }
+    var bd = g.createLinearGradient(0, 1020, 0, H); bd.addColorStop(0, 'rgba(6,12,40,0)'); bd.addColorStop(0.2, 'rgba(6,12,40,.75)'); bd.addColorStop(1, 'rgba(6,12,40,.92)'); g.fillStyle = bd; g.fillRect(0, 1020, W, H - 1020);
+    var vg = g.createRadialGradient(W / 2, H * 0.45, H * 0.38, W / 2, H * 0.5, H * 0.82); vg.addColorStop(0, 'rgba(0,0,20,0)'); vg.addColorStop(1, 'rgba(0,0,20,.4)'); g.fillStyle = vg; g.fillRect(0, 0, W, H);
+    NXX.balloon(g, S.post, S.post.querySelector('.xbal'), [NEXI.x + 60, NEXI.y + 40], { px: 24, py: 20 });
+    window.__dbg = { lim: lim };
+  }
+  TN.boot({ slugs: { 5: 'nexi-explains-s2-ep05-will-odoo-fix-our-mess' }, setup: { 5: setup }, render: { 5: render }, poster: { 5: 0 }, loop: 8 });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Nexi Explains S2 EP00 - Season 2 Introduction (v3)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Inter:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=block" rel="stylesheet">
+<link rel="stylesheet" href="kit.css"><link rel="stylesheet" href="nxe-v3.css">
+<style>
+/* S2EP00 v3 - WORM'S-EYE UNDER A BARREL WAVE AT SUNSET (owner: background variation, more exaggerated, red YouTube CTA,
+   less messy, cinematic angle). The old way = a towering barrel of spreadsheets curling over the Bluebay team, silhouetted
+   against a huge setting sun; Nexi's shield takes the hit. Camera: from the ground looking up, dutch -5 deg; people
+   keystoned (big feet, small heads). Background: storm-purple to fire-orange sunset with god rays. */
+.p0{background:#2A1D5E}
+.p0 .vtag{left:60px;top:58px}
+.p0 .vbal{left:46px;top:548px}
+.p0 .vtt{left:56px;top:1050px}
+.p0 .vtt span{font-size:156px;transform:rotate(-4deg)}
+.p0 .vapps{left:62px;top:1222px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><symbol id="yt" viewBox="0 0 24 24"><path d="M8 5.5 19 12 8 18.5Z" fill="#fff"/></symbol></defs></svg>
+<section class="post p0 v3 grain" data-p="0">
+  <canvas></canvas>
+  <span class="vtag" data-qa="text"><i></i>NEXI EXPLAINS <b>S2 &middot; EP 00</b></span>
+  <div class="vbal" data-qa="text">EVERYONE STILL<br>IN <em>EXCEL?!</em></div>
+  <h1 class="vtt" data-qa="text"><span>Season <b class="y" style="font-weight:800">2!</b></span></h1>
+  <div class="vapps" data-qa="text"><span class="k">+20 ODOO APPS THIS SEASON</span>
+    <span class="ai"><img src="assets/odoo/helpdesk.svg" alt=""></span><span class="ai"><img src="assets/odoo/website_sale.svg" alt=""></span><span class="ai"><img src="assets/odoo/point_of_sale.svg" alt=""></span><span class="ai"><img src="assets/odoo/sign.svg" alt=""></span><span class="ai"><img src="assets/odoo/mrp.svg" alt=""></span><span class="ai"><img src="assets/odoo/website_slides.svg" alt=""></span><span class="ai"><img src="assets/odoo/project.svg" alt=""></span></div>
+  <div class="vft" data-qa="text"><span class="ytb"><svg><use href="#yt"/></svg>Subscribe on YouTube</span><span class="vsite">technext.asia<small>Season 2 &middot; coming in 2027</small></span></div>
+</section>
+<script src="kit.js"></script><script src="nxe-page.js"></script><script src="s2cast-f3.js"></script><script src="nxe-x.js"></script>
+<script>
+(function () {
+  var W = TN.W, H = TN.H, TAU = Math.PI * 2, INK = NXX.INK, S = {};
+  var TILT = -0.085, PIV = [540, 720], GROUND = 1062, SUN = [372, 262];
+  var SHIELD = { x: 566, y: 660, r: 292, a0: -2.95, a1: -0.25 }, TIP = [716, 404];
+  var NEXI = { cx: 566, bot: 800, h: 410, bx: 0.45 };
+  function img(src) { return new Promise(function (res) { var i = new Image(); i.onload = function () { res(i); }; i.onerror = function () { res(null); }; i.src = src; }); }
+  function setup(post) {
+    var dpr = window.devicePixelRatio || 1; S.dpr = dpr; S.post = post;
+    var c = post.querySelector('canvas'); c.width = W * dpr; c.height = H * dpr; S.g = c.getContext('2d'); NXP.offscreen(S, W, H);
+    return Promise.all([img('assets/nexi/nexi-s2-shield.png'), document.fonts.load('60px Bangers')]).then(function (a) { S.nexi = a[0]; });
+  }
+  function sky(g) {
+    var gr = g.createLinearGradient(0, -200, 0, GROUND); gr.addColorStop(0, '#22185A'); gr.addColorStop(0.3, '#6B2C7E'); gr.addColorStop(0.55, '#D9456A'); gr.addColorStop(0.78, '#FF8A4C'); gr.addColorStop(1, '#FFD08A');
+    g.fillStyle = gr; g.fillRect(-300, -300, W + 600, GROUND + 300);
+    /* god rays from the sun */
+    g.save(); g.globalCompositeOperation = 'lighter'; for (var i = 0; i < 22; i++) { var a = i / 22 * TAU, w = 0.05 + (i % 3) * 0.02; var rg = g.createRadialGradient(SUN[0], SUN[1], 60, SUN[0], SUN[1], 1300); rg.addColorStop(0, 'rgba(255,225,170,.32)'); rg.addColorStop(1, 'rgba(255,225,170,0)'); g.fillStyle = rg;
+      g.beginPath(); g.moveTo(SUN[0], SUN[1]); g.lineTo(SUN[0] + Math.cos(a - w) * 1500, SUN[1] + Math.sin(a - w) * 1500); g.lineTo(SUN[0] + Math.cos(a + w) * 1500, SUN[1] + Math.sin(a + w) * 1500); g.closePath(); g.fill(); } g.restore();
+    NXX.glow(g, SUN[0], SUN[1], 520, '255,200,140', 0.65); g.fillStyle = '#FFF3D2'; g.beginPath(); g.arc(SUN[0], SUN[1], 176, 0, TAU); g.fill();
+    /* storm clouds in the top corners */
+    g.fillStyle = 'rgba(40,22,80,.75)'; [[-60, 60, 1.6], [120, -20, 1.3], [880, 40, 1.4]].forEach(function (c) { g.beginPath(); [[0, 0, 70], [80, -30, 90], [170, 0, 70], [90, 30, 70]].forEach(function (k) { g.moveTo(c[0] + k[0] * c[2] + k[2] * c[2], c[1] + k[1] * c[2]); g.arc(c[0] + k[0] * c[2], c[1] + k[1] * c[2], k[2] * c[2], 0, TAU); }); g.fill(); });
+    /* the tiny city on the low horizon */
+    var R = TN.rand(3), p = new Path2D(); for (var x = -200; x < 1300;) { var w2 = 30 + R() * 50, h = 30 + R() * 90; p.rect(x, GROUND - h, w2, h + 4); x += w2 + 3; } g.fillStyle = '#3A1F5E'; g.fill(p);
+    var st = g.createLinearGradient(0, GROUND, 0, H + 200); st.addColorStop(0, '#2B1B55'); st.addColorStop(1, '#0E0A2A'); g.fillStyle = st; g.fillRect(-300, GROUND, W + 600, H);
+    g.fillStyle = 'rgba(255,190,140,.35)'; g.fillRect(-300, GROUND, W + 600, 4);
+  }
+  function wavePath() {
+    var p = new Path2D(); p.moveTo(1300, 1100); p.lineTo(1300, -120);
+    p.bezierCurveTo(1060, -130, 770, -50, 626, 76); p.bezierCurveTo(520, 166, 506, 300, 590, 378);
+    p.bezierCurveTo(632, 420, 690, 430, 716, 404); p.bezierCurveTo(744, 470, 794, 560, 806, 680);
+    p.bezierCurveTo(818, 820, 846, 960, 866, 1100); p.closePath(); return p;
+  }
+  function wave(g) {
+    var p = wavePath(), R = TN.rand(77);
+    g.save(); g.clip(p);
+    var b = g.createLinearGradient(600, 0, 1100, 1000); b.addColorStop(0, '#F2FFF6'); b.addColorStop(1, '#7FCFA6'); g.fillStyle = b; g.fillRect(480, -200, 900, 1400);
+    for (var y = -100; y < 1120; y += 50) for (var x = 500; x < 1320; x += 66) {
+      var jx = x + (R() - 0.5) * 34 + ((y / 50) % 2) * 32, jy = y + (R() - 0.5) * 24, t = Math.min(1, Math.max(0, (jy + 60) / 760));
+      NXX.sheet(g, jx, jy, 80 + R() * 54, -1.1 * (1 - t) + 0.3 * t + (R() - 0.5) * 0.6, 0, 2.8);
+    }
+    var sh = g.createLinearGradient(560, 0, 1000, 0); sh.addColorStop(0, 'rgba(60,10,70,.5)'); sh.addColorStop(0.4, 'rgba(60,10,70,.14)'); sh.addColorStop(1, 'rgba(60,10,70,0)'); g.fillStyle = sh; g.fillRect(480, 300, 600, 900);
+    g.save(); g.filter = 'blur(18px)'; g.fillStyle = 'rgba(40,10,70,.55)'; g.beginPath(); g.moveTo(700, 420); g.bezierCurveTo(780, 420, 900, 470, 980, 560); g.lineTo(980, 700); g.bezierCurveTo(900, 620, 800, 560, 760, 520); g.closePath(); g.fill(); g.restore();
+    var lo = g.createLinearGradient(0, 640, 0, 1100); lo.addColorStop(0, 'rgba(40,10,60,0)'); lo.addColorStop(1, 'rgba(40,10,60,.55)'); g.fillStyle = lo; g.fillRect(480, 640, 900, 460);
+    /* the setting sun glows through the curl */
+    g.save(); g.globalCompositeOperation = 'lighter'; var cr = g.createRadialGradient(SUN[0], SUN[1], 40, SUN[0], SUN[1], 520); cr.addColorStop(0, 'rgba(255,190,120,.75)'); cr.addColorStop(1, 'rgba(255,190,120,0)'); g.fillStyle = cr; g.fillRect(400, -200, 700, 900); g.restore();
+    g.restore();
+    g.save(); g.lineJoin = 'round'; g.lineWidth = 20; g.strokeStyle = 'rgba(255,220,170,.6)'; g.filter = 'blur(5px)'; g.stroke(p); g.restore();
+    g.lineJoin = 'round'; g.lineWidth = 9; g.strokeStyle = INK; g.stroke(p);
+    NXX.foam(g, [[1310, -110], [1180, -112], [1050, -96], [920, -66], [800, -24], [700, 30], [626, 90], [566, 170], [546, 250], [566, 326], [624, 386], [706, 408]], 40, 18, 41);
+  }
+  function shield(g) {
+    var s = SHIELD; g.save(); g.globalCompositeOperation = 'lighter';
+    var fill = g.createRadialGradient(s.x, s.y, s.r * 0.4, s.x, s.y, s.r); fill.addColorStop(0, 'rgba(95,211,255,0)'); fill.addColorStop(0.85, 'rgba(95,211,255,.18)'); fill.addColorStop(1, 'rgba(170,240,255,.48)');
+    g.fillStyle = fill; g.beginPath(); g.moveTo(s.x, s.y); g.arc(s.x, s.y, s.r, s.a0, s.a1); g.closePath(); g.fill();
+    g.strokeStyle = 'rgba(200,245,255,.14)'; g.lineWidth = 2; for (var a = s.a0 + 0.1; a < s.a1; a += 0.19) for (var r = s.r * 0.55; r < s.r; r += 46) { var hx = s.x + Math.cos(a) * r, hy = s.y + Math.sin(a) * r; g.beginPath(); for (var k = 0; k <= 6; k++) { var ha = k / 6 * TAU; g.lineTo(hx + Math.cos(ha) * 17, hy + Math.sin(ha) * 17); } g.stroke(); }
+    g.filter = 'blur(12px)'; g.strokeStyle = 'rgba(120,220,255,.95)'; g.lineWidth = 30; g.beginPath(); g.arc(s.x, s.y, s.r, s.a0, s.a1); g.stroke(); g.filter = 'none';
+    g.strokeStyle = '#F0FDFF'; g.lineWidth = 8; g.beginPath(); g.arc(s.x, s.y, s.r, s.a0, s.a1); g.stroke(); g.restore();
+  }
+  var TEAM = [['jun', 96, 300, 'worried', [0.18, 0.55], 'phone'], ['maria', 196, 296, 'worried', [0.32, 0.14], 'clipboard'], ['ben', 432, 312, 'wow', [0.5, 0.45], null], ['lim', 318, 348, 'wow', [2.72, 2.66], null]];
+  function render(t) {
+    var g = S.g, dpr = S.dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+    g.save(); g.translate(PIV[0], PIV[1]); g.rotate(TILT); g.translate(-PIV[0], -PIV[1]);
+    sky(g);
+    wave(g);
+    /* a few sheets flung off the curl, big and close */
+    [[470, 120, 92, -0.5], [330, 420, 70, 0.6], [210, 300, 58, -0.8]].forEach(function (s) { NXX.sheet(g, s[0], s[1], s[2], s[3], 0, 3); });
+    NXX.speed(g, 600, 260, Math.PI * 0.86, 160, 12, 220, 5);
+    shield(g);
+    if (S.nexi) { var nw = NEXI.h * S.nexi.naturalWidth / S.nexi.naturalHeight, nx = NEXI.cx - nw * NEXI.bx, ny = NEXI.bot - NEXI.h; NXX.flash(g, TIP[0] + 10, TIP[1] + 12, 220, [NEXI.cx, ny + 120]);
+      g.save(); g.shadowColor = 'rgba(140,220,255,.8)'; g.shadowBlur = 36; g.drawImage(S.nexi, nx, ny, nw, NEXI.h); g.restore(); }
+    /* the team, from the ground: keystoned (big feet, small heads) */
+    var tr = g.getTransform();
+    NXX.keystone(g, S, { x: 0, y: 640, w: 560, h: GROUND - 640 }, (function () { var p = NXX.rot([280, GROUND], PIV, TILT); return p; })(), 0.84, 1.14, 1.06, function (A) {
+      A.save(); A.translate(PIV[0], PIV[1]); A.translate(-PIV[0], -PIV[1]); TEAM.forEach(function (c) { var m = F3.cast[c[0]], keep = { mood: m.mood, pose: m.pose, prop: m.prop }; m.mood = c[3]; m.pose = c[4]; m.prop = c[5]; F3.use(A); F3.figure(m, c[1], GROUND, c[2]); m.mood = keep.mood; m.pose = keep.pose; m.prop = keep.prop; }); A.restore(); }, 5);
+    /* blurred sheets right at the lens */
+    NXX.sheet(g, 1010, 260, 230, 0.6, 12, 0); NXX.sheet(g, -10, 420, 190, -0.5, 10, 0);
+    g.restore();
+    /* screen space: darken the street under the words */
+    var bd = g.createLinearGradient(0, 1020, 0, H); bd.addColorStop(0, 'rgba(10,6,30,0)'); bd.addColorStop(0.3, 'rgba(10,6,30,.6)'); bd.addColorStop(1, 'rgba(10,6,30,.9)'); g.fillStyle = bd; g.fillRect(0, 1020, W, H - 1020);
+    var lim = NXX.rot([318, GROUND - 330], PIV, TILT);
+    NXX.balloon(g, S.post, S.post.querySelector('.vbal'), [lim[0] - 4, lim[1] + 10], { px: 32, py: 26 });
+    window.__dbg = { lim: lim };
+  }
+  TN.boot({ slugs: { 0: 'nexi-explains-s2-ep00-season-2-introduction' }, setup: { 0: setup }, render: { 0: render }, poster: { 0: 0 }, loop: 8 });
+})();
+</script>
+</body>
+</html>

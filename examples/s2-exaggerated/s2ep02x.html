@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Nexi Explains S2 EP02 - Too Old for Odoo? (exaggerated)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Inter:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=block" rel="stylesheet">
+<link rel="stylesheet" href="kit.css"><link rel="stylesheet" href="nxe-page.css"><link rel="stylesheet" href="nxe-x.css">
+<style>
+/* S2EP02 "Too Old for Odoo?" EXAGGERATED (series nxe-page). Hook: Ben, 58, says so. Then we looked at his phone.
+   Psych: fixed mindset. Takeaway: small lessons, on his own tasks. App: Inventory (Barcode receipts; no official Barcode icon
+   in our sets, so the Inventory icon carries it).
+   ONE CLASH: Ben smashes through a brick wall painted TOO OLD, his phone of everything he learned after 50 held high, the
+   barcode scanner in his other hand scanning the Inventory app. Camera: frontal, low; light: sun blasting through the hole;
+   device: flying bricks + SMASH! + dust. Coach Nexi (cap) cheers; the tortoise zooms by on its skateboard. */
+.p2 .xb{left:58px;top:54px}
+.p2 .soon{position:absolute;z-index:44;right:58px;top:62px;transform:rotate(4deg)}
+.p2 .smash{left:60px;top:740px;rotate:-12deg}
+.p2 .smash span{font-size:56px;padding:30px 38px}
+.p2 .xbal{left:830px;top:592px;font-size:32px}
+.p2 .tt{position:absolute;z-index:44;left:56px;top:982px}
+.p2 .tt .a{font-size:112px;transform:rotate(-3deg)}
+.p2 .tt .b{font-size:112px;transform:rotate(-1.5deg) translateY(4px)}
+.p2 .no{left:812px;top:1000px;rotate:-10deg}
+.p2 .no span{font-size:58px;padding:36px 40px}
+.p2 .xapps{left:62px;top:1216px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5 19 12 7 19.5Z" fill="currentColor"/></symbol></defs></svg>
+<section class="post p2 nxp nxx grain" data-p="2">
+  <canvas></canvas>
+  <div class="xb" data-qa="text"><div class="card"><div class="band"><i></i>NEXI EXPLAINS &middot; S2</div><div class="num"><small>EP</small><b>02</b></div></div><span class="tag">FIXED MINDSET</span></div>
+  <span class="tag r soon" data-qa="text">COMING IN 2027</span>
+  <div class="boom smash" data-qa="text"><span>SMASH!</span></div>
+  <div class="xbal" data-qa="text">SMALL LESSONS,<br><em>HIS OWN TASKS!</em></div>
+  <h1 class="tt" data-qa="text"><span class="a">Too old</span><br><span class="b y">for Odoo?</span></h1>
+  <div class="boom r no" data-qa="text"><span>NOPE!</span></div>
+  <div class="xapps" data-qa="text"><span class="k">ODOO APPS</span><span class="ap"><img src="assets/odoo/stock.svg" alt="">Inventory &middot; Barcode</span><span class="ap"><img src="assets/odoo/hr.svg" alt="">Employees</span></div>
+  <div class="xft" data-qa="text"><span class="btn-y"><svg><use href="#i-play"/></svg>Subscribe on YouTube</span><span class="site">technext.asia<small>All episodes: /nexi-explains</small></span></div>
+</section>
+<script src="kit.js"></script><script src="nxe-page.js"></script><script src="s2cast-f3.js"></script><script src="nxe-x.js"></script>
+<script>
+(function () {
+  var W = TN.W, H = TN.H, TAU = Math.PI * 2, INK = NXX.INK, rr = NXP.rr, S = {};
+  var HOLE = [540, 610], FLOOR = 900, BEN = { x: 540, foot: 984, h: 640 }, HAND_R = [700, 503], HAND_L = [326, 580];
+  var NEXI = { x: 812, y: 700, h: 262 };
+  function img(src) { return new Promise(function (res) { var i = new Image(); i.onload = function () { res(i); }; i.onerror = function () { res(null); }; i.src = src; }); }
+  function setup(post) {
+    var dpr = window.devicePixelRatio || 1; S.dpr = dpr; S.post = post;
+    var c = post.querySelector('canvas'); c.width = W * dpr; c.height = H * dpr; S.g = c.getContext('2d'); NXP.offscreen(S, W, H);
+    return Promise.all([img('assets/nexi/nexi-s2e02.png'), img('assets/odoo/stock.svg'), img('assets/odoo/hr.svg'), document.fonts.load('60px Bangers')]).then(function (a) { S.nexi = a[0]; S.inv = a[1]; S.hr = a[2]; });
+  }
+  function holePath() { var p = new Path2D(), R = TN.rand(9); for (var i = 0; i <= 22; i++) { var a = i / 22 * TAU, r = (i % 2 ? 200 : 250) + R() * 30, x = HOLE[0] + Math.cos(a) * r * 1.02, y = HOLE[1] + Math.sin(a) * r * 1.06; if (i) p.lineTo(x, y); else p.moveTo(x, y); } p.closePath(); return p; }
+  function brick(g, x, y, w, rot, blur) { var h = w * 0.46; g.save(); g.translate(x, y); g.rotate(rot); if (blur) g.filter = 'blur(' + blur + 'px)';
+    g.fillStyle = INK; g.fill(rr(-w / 2 + 5, -h / 2 + 6, w, h, 6)); g.fillStyle = '#D9643F'; g.fill(rr(-w / 2, -h / 2, w, h, 6)); g.fillStyle = '#B04A2C'; g.fillRect(-w / 2 + 4, h * 0.12, w - 8, h * 0.3);
+    if (!blur) { g.lineWidth = 4; g.strokeStyle = INK; g.stroke(rr(-w / 2, -h / 2, w, h, 6)); } g.restore(); }
+  function wall(g) {
+    var hp = holePath();
+    g.save(); g.beginPath(); g.rect(0, 150, W, FLOOR - 150); g.clip();
+    g.fillStyle = '#B9532F'; g.fillRect(0, 150, W, FLOOR - 150);
+    for (var row = 0, y = 150; y < FLOOR; y += 54, row++) for (var x = (row % 2 ? -60 : 0); x < W; x += 122) {
+      var c = ['#D9643F', '#CF5A37', '#E07048', '#C9573A'][(row * 3 + Math.round(x / 122)) % 4]; g.fillStyle = c; g.fill(rr(x + 3, y + 3, 116, 48, 4)); g.fillStyle = 'rgba(255,255,255,.12)'; g.fillRect(x + 6, y + 6, 110, 6); }
+    /* painted words on the wall */
+    g.save(); g.translate(560, 258); g.rotate(-0.04); g.font = '800 150px "Plus Jakarta Sans"'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = 'rgba(255,255,255,.9)'; g.fillText('TOO OLD', 0, 0);
+    g.fillStyle = 'rgba(255,255,255,.75)'; [[-200, 70], [120, 74], [250, 66]].forEach(function (d) { g.fill(rr(d[0], d[1], 10, 40, 5)); }); g.restore();
+    /* shade toward the floor, then the hole: the sun blasts through */
+    var sh = g.createLinearGradient(0, 150, 0, FLOOR); sh.addColorStop(0, 'rgba(10,20,60,.1)'); sh.addColorStop(1, 'rgba(10,20,60,.45)'); g.fillStyle = sh; g.fillRect(0, 150, W, FLOOR - 150);
+    g.save(); g.clip(hp); var lt = g.createRadialGradient(HOLE[0], HOLE[1] - 40, 20, HOLE[0], HOLE[1], 300); lt.addColorStop(0, '#FFFFF4'); lt.addColorStop(0.45, '#FFE69A'); lt.addColorStop(1, '#FFB547'); g.fillStyle = lt; g.fillRect(200, 300, 700, 640);
+    g.fillStyle = 'rgba(255,255,255,.5)'; for (var i = 0; i < 18; i += 2) { var a0 = i / 18 * TAU, a1 = (i + 1) / 18 * TAU; g.beginPath(); g.moveTo(HOLE[0], HOLE[1]); g.lineTo(HOLE[0] + Math.cos(a0) * 400, HOLE[1] + Math.sin(a0) * 400); g.lineTo(HOLE[0] + Math.cos(a1) * 400, HOLE[1] + Math.sin(a1) * 400); g.closePath(); g.fill(); }
+    g.restore();
+    g.lineJoin = 'round'; g.lineWidth = 9; g.strokeStyle = INK; g.stroke(hp);
+    /* cracks */
+    g.strokeStyle = INK; g.lineWidth = 4; [[0.3, 90], [1.2, 70], [2.6, 110], [3.6, 80], [4.6, 100], [5.6, 70]].forEach(function (c) { var x0 = HOLE[0] + Math.cos(c[0]) * 250, y0 = HOLE[1] + Math.sin(c[0]) * 262; g.beginPath(); g.moveTo(x0, y0); g.lineTo(x0 + Math.cos(c[0] + 0.3) * c[1] * 0.5, y0 + Math.sin(c[0] + 0.3) * c[1] * 0.5); g.lineTo(x0 + Math.cos(c[0] - 0.2) * c[1], y0 + Math.sin(c[0] - 0.2) * c[1]); g.stroke(); });
+    g.restore();
+    g.fillStyle = INK; g.fillRect(0, FLOOR - 4, W, 8);
+    var fl = g.createLinearGradient(0, FLOOR, 0, H); fl.addColorStop(0, '#1A3584'); fl.addColorStop(1, '#0B1D52'); g.fillStyle = fl; g.fillRect(0, FLOOR + 4, W, H - FLOOR);
+    var pool = g.createRadialGradient(HOLE[0], FLOOR + 40, 10, HOLE[0], FLOOR + 40, 380); pool.addColorStop(0, 'rgba(255,220,140,.5)'); pool.addColorStop(1, 'rgba(255,220,140,0)'); g.fillStyle = pool; g.fillRect(100, FLOOR, 880, 200);
+  }
+  function phone(g, x, y, rot) {
+    g.save(); g.translate(x, y); g.rotate(rot); var w = 150, h = 250;
+    g.fillStyle = INK; g.fill(rr(-w / 2 + 6, -h / 2 + 8, w, h, 26)); g.fillStyle = '#1C2647'; g.fill(rr(-w / 2, -h / 2, w, h, 26)); g.lineWidth = 5; g.strokeStyle = INK; g.stroke(rr(-w / 2, -h / 2, w, h, 26));
+    g.fillStyle = '#FFFFFF'; g.fill(rr(-w / 2 + 9, -h / 2 + 10, w - 18, h - 20, 18));
+    g.fillStyle = INK; g.font = '800 13px "Plus Jakarta Sans"'; g.textAlign = 'center'; g.fillText('LEARNED AFTER 50', 0, -h / 2 + 38);
+    [['#2F5FC4', 'Banking'], ['#21A366', 'Rides'], ['#FF8FA8', 'Video calls']].forEach(function (r, i) { var ry = -h / 2 + 66 + i * 52;
+      g.fillStyle = r[0]; g.fill(rr(-w / 2 + 18, ry, 34, 34, 9)); g.lineWidth = 2.5; g.strokeStyle = INK; g.stroke(rr(-w / 2 + 18, ry, 34, 34, 9));
+      g.fillStyle = INK; g.font = '700 13px "Plus Jakarta Sans"'; g.textAlign = 'left'; g.fillText(r[1], -w / 2 + 58, ry + 22);
+      g.fillStyle = '#21A366'; g.beginPath(); g.arc(w / 2 - 24, ry + 17, 11, 0, TAU); g.fill(); g.strokeStyle = '#fff'; g.lineWidth = 3; g.beginPath(); g.moveTo(w / 2 - 29, ry + 17); g.lineTo(w / 2 - 25, ry + 21); g.lineTo(w / 2 - 18, ry + 12); g.stroke(); });
+    g.restore();
+  }
+  function scanner(g, x, y) {
+    g.save(); g.translate(x, y); g.rotate(-0.5);
+    g.fillStyle = INK; g.fill(rr(-58 + 4, -20 + 5, 92, 40, 12)); g.fillStyle = '#FFD23F'; g.fill(rr(-58, -20, 92, 40, 12)); g.lineWidth = 4; g.strokeStyle = INK; g.stroke(rr(-58, -20, 92, 40, 12));
+    g.fillStyle = '#3A4466'; g.fill(rr(-10, 10, 30, 56, 8)); g.stroke(rr(-10, 10, 30, 56, 8)); g.fillStyle = '#FF5A47'; g.fill(rr(-62, -12, 10, 24, 4)); g.restore();
+  }
+  function tortoise(g, x, y, s) {
+    g.save(); g.translate(x, y); g.scale(s, s);
+    g.fillStyle = '#E8505B'; g.fill(rr(-70, -6, 140, 14, 7)); g.lineWidth = 4; g.strokeStyle = INK; g.stroke(rr(-70, -6, 140, 14, 7));
+    g.fillStyle = INK; g.beginPath(); g.arc(-44, 16, 10, 0, TAU); g.arc(44, 16, 10, 0, TAU); g.fill();
+    g.fillStyle = '#9ED98C'; g.beginPath(); g.ellipse(58, -30, 20, 15, -0.2, 0, TAU); g.fill(); g.stroke(); g.fill(rr(-52, -22, 18, 20, 6)); g.fill(rr(28, -22, 18, 20, 6));
+    g.fillStyle = INK; g.beginPath(); g.arc(64, -34, 3.6, 0, TAU); g.fill();
+    g.fillStyle = '#3FB37A'; g.beginPath(); g.moveTo(-58, -12); g.bezierCurveTo(-58, -78, 52, -78, 52, -12); g.closePath(); g.fill(); g.lineWidth = 5; g.stroke();
+    g.strokeStyle = '#2B8A5C'; g.lineWidth = 4; g.beginPath(); g.moveTo(-34, -14); g.lineTo(-24, -48); g.lineTo(4, -56); g.lineTo(28, -46); g.lineTo(34, -14); g.stroke();
+    g.restore();
+  }
+  function render(t) {
+    var g = S.g, dpr = S.dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+    NXP.bg(g, W, H, 540, 480);
+    wall(g);
+    /* bricks blasting outward from the hole */
+    [[250, 380, 96, -0.6], [820, 420, 104, 0.5], [210, 720, 90, 0.9], [870, 760, 96, -0.7], [330, 300, 70, 0.3], [760, 250, 74, -0.2]].forEach(function (b) {
+      NXX.speed(g, b[0], b[1], Math.atan2(b[1] - HOLE[1], b[0] - HOLE[0]), 90, 4, 50, b[0]); brick(g, b[0], b[1], b[2], b[3], 0); });
+    /* dust puffs round the rim */
+    NXX.foam(g, [[330, 820], [300, 700], [320, 560], [380, 420]], 36, 24, 4); NXX.foam(g, [[700, 400], [770, 520], [780, 660], [740, 820]], 34, 26, 8);
+    /* Ben bursts through, grinning, scanner in one hand, phone in the other */
+    NXX.person(g, S, 'ben', BEN.x, BEN.foot, BEN.h, 'happy', [1.6, 2.25], null, 6);
+    phone(g, 770, 462, 0.16);
+    scanner(g, HAND_L[0] - 10, HAND_L[1] - 6);
+    /* the scanner beam reads the Inventory app */
+    g.save(); g.globalCompositeOperation = 'lighter'; g.strokeStyle = 'rgba(255,90,71,.9)'; g.lineWidth = 5; g.beginPath(); g.moveTo(HAND_L[0] - 64, HAND_L[1] - 34); g.lineTo(186, 452); g.stroke(); g.restore();
+    NXX.tile(g, S.inv, 170, 436, 104, -0.18);
+    NXX.glow(g, 170, 436, 90, '255,90,71', 0.35);
+    NXX.tile(g, S.hr, 962, 360, 74, 0.16);
+    /* coach Nexi cheering */
+    if (S.nexi) { var nw = NEXI.h * S.nexi.naturalWidth / S.nexi.naturalHeight; g.save(); g.shadowColor = 'rgba(140,220,255,.6)'; g.shadowBlur = 24; g.drawImage(S.nexi, NEXI.x, NEXI.y, nw, NEXI.h); g.restore(); }
+    /* the tortoise zooms past */
+    NXX.speed(g, 70, 960, 0, 120, 7, 60, 5); NXX.person && 0; NXP.sticker(g, S, 4, function (A) { tortoise(A, 150, 966, 0.8); });
+    /* bricks right at the lens */
+    brick(g, 14, 640, 200, 0.6, 9); brick(g, 40, 170, 180, -0.4, 8);
+    var bd = g.createLinearGradient(0, 960, 0, H); bd.addColorStop(0, 'rgba(6,12,40,0)'); bd.addColorStop(0.3, 'rgba(6,12,40,.7)'); bd.addColorStop(1, 'rgba(6,12,40,.92)'); g.fillStyle = bd; g.fillRect(0, 960, W, H - 960);
+    var vg = g.createRadialGradient(W / 2, H * 0.45, H * 0.38, W / 2, H * 0.5, H * 0.82); vg.addColorStop(0, 'rgba(0,0,20,0)'); vg.addColorStop(1, 'rgba(0,0,20,.4)'); g.fillStyle = vg; g.fillRect(0, 0, W, H);
+    NXX.balloon(g, S.post, S.post.querySelector('.xbal'), [NEXI.x + 120, NEXI.y + 20], { px: 26, py: 22 });
+    window.__dbg = {};
+  }
+  TN.boot({ slugs: { 2: 'nexi-explains-s2-ep02-too-old-for-odoo' }, setup: { 2: setup }, render: { 2: render }, poster: { 2: 0 }, loop: 8 });
+})();
+</script>
+</body>
+</html>

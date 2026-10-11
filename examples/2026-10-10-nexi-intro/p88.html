@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Post 88 - Nexi introduction: Every app, one Odoo! (comic magic show, Nexi Explains page theme)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Inter:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=block" rel="stylesheet">
+<link rel="stylesheet" href="kit.css"><link rel="stylesheet" href="nxe-page.css"><link rel="stylesheet" href="nxe-x.css">
+<style>
+/* POST 88 "EVERY APP, ONE ODOO!" - stage MAGIC SHOW (series nxe-page, comic v4 look, no logo row).
+   ONE MOMENT: magician Nexi (top hat) pulls a never-ending chain of Odoo app tiles out of a giant top hat - Sales ->
+   Inventory -> Accounting -> Purchase -> Project -> Website, knotted together with silk scarves; the Bluebay Trading team
+   (sample) cheers from the dark front row. Archetype: theatre playbill / marquee. Camera: from the stalls, eye level a
+   little under the stage, silhouettes at the lens. Light: warm follow-spot from the top-left, footlights, a golden sunburst
+   backdrop (bright, not a night scene). Devices: follow-spot cone with dust motes, rim-lit silhouettes at the lens,
+   marquee bulbs, scarf chain motion arc. Text: billing centred at the top under the bulb arch. */
+.p88 .xe{left:50%;top:44px;transform:translateX(-50%) rotate(-1.5deg)}
+.p88 .tt{position:absolute;z-index:44;left:50%;top:126px;transform:translateX(-50%);width:max-content;text-align:center}
+.p88 .tt .a{font-size:88px;transform:rotate(-2deg)}
+.p88 .tt .b{font-size:124px;transform:rotate(-1deg) translateY(2px)}
+.p88 .tada{left:624px;top:512px;rotate:8deg}
+.p88 .tada span{font-size:44px;padding:26px 30px}
+.p88 .xbal{left:70px;top:372px;font-size:38px}
+.p88 .xans{left:62px;top:1046px;font-size:29px}
+.p88 .xapps{left:62px;top:1100px}
+.p88 .row{position:absolute;z-index:44;left:62px;top:1180px;display:flex;gap:18px;align-items:center}
+.p88 .row .tag{transform:rotate(-2deg);font-size:29px}
+.ytb{display:inline-flex;align-items:center;gap:16px;height:92px;padding:0 36px 0 30px;border-radius:18px;background:#FF0000;color:#fff;font:800 34px/1 var(--display);letter-spacing:-.01em;white-space:nowrap;border:4px solid #101C45;box-shadow:0 9px 0 #101C45}
+.ytb svg{width:40px;height:40px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5 19 12 7 19.5Z" fill="currentColor"/></symbol></defs></svg>
+<section class="post p88 nxp nxx grain" data-p="88">
+  <canvas></canvas>
+  <span class="xe" data-qa="text">NEXI EXPLAINS <b>THE ODOO SHOW</b></span>
+  <h1 class="tt" data-qa="text"><span class="a">Every app,</span><br><span class="b y">one Odoo!</span></h1>
+  <div class="xbal" data-qa="text">SALES, STOCK<br>&amp; BOOKS,<br><em>ONE DATABASE!</em></div>
+  <div class="boom w tada" data-qa="text"><span>TA-DA!</span></div>
+  <p class="xans" data-qa="text">Nexi explains the Odoo apps <b class="y">one short episode at a time.</b></p>
+  <div class="xapps" data-qa="text"><span class="k">ODOO APPS</span><span class="ap"><img src="assets/odoo/sale.svg" alt="">Sales</span><span class="ap"><img src="assets/odoo/stock.svg" alt="">Inventory</span><span class="ap"><img src="assets/odoo/accountant.svg" alt="">Accounting</span><span class="ap"><img src="assets/odoo/project.svg" alt="">Project</span></div>
+  <div class="row" data-qa="text"><span class="tag">37 EPISODES &middot; 34 QUICK TIPS</span><span class="tag r">S1 &middot; NOW PREMIERING</span></div>
+  <div class="xft" data-qa="text"><span class="ytb"><svg><use href="#i-play"/></svg>Subscribe on YouTube</span><span class="site">technext.asia<small>All episodes: /nexi-explains</small></span></div>
+</section>
+<script src="kit.js"></script><script src="nxe-page.js"></script><script src="s2cast-f3.js"></script><script src="nxe-x.js"></script><script src="nxe-bg.js"></script><script src="a1-lib.js"></script>
+<script>
+(function () {
+  var W = TN.W, H = TN.H, TAU = Math.PI * 2, INK = A1.INK, rr = NXP.rr, S = {};
+  var FLOOR = 868, EDGE = 996, VPS = [540, 470];
+  var NEXI = { x: 132, bot: 912, h: 432 };
+  var HAT = { x: 806, y: 706 };                       /* centre of the upside-down hat's mouth */
+  var CHAIN = ['sale', 'stock', 'accountant', 'purchase', 'project', 'website'];
+  var LOOP = [[560, 626], [556, 490], [662, 418], [790, 426], [890, 500], [880, 622]];   /* Sales ... Website, hand -> hat */
+  var SPOT = [150, -60];
+  function setup(post) {
+    var dpr = window.devicePixelRatio || 1; S.dpr = dpr; S.post = post;
+    var c = post.querySelector('canvas'); c.width = W * dpr; c.height = H * dpr; S.g = c.getContext('2d'); NXP.offscreen(S, W, H);
+    S.ic = {};
+    return Promise.all([A1.img('assets/nexi-hd/nexi-n88.png'), document.fonts.load('60px Bangers'), document.fonts.load('800 20px "Plus Jakarta Sans"'), document.fonts.load('600 16px Inter')].concat(CHAIN.map(function (a) { return A1.img('assets/odoo/' + a + '.svg').then(function (i) { S.ic[a] = i; }); })))
+      .then(function (a) { S.nexi = a[0]; });
+  }
+  function bez(P, t) { var u = 1 - t; return [u * u * u * P[0][0] + 3 * u * u * t * P[1][0] + 3 * u * t * t * P[2][0] + t * t * t * P[3][0], u * u * u * P[0][1] + 3 * u * u * t * P[1][1] + 3 * u * t * t * P[2][1] + t * t * t * P[3][1]]; }
+  function backdrop(g) {
+    var c = [560, 600], gr = g.createRadialGradient(c[0], c[1], 40, c[0], c[1], 900); gr.addColorStop(0, '#FFF6D2'); gr.addColorStop(0.3, '#FFD45E'); gr.addColorStop(0.7, '#FF9A3C'); gr.addColorStop(1, '#E2502A');
+    g.fillStyle = gr; g.fillRect(0, 0, W, FLOOR + 20);
+    g.save(); g.globalAlpha = 0.24; g.fillStyle = '#FFFFFF'; g.beginPath(); for (var i = 0; i < 40; i += 2) { var a0 = i / 40 * TAU, a1 = (i + 1) / 40 * TAU; g.moveTo(c[0], c[1]); g.lineTo(c[0] + Math.cos(a0) * 1800, c[1] + Math.sin(a0) * 1800); g.lineTo(c[0] + Math.cos(a1) * 1800, c[1] + Math.sin(a1) * 1800); g.closePath(); } g.fill(); g.restore();
+    NXB.dots(g, W, FLOOR, c[0], c[1], 0.3, 'rgba(200,50,40,.22)', 18);
+    /* painted backdrop stars + a hanging moon-and-stars mobile (stage scenery) */
+    [[300, 240, 22], [820, 210, 18], [470, 300, 12], [700, 330, 14], [240, 420, 10], [930, 470, 12]].forEach(function (s) { NXP.twinkle(g, s[0], s[1], s[2], '#FFF3B0'); });
+    /* the back wall's skirting where it meets the floor */
+    g.fillStyle = 'rgba(120,40,20,.35)'; g.fillRect(0, FLOOR - 26, W, 26);
+  }
+  function floor(g) {
+    var gr = g.createLinearGradient(0, FLOOR, 0, EDGE); gr.addColorStop(0, '#B8743A'); gr.addColorStop(1, '#E3A15C'); g.fillStyle = gr; g.fillRect(0, FLOOR, W, EDGE - FLOOR);
+    g.strokeStyle = 'rgba(70,30,8,.45)'; g.lineWidth = 3; for (var k = -14; k <= 14; k++) { var xb = 540 + k * 96, xt = VPS[0] + (xb - VPS[0]) * ((FLOOR - VPS[1]) / (EDGE - VPS[1])); g.beginPath(); g.moveTo(xt, FLOOR); g.lineTo(xb, EDGE); g.stroke(); }
+    g.strokeStyle = 'rgba(70,30,8,.25)'; [904, 944].forEach(function (y) { g.beginPath(); g.moveTo(0, y); g.lineTo(W, y); g.stroke(); });
+    /* spotlight pool + gloss */
+    g.save(); g.globalCompositeOperation = 'lighter'; g.translate(340, 920); g.scale(1, 0.22); var pl = g.createRadialGradient(0, 0, 10, 0, 0, 300); pl.addColorStop(0, 'rgba(255,250,220,.75)'); pl.addColorStop(1, 'rgba(255,250,220,0)'); g.fillStyle = pl; g.beginPath(); g.arc(0, 0, 300, 0, TAU); g.fill(); g.restore();
+    g.fillStyle = INK; g.fillRect(0, FLOOR - 3, W, 5);
+    /* stage lip, footlights, apron */
+    g.fillStyle = '#7A1E22'; g.fillRect(0, EDGE, W, 80); g.fillStyle = '#E8B04A'; g.fillRect(0, EDGE, W, 10); g.fillStyle = INK; g.fillRect(0, EDGE - 3, W, 4); g.fillRect(0, EDGE + 10, W, 3);
+    for (var x = 40; x < W; x += 100) { NXX.glow(g, x, EDGE - 8, 70, '255,220,140', 0.55); g.fillStyle = '#FFF4C8'; g.beginPath(); g.arc(x, EDGE - 2, 16, Math.PI, 0); g.fill(); g.lineWidth = 3.5; g.strokeStyle = INK; g.stroke(); }
+  }
+  function curtains(g) {
+    function drape(x0, x1, side) {
+      var p = new Path2D(); p.moveTo(x0, -20); p.lineTo(x1, -20);
+      if (side < 0) { p.bezierCurveTo(x1 - 10, 300, x1 - 70, 520, x1 - 30, 640); p.bezierCurveTo(x1 - 60, 760, x1 - 40, 860, x1 - 20, FLOOR + 6); p.lineTo(x0, FLOOR + 6); }
+      else { p.bezierCurveTo(x0 + 10, 300, x0 + 70, 520, x0 + 30, 640); p.bezierCurveTo(x0 + 60, 760, x0 + 40, 860, x0 + 20, FLOOR + 6); p.lineTo(x1, FLOOR + 6); }
+      p.closePath();
+      var gr = g.createLinearGradient(x0, 0, x1, 0); for (var i = 0; i <= 8; i++) gr.addColorStop(i / 8, i % 2 ? '#C8242E' : '#8E1520'); g.fillStyle = gr; g.fill(p);
+      g.save(); g.clip(p); var sh = g.createLinearGradient(0, 0, 0, FLOOR); sh.addColorStop(0, 'rgba(60,0,10,.35)'); sh.addColorStop(0.5, 'rgba(60,0,10,0)'); sh.addColorStop(1, 'rgba(60,0,10,.3)'); g.fillStyle = sh; g.fillRect(x0 - 20, 0, x1 - x0 + 40, FLOOR + 10);
+      g.strokeStyle = 'rgba(255,170,150,.28)'; g.lineWidth = 4; for (var k = 0; k < 4; k++) { var xx = x0 + (x1 - x0) * (0.15 + k * 0.22); g.beginPath(); g.moveTo(xx, 0); g.quadraticCurveTo(xx + side * 30, 500, xx + side * 10, FLOOR); g.stroke(); } g.restore();
+      g.lineWidth = 6; g.strokeStyle = INK; g.stroke(p);
+      /* gold tie-back rope + tassel */
+      var tx = side < 0 ? x1 - 52 : x0 + 52, ty = 560;
+      g.lineWidth = 16; g.strokeStyle = INK; g.beginPath(); g.moveTo(side < 0 ? x0 - 10 : x1 + 10, ty - 30); g.quadraticCurveTo(tx, ty + 10, tx, ty); g.stroke(); g.lineWidth = 9; g.strokeStyle = '#F2C14E'; g.stroke();
+      g.fillStyle = '#F2C14E'; g.beginPath(); g.moveTo(tx - 14, ty + 4); g.lineTo(tx + 14, ty + 4); g.lineTo(tx + 22, ty + 70); g.lineTo(tx - 22, ty + 70); g.closePath(); g.fill(); g.lineWidth = 4; g.strokeStyle = INK; g.stroke();
+      g.beginPath(); g.arc(tx, ty, 14, 0, TAU); g.fill(); g.stroke(); g.strokeStyle = 'rgba(140,90,10,.6)'; g.lineWidth = 2; for (var j = -16; j <= 16; j += 6) { g.beginPath(); g.moveTo(tx + j * 0.7, ty + 14); g.lineTo(tx + j, ty + 66); g.stroke(); }
+    }
+    drape(-20, 196, -1); drape(884, 1100, 1);
+    /* valance: a red swag across the top with scallops, gold braid and fringe */
+    var v = new Path2D(); v.moveTo(-20, -20); v.lineTo(W + 20, -20); v.lineTo(W + 20, 70);
+    for (var i = 5; i >= 0; i--) { var xa = i * 180 + 180, xb = i * 180; v.quadraticCurveTo((xa + xb) / 2, 132, xb, 70); }
+    v.lineTo(-20, 70); v.closePath();
+    var vg = g.createLinearGradient(0, 0, 0, 130); vg.addColorStop(0, '#7E1019'); vg.addColorStop(1, '#C8242E'); g.fillStyle = vg; g.fill(v); g.lineWidth = 6; g.strokeStyle = INK; g.stroke(v);
+    g.strokeStyle = '#F2C14E'; g.lineWidth = 7; g.beginPath(); for (var j = 5; j >= 0; j--) { var a = j * 180 + 180, b = j * 180; if (j === 5) g.moveTo(a, 64); g.quadraticCurveTo((a + b) / 2, 124, b, 64); } g.stroke();
+    for (var x = 0; x <= W; x += 180) { g.fillStyle = '#F2C14E'; g.beginPath(); g.moveTo(x - 9, 66); g.lineTo(x + 9, 66); g.lineTo(x + 12, 106); g.lineTo(x - 12, 106); g.closePath(); g.fill(); g.lineWidth = 3; g.strokeStyle = INK; g.stroke(); }
+  }
+  function marquee(g) {   /* the theatre marquee board that carries the billing: maroon board, gold frame, bulbs */
+    var x = 112, y = 96, w = 856, h = 276;
+    g.lineWidth = 6; g.strokeStyle = INK; [[230, 0], [850, 0]].forEach(function (c) { g.beginPath(); g.moveTo(c[0], -10); g.lineTo(c[0], y + 8); g.stroke(); g.fillStyle = '#F2C14E'; for (var k = 0; k < 4; k++) { g.beginPath(); g.ellipse(c[0], 14 + k * 22, 6, 10, 0, 0, TAU); g.fill(); g.lineWidth = 3; g.stroke(); } });
+    g.fillStyle = INK; g.fill(rr(x + 8, y + 10, w, h, 30));
+    g.fillStyle = '#F2C14E'; g.fill(rr(x, y, w, h, 30)); g.lineWidth = 6; g.strokeStyle = INK; g.stroke(rr(x, y, w, h, 30));
+    var bg = g.createLinearGradient(0, y + 22, 0, y + h - 22); bg.addColorStop(0, '#6E1222'); bg.addColorStop(1, '#3E0A1C'); g.fillStyle = bg; g.fill(rr(x + 24, y + 24, w - 48, h - 48, 16)); g.lineWidth = 4; g.stroke(rr(x + 24, y + 24, w - 48, h - 48, 16));
+    g.save(); g.clip(rr(x + 24, y + 24, w - 48, h - 48, 16)); NXB.dots(g, W, H, 540, 230, 0.0, 'rgba(255,200,120,.10)', 14, 2.2); g.restore();
+    var n = 0; function bulb(bx, by) { NXX.glow(g, bx, by, 22, '255,230,150', 0.75); g.fillStyle = n++ % 2 ? '#FFF6C8' : '#FFE07A'; g.beginPath(); g.arc(bx, by, 7.5, 0, TAU); g.fill(); g.lineWidth = 2.5; g.strokeStyle = INK; g.stroke(); }
+    for (var bx = x + 40; bx <= x + w - 38; bx += 44) { bulb(bx, y + 12); bulb(bx, y + h - 12); }
+    for (var by = y + 52; by <= y + h - 50; by += 44) { bulb(x + 12, by); bulb(x + w - 12, by); }
+  }
+  function spotlight(g) {
+    g.save(); g.globalCompositeOperation = 'lighter'; var p = new Path2D(); p.moveTo(SPOT[0] - 40, SPOT[1]); p.lineTo(SPOT[0] + 40, SPOT[1]); p.lineTo(560, 930); p.lineTo(120, 930); p.closePath();
+    var gr = g.createLinearGradient(SPOT[0], SPOT[1], 340, 930); gr.addColorStop(0, 'rgba(255,252,230,.55)'); gr.addColorStop(1, 'rgba(255,252,230,.12)'); g.fillStyle = gr; g.filter = 'blur(10px)'; g.fill(p); g.filter = 'none';
+    var R = TN.rand(17); g.fillStyle = 'rgba(255,255,240,.85)'; for (var k = 0; k < 46; k++) { var t = 0.15 + R() * 0.8, x = SPOT[0] + (340 - SPOT[0]) * t + (R() - 0.5) * 420 * t, y = SPOT[1] + (930 - SPOT[1]) * t; g.beginPath(); g.arc(x, y, 1 + R() * 2.4, 0, TAU); g.fill(); }
+    g.restore();
+  }
+  function table(g) {   /* little round magic table with a star cloth */
+    var x = HAT.x, top = 846;
+    A1.shadow(g, x, 930, 130, 16, 0.4);
+    g.lineWidth = 12; g.strokeStyle = INK; [[-60, 920], [60, 920]].forEach(function (l) { g.beginPath(); g.moveTo(x + l[0] * 0.4, top + 40); g.lineTo(x + l[0], l[1]); g.stroke(); }); g.lineWidth = 6; g.strokeStyle = '#E8B04A'; [[-60, 920], [60, 920]].forEach(function (l) { g.beginPath(); g.moveTo(x + l[0] * 0.4, top + 40); g.lineTo(x + l[0], l[1]); g.stroke(); });
+    var c = new Path2D(); c.moveTo(x - 130, top); c.lineTo(x + 130, top); c.lineTo(x + 112, top + 70); c.quadraticCurveTo(x + 90, top + 86, x + 70, top + 70); c.quadraticCurveTo(x + 40, top + 90, x, top + 72); c.quadraticCurveTo(x - 40, top + 90, x - 70, top + 70); c.quadraticCurveTo(x - 90, top + 86, x - 112, top + 70); c.closePath();
+    g.fillStyle = '#2F3FA8'; g.fill(c); g.lineWidth = 5; g.strokeStyle = INK; g.stroke(c);
+    g.save(); g.clip(c); [[x - 80, top + 30], [x - 10, top + 46], [x + 60, top + 28], [x + 100, top + 56], [x - 50, top + 62]].forEach(function (s) { NXP.twinkle(g, s[0], s[1], 10, '#FFD23F'); }); g.restore();
+    g.fillStyle = '#4255C9'; g.beginPath(); g.ellipse(x, top, 130, 18, 0, 0, TAU); g.fill(); g.stroke();
+  }
+  function hat(g) {   /* giant top hat, upside down, mouth glowing */
+    var x = HAT.x, y = HAT.y, cw = 196, ch = 150;
+    var body = new Path2D(); body.moveTo(x - cw / 2, y); body.lineTo(x - cw / 2 + 8, y + ch); body.quadraticCurveTo(x, y + ch + 22, x + cw / 2 - 8, y + ch); body.lineTo(x + cw / 2, y); body.closePath();
+    var gr = g.createLinearGradient(x - cw / 2, 0, x + cw / 2, 0); gr.addColorStop(0, '#2A2F55'); gr.addColorStop(0.35, '#4A5288'); gr.addColorStop(1, '#1A1E3C'); g.fillStyle = gr; g.fill(body); g.lineWidth = 6; g.strokeStyle = INK; g.stroke(body);
+    g.fillStyle = '#E8303F'; g.beginPath(); g.moveTo(x - cw / 2 + 3, y + 22); g.lineTo(x + cw / 2 - 3, y + 22); g.lineTo(x + cw / 2 - 5, y + 54); g.lineTo(x - cw / 2 + 5, y + 54); g.closePath(); g.fill(); g.lineWidth = 4; g.stroke();
+    g.fillStyle = 'rgba(255,255,255,.18)'; g.fillRect(x - cw / 2 + 24, y + 60, 16, 80);
+    /* brim (the hat's rim, now on top) + the open crown */
+    g.fillStyle = '#2A2F55'; g.beginPath(); g.ellipse(x, y, 146, 34, 0, 0, TAU); g.fill(); g.lineWidth = 6; g.stroke();
+    g.fillStyle = '#0B0E24'; g.beginPath(); g.ellipse(x, y - 2, 96, 20, 0, 0, TAU); g.fill();
+    NXX.glow(g, x, y - 6, 150, '255,236,170', 0.85); NXX.glow(g, x, y - 30, 90, '255,255,255', 0.6);
+  }
+  function scarf(g, a, b, col, seed) {   /* a wavy silk scarf knotted between two tiles */
+    var dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L, nx = -uy, ny = ux, N = 22, top = [], bot = [];
+    for (var i = 0; i <= N; i++) { var t = i / N, w = Math.sin(t * Math.PI * 2 + seed) * 16, hw = 13 + Math.sin(t * Math.PI) * 6, cx = a[0] + dx * t + nx * w, cy = a[1] + dy * t + ny * w; top.push([cx + nx * hw, cy + ny * hw]); bot.push([cx - nx * hw, cy - ny * hw]); }
+    var p = new Path2D(); top.forEach(function (q, k) { if (k) p.lineTo(q[0], q[1]); else p.moveTo(q[0], q[1]); }); for (var j = bot.length - 1; j >= 0; j--) p.lineTo(bot[j][0], bot[j][1]); p.closePath();
+    g.fillStyle = col; g.fill(p); g.save(); g.clip(p); g.fillStyle = 'rgba(255,255,255,.3)'; for (var k = 0; k < N; k += 3) { var q = top[k]; g.beginPath(); g.arc(q[0] - nx * 6, q[1] - ny * 6, 5, 0, TAU); g.fill(); } g.restore();
+    g.lineWidth = 4.5; g.lineJoin = 'round'; g.strokeStyle = INK; g.stroke(p);
+  }
+  function chain(g, hand) {
+    var pts = LOOP;
+    /* motion arc above the chain */
+    g.save(); g.strokeStyle = 'rgba(255,255,255,.75)'; g.lineWidth = 5; g.setLineDash([2, 16]); g.lineCap = 'round'; g.beginPath(); g.moveTo(HAT.x + 40, HAT.y - 60);
+    g.bezierCurveTo(HAT.x + 160, 420, 760, 330, 620, 360); g.stroke(); g.restore();
+    var cols = ['#E8303F', '#FFD23F', '#21A366', '#2F5FC4', '#A64CC8', '#F28C28'];
+    scarf(g, hand, pts[0], cols[5], 0.4);
+    for (var k = 0; k < pts.length - 1; k++) scarf(g, pts[k], pts[k + 1], cols[k], k * 1.3);
+    scarf(g, pts[5], [HAT.x, HAT.y - 6], cols[0], 2);
+    pts.forEach(function (q, k) { var s = [96, 96, 98, 94, 92, 88][k]; NXX.glow(g, q[0], q[1], s * 0.95, '255,240,190', 0.45); NXX.tile(g, S.ic[CHAIN[k]], q[0], q[1], s, [-0.2, 0.12, -0.1, 0.18, -0.16, 0.1][k]); });
+    return pts;
+  }
+  function doves(g) {
+    function dove(x, y, s, f) { g.save(); g.translate(x, y); g.scale(s * f, s); g.lineWidth = 4; g.lineJoin = 'round'; g.strokeStyle = INK;
+      var tail = new Path2D(); tail.moveTo(-28, 0); tail.lineTo(-66, -14); tail.lineTo(-70, 4); tail.lineTo(-62, 18); tail.closePath(); g.fillStyle = '#EEF3FF'; g.fill(tail); g.stroke(tail);
+      var far = new Path2D(); far.moveTo(4, -10); far.quadraticCurveTo(24, -58, 56, -66); far.quadraticCurveTo(40, -36, 22, -8); far.closePath(); g.fillStyle = '#DCE6FA'; g.fill(far); g.stroke(far);
+      g.fillStyle = '#FFFFFF'; g.beginPath(); g.ellipse(0, 0, 38, 21, -0.18, 0, TAU); g.fill(); g.stroke();
+      g.beginPath(); g.arc(34, -18, 15, 0, TAU); g.fill(); g.stroke();
+      g.fillStyle = '#F28C28'; g.beginPath(); g.moveTo(47, -20); g.lineTo(62, -15); g.lineTo(47, -11); g.closePath(); g.fill(); g.stroke();
+      g.fillStyle = INK; g.beginPath(); g.arc(38, -21, 2.8, 0, TAU); g.fill();
+      var near = new Path2D(); near.moveTo(-8, -6); near.quadraticCurveTo(-34, -64, -6, -84); near.quadraticCurveTo(-4, -50, 16, -10); near.closePath(); g.fillStyle = '#FFFFFF'; g.fill(near); g.stroke(near);
+      g.strokeStyle = 'rgba(16,28,69,.35)'; g.lineWidth = 2.5; [-58, -44, -30].forEach(function (yy) { g.beginPath(); g.moveTo(-14, yy + 20); g.lineTo(-6, yy + 6); g.stroke(); });
+      g.restore(); }
+    dove(1000, 690, 1.0, 1); dove(1010, 420, 0.8, -1);
+  }
+  function floorProps(g) {
+    /* playing cards + a magic wand on the stage floor, a bouquet by the table */
+    [[548, 958, -0.4, '#E8303F'], [592, 968, 0.25, INK], [640, 956, 0.6, '#E8303F']].forEach(function (c) { g.save(); g.translate(c[0], c[1]); g.scale(1, 0.55); g.rotate(c[2]); g.fillStyle = '#FFFFFF'; g.fill(rr(-26, -36, 52, 72, 6)); g.lineWidth = 3.5; g.strokeStyle = INK; g.stroke(rr(-26, -36, 52, 72, 6)); g.fillStyle = c[3]; g.beginPath(); g.moveTo(0, -14); g.lineTo(12, 0); g.lineTo(0, 14); g.lineTo(-12, 0); g.closePath(); g.fill(); g.restore(); });
+    g.save(); g.translate(486, 972); g.rotate(-0.12); A1.shadow(g, 0, 8, 90, 8, 0.3); g.fillStyle = INK; g.fill(rr(-80, -9, 160, 18, 8)); g.fillStyle = '#1C1C2E'; g.fill(rr(-76, -6, 152, 12, 6)); g.fillStyle = '#FFFFFF'; g.fill(rr(40, -6, 36, 12, 6)); g.fill(rr(-76, -6, 28, 12, 6)); g.restore();
+    /* bouquet on the floor at the table's right */
+    g.save(); g.translate(948, 930); [[-16, -40, '#E8303F'], [6, -52, '#FFD23F'], [22, -36, '#FF8FB0'], [-2, -30, '#FFFFFF']].forEach(function (f) { g.lineWidth = 3; g.strokeStyle = '#2E7D4F'; g.beginPath(); g.moveTo(0, 0); g.lineTo(f[0], f[1]); g.stroke(); g.fillStyle = f[2]; g.beginPath(); g.arc(f[0], f[1], 11, 0, TAU); g.fill(); g.strokeStyle = INK; g.stroke(); });
+    g.fillStyle = '#9BD7F5'; g.beginPath(); g.moveTo(-16, -14); g.lineTo(16, -14); g.lineTo(4, 16); g.lineTo(-4, 16); g.closePath(); g.fill(); g.lineWidth = 3; g.strokeStyle = INK; g.stroke(); g.restore();
+  }
+  /* front-row silhouettes: F3 cast, filled dark, warm rim light from the stage */
+  function crowd(g) {
+    var ppl = [['ben', 60, 1540, 600, [2.6, 2.3]], ['maria', 620, 1520, 560, [2.75, 2.4]], ['jun', 900, 1540, 590, [2.2, 2.85]], ['lim', 1070, 1570, 560, [2.5, 0.4]]];
+    var dpr = S.dpr, A = S.a.getContext('2d'), B = S.b.getContext('2d');
+    ppl.forEach(function (p) {
+      var m = F3.cast[p[0]], keep = { pose: m.pose, prop: m.prop, mood: m.mood }; m.pose = p[4]; m.prop = null; m.mood = 'happy';
+      A.setTransform(1, 0, 0, 1, 0, 0); A.clearRect(0, 0, S.a.width, S.a.height); A.setTransform(dpr, 0, 0, dpr, 0, 0); F3.use(A); F3.figure(m, p[1], p[2], p[3]);
+      m.pose = keep.pose; m.prop = keep.prop; m.mood = keep.mood;
+      B.setTransform(1, 0, 0, 1, 0, 0); B.globalCompositeOperation = 'source-over'; B.clearRect(0, 0, S.b.width, S.b.height); B.drawImage(S.a, 0, 0); B.globalCompositeOperation = 'source-in';
+      B.fillStyle = '#FFC46B'; B.fillRect(0, 0, S.b.width, S.b.height);
+      g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.save(); g.beginPath(); g.rect(0, 0, W * dpr, 1024 * dpr); g.clip(); g.filter = 'blur(' + (1.5 * dpr) + 'px)'; g.drawImage(S.b, -3 * dpr, -6 * dpr); g.drawImage(S.b, 3 * dpr, -6 * dpr); g.filter = 'none'; g.restore();
+      B.fillStyle = '#1A1238'; B.fillRect(0, 0, S.b.width, S.b.height); B.globalCompositeOperation = 'source-over';
+      g.drawImage(S.b, 0, 0); g.restore();
+    });
+    /* the team's placard (sample) */
+    g.save(); g.translate(806, 968); g.rotate(-0.06); g.scale(0.9, 0.9); g.lineWidth = 10; g.strokeStyle = '#1A1238'; g.beginPath(); g.moveTo(0, 40); g.lineTo(0, 150); g.stroke();
+    g.fillStyle = '#FFFFFF'; g.fill(rr(-112, -44, 224, 88, 12)); g.lineWidth = 5; g.strokeStyle = INK; g.stroke(rr(-112, -44, 224, 88, 12));
+    g.fillStyle = '#2F5FC4'; g.beginPath(); g.arc(-84, -8, 12, 0, TAU); g.fill(); A1.tx(g, 'GO NEXI!', 10, -2, 30, 400, '#E8303F', 'center', 'Bangers');
+    A1.tx(g, 'Bluebay Trading · sample', 0, 31, 17, 700, '#4C4C63', 'center', 'Inter'); g.restore();
+  }
+  function render(t) {
+    var g = S.g, dpr = S.dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+    backdrop(g);
+    floor(g);
+    curtains(g);
+    marquee(g);
+    spotlight(g);
+    table(g);
+    floorProps(g);
+    var nw = NEXI.h * S.nexi.naturalWidth / S.nexi.naturalHeight, ny = NEXI.bot - NEXI.h, hand = [NEXI.x + nw * 0.955, ny + NEXI.h * 0.625];
+    A1.shadow(g, NEXI.x + nw * 0.49, NEXI.bot + 4, 150, 18, 0.45);
+    hat(g);
+    /* confetti in the air (behind the chain, so no piece lands on a tile) */
+    var R = TN.rand(23), cc = ['#FFD23F', '#E8303F', '#2F5FC4', '#21A366', '#FFFFFF'];
+    for (var k = 0; k < 30; k++) { var x = 230 + R() * 760, y = 330 + R() * 400; g.save(); g.translate(x, y); g.rotate(R() * TAU); g.fillStyle = cc[k % 5]; g.fillRect(-7, -4, 14, 8); g.lineWidth = 1.5; g.strokeStyle = INK; g.strokeRect(-7, -4, 14, 8); g.restore(); }
+    var pts = chain(g, hand);
+    doves(g);
+    A1.nexi(S, g, S.nexi, NEXI.x, ny, NEXI.h, { px: 5 });
+    /* confetti in the air + at the lens */
+    g.save(); g.filter = 'blur(6px)'; [[34, 700, '#FFD23F'], [1040, 380, '#E8303F'], [1012, 800, '#2F5FC4']].forEach(function (c, i) { g.save(); g.translate(c[0], c[1]); g.rotate(i * 0.9); g.fillStyle = c[2]; g.fillRect(-18, -10, 36, 20); g.restore(); }); g.filter = 'none'; g.restore();
+    crowd(g);
+    A1.finish(g, W, H, 990, 0.78);
+    NXX.balloon(g, S.post, S.post.querySelector('.xbal'), [NEXI.x + nw * 0.25, ny + NEXI.h * 0.32], { px: 30, py: 24 });
+    window.__dbg = { nexi: [NEXI.x, ny, nw, NEXI.h], hand: hand, t0: pts[0], t5: pts[5] };
+  }
+  TN.boot({ slugs: { 88: 'nexi-explains-meet-nexi-odoo-magic-show' }, setup: { 88: setup }, render: { 88: render }, poster: { 88: 0 }, loop: 8 });
+})();
+</script>
+</body>
+</html>

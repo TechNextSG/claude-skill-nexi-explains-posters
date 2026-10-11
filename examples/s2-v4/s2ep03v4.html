@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Nexi Explains S2 EP03 - Scared to Click the Wrong Button? (v4)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Inter:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=block" rel="stylesheet">
+<link rel="stylesheet" href="kit.css"><link rel="stylesheet" href="nxe-page.css"><link rel="stylesheet" href="nxe-x.css">
+<style>
+/* S2EP03 "Scared to Click the Wrong Button?" EXAGGERATED (series nxe-page). Hook: pilots don't learn on a real plane either.
+   Psych: psychological safety. Takeaway: a test database is a safe place to practise. App: Sales (Confirm / Cancel / Set
+   to Quotation; the Confirm button is purple once the quotation is sent).
+   ONE CLASH: Jun's trembling finger over a GIANT purple CONFIRM button at the lens, inside a flight simulator that banks
+   hard; Nexi the flight instructor (pilot cap) has the big RESET lever; the rubber-chicken co-pilot squeaks. A TEST COPY
+   sticker is slapped on the button. Camera: macro foreground button, Jun behind; light: cockpit glow + a red warning light. */
+.p3 .tt{position:absolute;z-index:44;left:56px;top:48px}
+.p3 .tt .a{font-size:122px;transform:rotate(-3deg)}
+.p3 .tt .b{font-size:122px;transform:rotate(-1.5deg) translateY(4px)}
+.p3 .xe{right:58px;top:66px;transform:rotate(4deg)}
+.p3 .soon{position:absolute;z-index:44;right:58px;top:146px;transform:rotate(3deg)}
+.p3 .gulp{left:690px;top:340px;rotate:10deg}
+.p3 .gulp span{font-size:46px;padding:26px 30px}
+.p3 .sq{left:830px;top:516px;rotate:-8deg}
+.p3 .sq span{font-size:34px;padding:22px 26px}
+.p3 .xbal{left:58px;top:316px;font-size:36px}
+.p3 .xans{left:62px;top:1110px}
+.p3 .xapps{left:62px;top:1168px}
+
+.ytb{display:inline-flex;align-items:center;gap:16px;height:92px;padding:0 36px 0 30px;border-radius:18px;background:#FF0000;color:#fff;font:800 34px/1 var(--display);letter-spacing:-.01em;white-space:nowrap;border:4px solid #101C45;box-shadow:0 9px 0 #101C45}
+.ytb svg{width:40px;height:40px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5 19 12 7 19.5Z" fill="currentColor"/></symbol></defs></svg>
+<section class="post p3 nxp nxx grain" data-p="3">
+  <canvas></canvas>
+  <h1 class="tt" data-qa="text"><span class="a">Scared</span><br><span class="b y">to click?!</span></h1>
+  <span class="xe" data-qa="text">NEXI EXPLAINS <b>S2 &middot; 03</b></span>
+  <span class="tag r soon" data-qa="text">COMING IN 2027</span>
+  <div class="boom w gulp" data-qa="text"><span>GULP!</span></div>
+  <div class="boom sq" data-qa="text"><span>SQUEAK!</span></div>
+  <div class="xbal" data-qa="text">IT&rsquo;S A <em>TEST COPY.</em><br>CLICK AWAY!</div>
+  <p class="xans" data-qa="text">A <b>test database</b> is a <b class="y">safe place to practise.</b></p>
+  <div class="xapps" data-qa="text"><span class="k">ODOO APP</span><span class="ap"><img src="assets/odoo/sale.svg" alt="">Sales</span><span class="tag">PSYCH FILE &middot; PSYCHOLOGICAL SAFETY</span></div>
+  <div class="xft" data-qa="text"><span class="ytb"><svg><use href="#i-play"/></svg>Subscribe on YouTube</span><span class="site">technext.asia<small>All episodes: /nexi-explains</small></span></div>
+</section>
+<script src="kit.js"></script><script src="nxe-page.js"></script><script src="s2cast-f3.js"></script><script src="nxe-x.js"></script><script src="nxe-bg.js"></script>
+<script>
+(function () {
+  var W = TN.W, H = TN.H, TAU = Math.PI * 2, INK = NXX.INK, rr = NXP.rr, S = {};
+  var WIN = { x: 70, y: 316, w: 940, h: 470 }, BTN = { x: 540, y: 940, rx: 380, ry: 92, dep: 70 };
+  var NEXI = { x: 30, y: 468, h: 330 };
+  function img(src) { return new Promise(function (res) { var i = new Image(); i.onload = function () { res(i); }; i.onerror = function () { res(null); }; i.src = src; }); }
+  function setup(post) {
+    var dpr = window.devicePixelRatio || 1; S.dpr = dpr; S.post = post;
+    var c = post.querySelector('canvas'); c.width = W * dpr; c.height = H * dpr; S.g = c.getContext('2d'); NXP.offscreen(S, W, H);
+    return Promise.all([img('assets/nexi/nexi-s2x3.png'), img('assets/odoo/sale.svg'), document.fonts.load('60px Bangers')]).then(function (a) { S.nexi = a[0]; S.sale = a[1]; });
+  }
+  function cockpit(g) {
+    /* the simulator's window: the horizon banks hard */
+    g.save(); g.clip(rr(WIN.x, WIN.y, WIN.w, WIN.h, 60));
+    g.save(); g.translate(540, 560); g.rotate(-0.22); var sky = g.createLinearGradient(0, -500, 0, 60); sky.addColorStop(0, '#5FA8FF'); sky.addColorStop(1, '#CFE8FF'); g.fillStyle = sky; g.fillRect(-800, -600, 1600, 660);
+    var gr = g.createLinearGradient(0, 60, 0, 500); gr.addColorStop(0, '#7FCB8F'); gr.addColorStop(1, '#3E8E5E'); g.fillStyle = gr; g.fillRect(-800, 60, 1600, 600);
+    g.strokeStyle = 'rgba(255,255,255,.35)'; g.lineWidth = 3; for (var i = -8; i <= 8; i++) { g.beginPath(); g.moveTo(i * 60, 60); g.lineTo(i * 260, 600); g.stroke(); }
+    [[-300, -200, 1.2], [180, -260, 0.9], [360, -120, 0.7], [-80, -60, 0.6]].forEach(function (c) { g.fillStyle = '#FFFFFF'; g.beginPath(); [[0, 0, 40], [44, -18, 52], [94, 0, 38], [46, 14, 40]].forEach(function (k) { g.moveTo(c[0] + k[0] * c[2] + k[2] * c[2], c[1] + k[1] * c[2]); g.arc(c[0] + k[0] * c[2], c[1] + k[1] * c[2], k[2] * c[2], 0, TAU); }); g.fill(); });
+    g.restore();
+    NXX.speed(g, 900, 420, Math.PI - 0.22, 160, 12, 300, 2, 'rgba(255,255,255,.7)');
+    g.restore();
+    /* frame + struts */
+    g.lineWidth = 26; g.strokeStyle = '#3A4466'; g.stroke(rr(WIN.x, WIN.y, WIN.w, WIN.h, 60)); g.lineWidth = 6; g.strokeStyle = INK; g.stroke(rr(WIN.x - 13, WIN.y - 13, WIN.w + 26, WIN.h + 26, 70)); g.stroke(rr(WIN.x + 13, WIN.y + 13, WIN.w - 26, WIN.h - 26, 48));
+    [[380, 316, 330, 786], [700, 316, 750, 786]].forEach(function (s2) { g.lineCap = 'round'; g.strokeStyle = INK; g.lineWidth = 34; g.beginPath(); g.moveTo(s2[0], s2[1]); g.lineTo(s2[2], s2[3]); g.stroke(); g.strokeStyle = '#3A4466'; g.lineWidth = 22; g.stroke(); });
+    /* instrument panel */
+    var pg = g.createLinearGradient(0, 740, 0, 900); pg.addColorStop(0, '#26345E'); pg.addColorStop(1, '#141E3E'); g.fillStyle = pg; g.beginPath(); g.moveTo(0, 760); g.quadraticCurveTo(540, 700, W, 760); g.lineTo(W, 920); g.lineTo(0, 920); g.closePath(); g.fill(); g.lineWidth = 6; g.strokeStyle = INK; g.stroke();
+    [[150, 800, 34, '#21A366'], [880, 800, 34, '#FFD23F'], [960, 840, 22, '#5FD3FF'], [80, 850, 22, '#FF8FA8']].forEach(function (d) { NXX.glow(g, d[0], d[1], d[2] * 2.2, '120,200,255', 0.35); g.fillStyle = '#0E1530'; g.beginPath(); g.arc(d[0], d[1], d[2], 0, TAU); g.fill(); g.lineWidth = 4; g.strokeStyle = d[3]; g.stroke(); g.beginPath(); g.moveTo(d[0], d[1]); g.lineTo(d[0] + d[2] * 0.7, d[1] - d[2] * 0.4); g.stroke(); });
+    /* red warning light */
+    NXX.glow(g, 990, 300, 120, '255,90,71', 0.75); g.fillStyle = '#FF5A47'; g.beginPath(); g.arc(990, 300, 22, 0, TAU); g.fill(); g.lineWidth = 5; g.strokeStyle = INK; g.stroke();
+  }
+  function lever(g) {
+    var bx = 262, by = 880; g.lineCap = 'round'; g.strokeStyle = INK; g.lineWidth = 22; g.beginPath(); g.moveTo(bx, by); g.lineTo(bx - 30, 690); g.stroke(); g.strokeStyle = '#B9C6E4'; g.lineWidth = 12; g.stroke();
+    g.fillStyle = INK; g.beginPath(); g.arc(bx - 32, 678, 36, 0, TAU); g.fill(); var kg = g.createRadialGradient(bx - 44, 664, 4, bx - 32, 678, 32); kg.addColorStop(0, '#FF9A8E'); kg.addColorStop(1, '#D9363E'); g.fillStyle = kg; g.beginPath(); g.arc(bx - 32, 678, 31, 0, TAU); g.fill();
+    g.fillStyle = INK; g.fill(rr(bx - 70, by - 10, 140, 50, 10)); g.fillStyle = '#FFD23F'; g.fill(rr(bx - 66, by - 6, 132, 42, 8)); g.fillStyle = INK; g.font = '400 30px Bangers'; g.textAlign = 'center'; g.fillText('RESET', bx, by + 26);
+  }
+  function chicken(g, x, y, s) {
+    g.save(); g.translate(x, y); g.scale(s, s); g.rotate(-0.12); g.lineWidth = 5; g.strokeStyle = INK; g.lineJoin = 'round';
+    g.fillStyle = '#FFD23F'; g.beginPath(); g.ellipse(0, 50, 64, 74, 0, 0, TAU); g.fill(); g.stroke();
+    g.fill(NXP.rr(-20, -70, 40, 100, 20)); g.stroke(NXP.rr(-20, -70, 40, 100, 20)); g.beginPath(); g.ellipse(0, 50, 60, 70, 0, 0, TAU); g.fill();
+    g.beginPath(); g.ellipse(4, -92, 38, 40, 0, 0, TAU); g.fill(); g.stroke();
+    g.fillStyle = '#F28C28'; [[-26, 118], [22, 118]].forEach(function (f) { g.beginPath(); g.moveTo(f[0] - 16, f[1] + 10); g.lineTo(f[0], f[1] - 8); g.lineTo(f[0] + 16, f[1] + 10); g.closePath(); g.fill(); g.stroke(); });
+    g.fillStyle = '#FF5A47'; g.beginPath(); g.moveTo(-14, -128); g.quadraticCurveTo(-6, -158, 4, -130); g.quadraticCurveTo(12, -160, 22, -128); g.closePath(); g.fill(); g.stroke();
+    g.fillStyle = '#F28C28'; g.beginPath(); g.moveTo(36, -104); g.lineTo(92, -118); g.lineTo(84, -92); g.lineTo(92, -70); g.lineTo(36, -82); g.closePath(); g.fill(); g.stroke();
+    g.fillStyle = INK; g.beginPath(); g.arc(18, -102, 7, 0, TAU); g.fill();
+    g.fillStyle = '#FFE36E'; g.beginPath(); g.ellipse(-34, 50, 28, 42, -0.4, 0, TAU); g.fill(); g.stroke();
+    /* the pilot badge it earns in the episode */
+    g.fillStyle = '#FFD23F'; g.strokeStyle = INK; g.lineWidth = 3; g.beginPath(); g.moveTo(-6, 10); g.lineTo(-40, 2); g.lineTo(-6, 18); g.moveTo(14, 10); g.lineTo(48, 2); g.lineTo(14, 18); g.stroke(); g.fillStyle = '#2F5FC4'; g.beginPath(); g.arc(4, 13, 10, 0, TAU); g.fill(); g.stroke();
+    g.restore();
+  }
+  function button(g) {
+    var b = BTN, top = b.y - b.dep;
+    g.save(); g.fillStyle = 'rgba(5,10,40,.5)'; g.beginPath(); g.ellipse(b.x + 16, b.y + 24, b.rx + 30, b.ry + 18, 0, 0, TAU); g.fill(); g.restore();
+    /* base ring */
+    g.fillStyle = INK; g.beginPath(); g.ellipse(b.x, b.y + 10, b.rx + 30, b.ry + 22, 0, 0, TAU); g.fill(); g.fillStyle = '#C9D1E6'; g.beginPath(); g.ellipse(b.x, b.y + 4, b.rx + 24, b.ry + 16, 0, 0, TAU); g.fill();
+    /* cylinder side */
+    var sd = g.createLinearGradient(b.x - b.rx, 0, b.x + b.rx, 0); sd.addColorStop(0, '#4E2F49'); sd.addColorStop(0.35, '#8A5C80'); sd.addColorStop(1, '#3E2539'); g.fillStyle = sd;
+    g.beginPath(); g.moveTo(b.x - b.rx, top); g.lineTo(b.x - b.rx, b.y); g.ellipse(b.x, b.y, b.rx, b.ry, 0, Math.PI, 0, true); g.lineTo(b.x + b.rx, top); g.closePath(); g.fill(); g.lineWidth = 7; g.strokeStyle = INK; g.stroke();
+    /* top face */
+    var tf = g.createRadialGradient(b.x - 120, top - 40, 20, b.x, top, b.rx); tf.addColorStop(0, '#B386A8'); tf.addColorStop(0.55, '#8F5F87'); tf.addColorStop(1, '#714B67'); g.fillStyle = tf; g.beginPath(); g.ellipse(b.x, top, b.rx, b.ry, 0, 0, TAU); g.fill(); g.stroke();
+    g.fillStyle = 'rgba(255,255,255,.35)'; g.beginPath(); g.ellipse(b.x - 140, top - 34, 120, 22, -0.1, 0, TAU); g.fill();
+    g.save(); g.translate(b.x - 120, top + 4); g.scale(1, 0.62); g.font = '800 92px "Plus Jakarta Sans"'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round'; g.lineWidth = 12; g.strokeStyle = INK; g.strokeText('CONFIRM', 0, 0); g.fillStyle = '#FFFFFF'; g.fillText('CONFIRM', 0, 0); g.restore();
+    /* TEST COPY sticker on its side */
+    g.save(); g.translate(b.x - 250, b.y - 14); g.rotate(0.14); g.fillStyle = INK; g.fillRect(-92 + 5, -26 + 6, 184, 52); g.fillStyle = '#FFD23F'; g.fillRect(-92, -26, 184, 52); g.lineWidth = 4; g.strokeStyle = INK; g.strokeRect(-92, -26, 184, 52); g.fillStyle = INK; g.font = '400 36px Bangers'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('TEST COPY', 0, 3); g.restore();
+  }
+  function finger(g) {   /* Jun's hand, foreshortened toward the lens, trembling over the button */
+    g.save(); g.translate(150, 0);
+    var sl = new Path2D(); sl.moveTo(522, 650); sl.lineTo(578, 640); sl.lineTo(676, 760); sl.lineTo(574, 770); sl.closePath(); g.fillStyle = '#8EC5FF'; g.fill(sl); g.lineWidth = 6; g.strokeStyle = INK; g.lineJoin = 'round'; g.stroke(sl);
+    var hand = new Path2D(); hand.moveTo(566, 752); hand.bezierCurveTo(560, 800, 580, 826, 610, 830); hand.lineTo(612, 880); hand.quadraticCurveTo(626, 904, 642, 880); hand.lineTo(646, 830); hand.bezierCurveTo(690, 822, 700, 790, 686, 752); hand.closePath();
+    g.fillStyle = '#F5CBA7'; g.fill(hand); g.stroke(hand); g.strokeStyle = 'rgba(16,28,69,.4)'; g.lineWidth = 3; [[596, 790, 600, 816], [660, 788, 664, 812]].forEach(function (l) { g.beginPath(); g.moveTo(l[0], l[1]); g.lineTo(l[2], l[3]); g.stroke(); });
+    g.strokeStyle = '#FFFFFF'; g.lineWidth = 5; g.lineCap = 'round'; [[-1, 0], [1, 0]].forEach(function (d) { for (var k = 0; k < 3; k++) { g.beginPath(); g.arc(626, 860, 40 + k * 16, d[0] < 0 ? Math.PI * 0.85 : -0.15 * Math.PI, d[0] < 0 ? Math.PI * 1.1 : 0.1 * Math.PI); g.stroke(); } });
+    /* sweat */
+    g.restore();
+    g.fillStyle = '#8FD0FF'; [[470, 520, 14], [700, 470, 11], [452, 586, 9]].forEach(function (d) { g.beginPath(); g.moveTo(d[0], d[1] - d[2]); g.quadraticCurveTo(d[0] + d[2], d[1] + d[2] * 0.4, d[0], d[1] + d[2]); g.quadraticCurveTo(d[0] - d[2], d[1] + d[2] * 0.4, d[0], d[1] - d[2]); g.fill(); g.lineWidth = 3; g.strokeStyle = INK; g.stroke(); });
+  }
+  function render(t) {
+    var g = S.g, dpr = S.dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+    NXB.blueprint(g, W, H, { radar: [180, 1180], plane: [900, 160] });
+    cockpit(g);
+    /* Jun in the pilot seat, frozen */
+    NXX.person(g, S, 'jun', 560, 1040, 560, 'worried', [0.3, 0.3], null, 5);
+    lever(g);
+    if (S.nexi) { var nw = NEXI.h * S.nexi.naturalWidth / S.nexi.naturalHeight; g.save(); g.shadowColor = 'rgba(140,220,255,.6)'; g.shadowBlur = 24; g.drawImage(S.nexi, NEXI.x, NEXI.y, nw, NEXI.h); g.restore(); }
+    NXP.sticker(g, S, 4, function (A) { chicken(A, 900, 700, 0.95); });
+    NXX.tile(g, S.sale, 960, 940, 92, 0.18);
+    button(g);
+    finger(g);
+    var bd = g.createLinearGradient(0, 1060, 0, H); bd.addColorStop(0, 'rgba(6,12,40,0)'); bd.addColorStop(0.25, 'rgba(6,12,40,.75)'); bd.addColorStop(1, 'rgba(6,12,40,.92)'); g.fillStyle = bd; g.fillRect(0, 1060, W, H - 1060);
+    var vg = g.createRadialGradient(W / 2, H * 0.45, H * 0.38, W / 2, H * 0.5, H * 0.82); vg.addColorStop(0, 'rgba(0,0,20,0)'); vg.addColorStop(1, 'rgba(0,0,20,.4)'); g.fillStyle = vg; g.fillRect(0, 0, W, H);
+    NXX.balloon(g, S.post, S.post.querySelector('.xbal'), [150, NEXI.y + 30], { px: 26, py: 22 });
+    window.__dbg = {};
+  }
+  TN.boot({ slugs: { 3: 'nexi-explains-s2-ep03-scared-to-click-the-wrong-button' }, setup: { 3: setup }, render: { 3: render }, poster: { 3: 0 }, loop: 8 });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Nexi Explains S2 EP00 - Season 2 Introduction (poster)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Inter:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=block" rel="stylesheet">
+<link rel="stylesheet" href="kit.css">
+<link rel="stylesheet" href="nxe-page.css">
+<style>
+/* S2EP00 "Season 2 Introduction" - Season 2 "Coming in 2027" (technext.asia/nexi-explains), no YouTube date yet.
+   Owner 2026-10-07: "lets do 3 poster for season 2 starting ep00. but the design of poster should be
+   https://technext.asia/nexi-explains similar to this style." + earlier: no TechNext logo row on top; CTA + site at the bottom.
+   SERIES nxe-page | archetype ON AIR TV premiere | camera three-quarter TV set, Nexi popping out | light page hero rays, warm TV
+   glow | text hero title top-left + chips row | nexi bow-tie host waving out of the TV | device TV frame with ON AIR tag +
+   floating app stickers.  Film idea: the page's own "ON AIR" TV, now airing Season 2: the Bluebay Trading team (sample
+   company) on screen, host Nexi leaning out to say the season's line. */
+.p0 .hd{position:absolute;z-index:44;left:62px;top:46px}
+.p0 .hd .hand{display:block;width:fit-content;transform:rotate(-3deg);margin:0 0 14px 6px}
+.p0 .hd .tt .a{font-size:90px;transform:rotate(-3deg)}
+.p0 .hd .tt .b{font-size:158px;transform:rotate(-1.5deg) translateY(6px)}
+.p0 .t1{position:absolute;z-index:44;left:66px;top:404px;transform:rotate(-2deg)}
+.p0 .bb{left:560px;top:372px;width:452px}
+.p0 .nw{left:836px;top:56px;rotate:9deg}
+.p0 .chips{position:absolute;z-index:44;left:62px;top:1166px;display:flex;gap:16px}
+.p0 .ft{position:absolute;z-index:45;left:62px;right:62px;bottom:52px;display:flex;align-items:center;justify-content:space-between}
+.p0 .ft .site{text-align:right}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5 19 12 7 19.5Z" fill="currentColor"/></symbol>
+</defs></svg>
+
+<section class="post p0 nxp grain" data-p="0">
+  <canvas></canvas>
+  <div class="hd">
+    <span class="hand" data-qa="text">the human side of odoo</span>
+    <h1 class="tt" data-qa="text"><span class="a">Nexi Explains</span><br><span class="b y">Season 2</span></h1>
+  </div>
+  <span class="t1 tag" data-qa="text">EP 00 &middot; SEASON OPENER</span>
+  <div class="boom nw" data-qa="text"><span>NEW!</span></div>
+  <div class="bub bb" data-qa="text">Installing Odoo is easy. <b>Changing habits is the hard part.</b></div>
+  <div class="chips" data-qa="text"><span class="chip"><i>14</i>episodes</span><span class="chip"><i>20</i>Quick Tips</span><span class="chip"><span class="dot"></span>Coming in 2027</span></div>
+  <div class="ft" data-qa="text"><span class="btn-y"><svg><use href="#i-play"/></svg>Subscribe on YouTube</span><span class="site">technext.asia<small>All episodes: /nexi-explains</small></span></div>
+</section>
+
+<script src="kit.js"></script>
+<script src="nxe-page.js"></script>
+<script src="s2cast-f3.js"></script>
+<script>
+(function () {
+  var W = TN.W, H = TN.H, TAU = Math.PI * 2, INK = NXP.INK, rr = NXP.rr, S = {};
+  var TV = { x: 58, y: 566, w: 800, h: 560, r: 46, rot: -0.03 }, SCR = 26;
+  var NEXI = { x: 712, y: 498, h: 400 };
+  var CAST = [['maria', 214, 300, 'happy', [0.32, 0.14], 'clipboard'], ['lim', 372, 338, 'happy', [0.2, 0.42], 'mug'], ['ben', 534, 304, 'happy', [0.15, 2.2], 'thumb'], ['jun', 690, 300, 'happy', [0.18, 2.62], null]];
+  function img(src) { return new Promise(function (res) { var i = new Image(); i.onload = function () { res(i); }; i.onerror = function () { res(null); }; i.src = src; }); }
+  function setup(post) {
+    var dpr = window.devicePixelRatio || 1; S.dpr = dpr; S.post = post;
+    var c = post.querySelector('canvas'); c.width = W * dpr; c.height = H * dpr; S.g = c.getContext('2d'); NXP.offscreen(S, W, H);
+    var ic = ['website_slides', 'approvals', 'sign', 'project', 'helpdesk'];
+    return Promise.all([img('assets/nexi/nexi-s2-wave.png'), document.fonts.load('60px Bangers')].concat(ic.map(function (k) { return img('assets/odoo/' + k + '.svg'); }))).then(function (a) { S.nexi = a[0]; S.ic = a.slice(2); });
+  }
+  function cloud(g, x, y, s) { g.fillStyle = '#FFFFFF'; g.beginPath(); [[0, 0, 26], [26, -12, 32], [56, 0, 24], [28, 8, 24]].forEach(function (c) { g.moveTo(x + c[0] * s + c[2] * s, y + c[1] * s); g.arc(x + c[0] * s, y + c[1] * s, c[2] * s, 0, TAU); }); g.fill(); }
+  function screen(A) {   /* the show on the TV: Bluebay Trading's office (sample company) */
+    var x = TV.x + SCR, y = TV.y + SCR, w = TV.w - SCR * 2, h = TV.h - SCR * 2, floor = y + h - 92;
+    A.save(); A.clip(rr(x, y, w, h, TV.r - 16));
+    var wall = A.createLinearGradient(0, y, 0, floor); wall.addColorStop(0, '#E6EEFF'); wall.addColorStop(1, '#D6E2FA'); A.fillStyle = wall; A.fillRect(x, y, w, h);
+    [[x + 40, 300], [x + w - 330, 290]].forEach(function (wn, i) { var wx = wn[0], wy = y + 70, ww = wn[1], wh = 200;
+      var sky = A.createLinearGradient(0, wy, 0, wy + wh); sky.addColorStop(0, '#9FD0FF'); sky.addColorStop(1, '#D8EEFF'); A.fillStyle = sky; A.fill(rr(wx, wy, ww, wh, 10));
+      A.save(); A.clip(rr(wx, wy, ww, wh, 10)); A.fillStyle = 'rgba(120,150,210,.35)'; [[0, 90], [60, 130], [120, 70], [170, 150], [230, 100]].forEach(function (b) { A.fillRect(wx + b[0], wy + wh - b[1], 52, b[1]); }); cloud(A, wx + 40 + i * 80, wy + 46, 1); A.restore();
+      A.lineWidth = 8; A.strokeStyle = '#FFFFFF'; A.stroke(rr(wx, wy, ww, wh, 10)); A.beginPath(); A.moveTo(wx + ww / 2, wy); A.lineTo(wx + ww / 2, wy + wh); A.stroke(); });
+    /* bunting: it's a season opener */
+    var cols = ['#FFD23F', '#FF5A47', '#2F5FC4', '#21A366', '#FF8FA8'];
+    A.strokeStyle = 'rgba(16,28,69,.4)'; A.lineWidth = 2; A.beginPath(); A.moveTo(x, y + 30); A.quadraticCurveTo(x + w / 2, y + 70, x + w, y + 30); A.stroke();
+    for (var i = 0; i < 16; i++) { var u = (i + 0.5) / 16, bx = x + u * w, by = y + 30 + Math.sin(u * Math.PI) * 20; A.fillStyle = cols[i % 5]; A.beginPath(); A.moveTo(bx - 14, by); A.lineTo(bx + 14, by); A.lineTo(bx, by + 30); A.closePath(); A.fill(); }
+    /* floor */
+    var fl = A.createLinearGradient(0, floor, 0, y + h); fl.addColorStop(0, '#E9CDA4'); fl.addColorStop(1, '#D5B286'); A.fillStyle = fl; A.fillRect(x, floor, w, y + h - floor);
+    A.fillStyle = 'rgba(120,80,30,.18)'; for (var k = 1; k < 4; k++) A.fillRect(x, floor + k * 24, w, 2);
+    /* plaque: Bluebay Trading, sample company */
+    A.fillStyle = '#FFFFFF'; A.fill(rr(x + w / 2 - 128, y + 76, 256, 64, 14)); A.lineWidth = 3; A.strokeStyle = 'rgba(16,28,69,.25)'; A.stroke(rr(x + w / 2 - 128, y + 76, 256, 64, 14));
+    A.fillStyle = '#2F5FC4'; A.beginPath(); A.arc(x + w / 2 - 98, y + 108, 13, 0, TAU); A.fill(); A.fillStyle = '#101C45'; A.font = '800 25px "Plus Jakarta Sans"'; A.textBaseline = 'middle'; A.textAlign = 'left'; A.fillText('Bluebay Trading', x + w / 2 - 76, y + 100);
+    A.fillStyle = '#6A6A84'; A.font = '600 15px Inter'; A.fillText('sample company', x + w / 2 - 76, y + 124);
+    A.restore();
+  }
+  function cast(A) { var floorY = TV.y + TV.h - SCR - 30;
+    CAST.forEach(function (c) { var m = F3.cast[c[0]], keep = { mood: m.mood, pose: m.pose, prop: m.prop }; m.mood = c[3]; m.pose = c[4]; m.prop = c[5]; F3.use(A); F3.figure(m, c[1], floorY, c[2]); m.mood = keep.mood; m.pose = keep.pose; m.prop = keep.prop; }); }
+  function render(t) {
+    var g = S.g, dpr = S.dpr;
+    g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+    NXP.bg(g, W, H, 760, 760);
+    /* floating app stickers + twinkles (the page's hero furniture) */
+    [[1004, 1000, 74, 0.16, 0], [884, 1150, 58, -0.12, 1], [506, 470, 60, -0.14, 2], [1010, 296, 66, 0.12, 3], [40, 1010, 0, 0, 4]].forEach(function (a) { if (a[2]) NXP.app(g, S.ic[a[4]], a[0], a[1], a[2], a[3]); });
+    [[520, 120, 18], [700, 300, 12, '#FFFFFF'], [990, 520, 16], [470, 560, 11, '#FFFFFF'], [960, 1260, 14], [40, 520, 13, '#FFFFFF']].forEach(function (s) { NXP.twinkle(g, s[0], s[1], s[2], s[3]); });
+    /* the TV: white rounded set, ink border, hard drop, a slight tilt */
+    var cx = TV.x + TV.w / 2, cy = TV.y + TV.h / 2;
+    g.save(); g.translate(cx, cy); g.rotate(TV.rot); g.translate(-cx, -cy);
+    g.fillStyle = INK; g.fill(rr(TV.x, TV.y + 16, TV.w, TV.h, TV.r));
+    g.fillStyle = '#FFFFFF'; g.fill(rr(TV.x, TV.y, TV.w, TV.h, TV.r)); g.lineWidth = 6; g.strokeStyle = INK; g.stroke(rr(TV.x, TV.y, TV.w, TV.h, TV.r));
+    screen(g);
+    /* the team on screen, then the "S2 · EP 00" corner like the page's drawn Season 2 cards */
+    NXP.sticker(g, S, 0.01, function (A) { var m = A.getTransform(); A.setTransform(m.a, m.b, m.c, m.d, m.e, m.f); A.translate(cx, cy); A.rotate(TV.rot); A.translate(-cx, -cy); A.save(); A.clip(rr(TV.x + SCR, TV.y + SCR, TV.w - SCR * 2, TV.h - SCR * 2, TV.r - 16)); cast(A); A.restore(); }, false);
+    g.save(); g.font = '400 28px Bangers'; g.textAlign = 'left'; g.textBaseline = 'alphabetic'; g.lineJoin = 'round'; g.lineWidth = 6; g.strokeStyle = INK;
+    var ex = TV.x + SCR + 30, ey = TV.y + SCR + 176;
+    g.strokeText('SEASON 2 · EP', ex, ey - 72); g.fillStyle = '#FFFFFF'; g.fillText('SEASON 2 · EP', ex, ey - 72);
+    g.font = '400 112px Bangers'; g.lineWidth = 14; g.strokeText('00', ex - 2, ey + 22); g.fillStyle = '#FFD23F'; g.fillText('00', ex - 2, ey + 22); g.restore();
+    /* screen gloss */
+    g.save(); g.clip(rr(TV.x + SCR, TV.y + SCR, TV.w - SCR * 2, TV.h - SCR * 2, TV.r - 16)); g.fillStyle = 'rgba(255,255,255,.12)'; g.beginPath(); g.moveTo(TV.x + 300, TV.y); g.lineTo(TV.x + 470, TV.y); g.lineTo(TV.x + 200, TV.y + TV.h); g.lineTo(TV.x + 30, TV.y + TV.h); g.closePath(); g.fill(); g.restore();
+    g.restore();
+    /* ON AIR tag on the TV */
+    g.save(); g.translate(TV.x + 64, TV.y - 6); g.rotate(-0.07); g.fillStyle = INK; g.fill(rr(4, 6, 196, 64, 18)); g.fillStyle = '#FF5A47'; g.fill(rr(0, 0, 196, 64, 18)); g.lineWidth = 4; g.strokeStyle = INK; g.stroke(rr(0, 0, 196, 64, 18));
+    g.fillStyle = '#FFFFFF'; g.beginPath(); g.arc(34, 32, 10, 0, TAU); g.fill(); g.font = '400 40px Bangers'; g.textBaseline = 'middle'; g.fillText('ON AIR', 56, 35); g.restore();
+    /* host Nexi leans out of the set, with a little speech-bubble tail */
+    if (S.nexi) { var nw = NEXI.h * S.nexi.naturalWidth / S.nexi.naturalHeight; NXP.sticker(g, S, 0.01, function (A) { A.drawImage(S.nexi, NEXI.x, NEXI.y, nw, NEXI.h); }); }
+    var tail = new Path2D(); tail.moveTo(812, 516); tail.lineTo(858, 566); tail.lineTo(860, 516); tail.closePath();
+    g.fillStyle = INK; g.save(); g.translate(5, 6); g.globalAlpha = 0.45; g.fill(tail); g.restore(); g.fillStyle = '#FFFFFF'; g.fill(tail); g.lineWidth = 4; g.lineJoin = 'round'; g.strokeStyle = INK; g.stroke(tail);
+    window.__dbg = {};
+  }
+  TN.boot({ slugs: { 0: 'nexi-explains-s2-ep00-season-2-introduction' }, setup: { 0: setup }, render: { 0: render }, poster: { 0: 0 }, loop: 8 });
+})();
+</script>
+</body>
+</html>

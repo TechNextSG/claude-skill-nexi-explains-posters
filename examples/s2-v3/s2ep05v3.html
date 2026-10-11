@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Nexi Explains S2 EP05 - Will Odoo Fix Our Mess? (v3)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Inter:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=block" rel="stylesheet">
+<link rel="stylesheet" href="kit.css"><link rel="stylesheet" href="nxe-v3.css">
+<style>
+/* S2EP05 v3 - DRONE SHOT STRAIGHT DOWN OVER A TURQUOISE SEA. A long pier runs from the corner to the open sea; Mr. Lim's red
+   race car (Sales + Invoicing on the hood) skids to a stop at the very end, papers flying, skid marks curling; Ben's boat
+   bobs below. Nexi (goggles) flies up at the drone, huge, big head: MAP IT FIRST! Background: bright turquoise water with
+   wave lines and sparkle, a sand bar in the corner. */
+.p5{background:#2EC4D6}
+.p5 .vtag{left:60px;top:58px}
+.p5 .vbal{left:96px;top:300px;font-size:40px}
+.p5 .vtt{left:56px;top:1000px}
+.p5 .vtt .a{font-size:108px;transform:rotate(-3deg)}
+.p5 .vtt .b{font-size:108px;transform:rotate(-1.5deg) translateY(2px)}
+.p5 .vapps{left:62px;top:1226px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><symbol id="yt" viewBox="0 0 24 24"><path d="M8 5.5 19 12 8 18.5Z" fill="#fff"/></symbol></defs></svg>
+<section class="post p5 v3 grain" data-p="5">
+  <canvas></canvas>
+  <span class="vtag" data-qa="text"><i></i>NEXI EXPLAINS <b>S2 &middot; EP 05</b></span>
+  <div class="vbal" data-qa="text">WRONG ROAD!<br><em>MAP IT FIRST!</em></div>
+  <h1 class="vtt" data-qa="text"><span class="a">Will Odoo</span><br><span class="b y">fix our mess?</span></h1>
+  <div class="vapps" data-qa="text"><span class="k">ODOO APPS</span><span class="ap"><img src="assets/odoo/sale.svg" alt="">Sales</span><span class="ap"><img src="assets/odoo/account.svg" alt="">Invoicing</span></div>
+  <div class="vft" data-qa="text"><span class="ytb"><svg><use href="#yt"/></svg>Subscribe on YouTube</span><span class="vsite">technext.asia<small>Season 2 &middot; coming in 2027</small></span></div>
+</section>
+<script src="kit.js"></script><script src="nxe-page.js"></script><script src="s2cast-f3.js"></script><script src="nxe-x.js"></script>
+<script>
+(function () {
+  var W = TN.W, H = TN.H, TAU = Math.PI * 2, INK = NXX.INK, rr = NXP.rr, S = {};
+  var PA = -0.62, PIER = { x0: 60, y0: 1180, len: 980, w: 190 }, CAR = { x: 742, y: 668, rot: -0.62 - 0.18 }, NEXI = { x: 690, y: 40, h: 380 };
+  function img(src) { return new Promise(function (res) { var i = new Image(); i.onload = function () { res(i); }; i.onerror = function () { res(null); }; i.src = src; }); }
+  function setup(post) {
+    var dpr = window.devicePixelRatio || 1; S.dpr = dpr; S.post = post;
+    var c = post.querySelector('canvas'); c.width = W * dpr; c.height = H * dpr; S.g = c.getContext('2d'); NXP.offscreen(S, W, H);
+    return Promise.all([img('assets/nexi/nexi-v3e5.png'), img('assets/odoo/sale.svg'), img('assets/odoo/account.svg'), document.fonts.load('60px Bangers')]).then(function (a) { S.nexi = a[0]; S.sale = a[1]; S.inv = a[2]; });
+  }
+  function sea(g) {
+    var gr = g.createLinearGradient(0, 0, W, H); gr.addColorStop(0, '#5EE0EA'); gr.addColorStop(0.5, '#25B8D2'); gr.addColorStop(1, '#127FB4'); g.fillStyle = gr; g.fillRect(0, 0, W, H);
+    /* sand bar + shallows in the bottom-left corner */
+    g.fillStyle = 'rgba(255,255,255,.35)'; g.beginPath(); g.moveTo(-40, 820); g.bezierCurveTo(160, 860, 320, 1040, 360, 1500); g.lineTo(-40, 1500); g.closePath(); g.fill();
+    g.fillStyle = '#F7DFA8'; g.beginPath(); g.moveTo(-40, 880); g.bezierCurveTo(130, 920, 260, 1060, 290, 1500); g.lineTo(-40, 1500); g.closePath(); g.fill();
+    /* wave lines + sparkles */
+    var R = TN.rand(8); g.strokeStyle = 'rgba(255,255,255,.45)'; g.lineCap = 'round';
+    for (var i = 0; i < 60; i++) { var x = R() * W, y = R() * H, l = 30 + R() * 60; g.lineWidth = 3 + R() * 2; g.beginPath(); g.moveTo(x, y); g.quadraticCurveTo(x + l / 2, y - 8, x + l, y); g.stroke(); }
+    g.fillStyle = 'rgba(255,255,255,.85)'; for (var k = 0; k < 40; k++) { var sx = R() * W, sy = R() * 900; NXP.twinkle(g, sx, sy, 4 + R() * 6, '#FFFFFF'); }
+  }
+  function pier(g) {
+    g.save(); g.translate(PIER.x0, PIER.y0); g.rotate(PA);
+    g.fillStyle = 'rgba(0,40,80,.3)'; g.fillRect(18, -PIER.w / 2 + 26, PIER.len, PIER.w);
+    for (var px = 40; px < PIER.len; px += 150) { [-1, 1].forEach(function (s) { g.fillStyle = '#5A3A22'; g.beginPath(); g.arc(px, s * (PIER.w / 2 + 6), 14, 0, TAU); g.fill(); g.lineWidth = 3; g.strokeStyle = INK; g.stroke(); }); }
+    g.fillStyle = '#D9A066'; g.fillRect(0, -PIER.w / 2, PIER.len, PIER.w);
+    g.strokeStyle = 'rgba(80,40,10,.45)'; g.lineWidth = 3; for (var x = 0; x < PIER.len; x += 26) { g.beginPath(); g.moveTo(x, -PIER.w / 2); g.lineTo(x, PIER.w / 2); g.stroke(); }
+    g.lineWidth = 6; g.strokeStyle = INK; g.strokeRect(0, -PIER.w / 2, PIER.len, PIER.w);
+    /* painted END stripes at the tip */
+    for (var j = 0; j < 6; j++) { g.fillStyle = j % 2 ? '#FFD23F' : INK; g.fillRect(PIER.len - 34, -PIER.w / 2 + j * PIER.w / 6, 24, PIER.w / 6); }
+    g.restore();
+  }
+  function skid(g) {
+    g.save(); g.strokeStyle = 'rgba(20,20,30,.7)'; g.lineWidth = 14; g.lineCap = 'round';
+    [-34, 34].forEach(function (o) { g.beginPath(); g.moveTo(330 + o, 980 + o * 0.6); g.bezierCurveTo(450 + o, 880, 520 + o * 0.4, 820, CAR.x - 110 + o * 0.6, CAR.y + 80 + o * 0.3); g.stroke(); }); g.restore();
+  }
+  function car(g) {
+    g.save(); g.translate(CAR.x, CAR.y); g.rotate(CAR.rot);
+    g.fillStyle = 'rgba(0,30,60,.35)'; g.fill(rr(-150 + 14, -80 + 20, 300, 160, 60));
+    [[-96, -84], [84, -84], [-96, 84], [84, 84]].forEach(function (w) { g.fillStyle = INK; g.fill(rr(w[0] - 26, w[1] - 16, 52, 32, 10)); });
+    var bg = g.createLinearGradient(0, -80, 0, 80); bg.addColorStop(0, '#FF7A6A'); bg.addColorStop(1, '#C8242F'); g.fillStyle = bg; g.fill(rr(-150, -80, 300, 160, 60)); g.lineWidth = 7; g.strokeStyle = INK; g.stroke(rr(-150, -80, 300, 160, 60));
+    g.fillStyle = '#FFFFFF'; g.fillRect(-150, -12, 300, 24);
+    /* open cockpit with Mr. Lim seen from above: head, part line, sticky note on the forehead */
+    g.fillStyle = '#1B2547'; g.fill(rr(-62, -54, 108, 108, 40)); g.lineWidth = 5; g.stroke(rr(-62, -54, 108, 108, 40));
+    g.fillStyle = '#2F2F35'; g.beginPath(); g.arc(-8, 0, 40, 0, TAU); g.fill(); g.fillStyle = '#D9A27A'; g.beginPath(); g.arc(20, 0, 22, -1.2, 1.2); g.fill();
+    g.save(); g.translate(26, 0); g.rotate(0.2); g.fillStyle = INK; g.fillRect(-14 + 2, -16 + 3, 30, 32); g.fillStyle = '#FFE36E'; g.fillRect(-14, -16, 30, 32); g.lineWidth = 3; g.strokeStyle = INK; g.strokeRect(-14, -16, 30, 32); g.restore();
+    [[-40, -60], [-40, 60]].forEach(function (a) { g.strokeStyle = '#22305A'; g.lineWidth = 18; g.lineCap = 'round'; g.beginPath(); g.moveTo(-8, a[1] * 0.4); g.lineTo(a[0] + 80, a[1] * 1.05); g.stroke(); g.fillStyle = '#D9A27A'; g.beginPath(); g.arc(a[0] + 84, a[1] * 1.07, 13, 0, TAU); g.fill(); });
+    /* hood decals: the Odoo apps as racing sponsors, number roundel */
+    NXX.tile(g, S.sale, 98, -34, 50, 0); NXX.tile(g, S.inv, 98, 34, 50, 0);
+    g.fillStyle = '#fff'; g.beginPath(); g.arc(-110, 0, 26, 0, TAU); g.fill(); g.lineWidth = 4; g.strokeStyle = INK; g.stroke(); g.fillStyle = INK; g.font = '400 32px Bangers'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('1', -110, 2);
+    g.restore();
+  }
+  function render(t) {
+    var g = S.g, dpr = S.dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+    sea(g);
+    /* Ben's rowboat from above, fishing line */
+    g.save(); g.translate(260, 520); g.rotate(0.5); g.fillStyle = 'rgba(0,30,60,.3)'; g.beginPath(); g.ellipse(10, 14, 90, 36, 0, 0, TAU); g.fill(); g.fillStyle = '#C98B52'; g.beginPath(); g.ellipse(0, 0, 90, 36, 0, 0, TAU); g.fill(); g.lineWidth = 5; g.strokeStyle = INK; g.stroke();
+    g.fillStyle = '#BFC3CC'; g.beginPath(); g.arc(-6, 0, 20, 0, TAU); g.fill(); g.fillStyle = '#F28C28'; g.fill(rr(-30, -26, 30, 52, 10)); g.restore();
+    g.strokeStyle = 'rgba(16,28,69,.6)'; g.lineWidth = 2; g.beginPath(); g.moveTo(250, 500); g.quadraticCurveTo(160, 420, 120, 470); g.stroke(); g.strokeStyle = 'rgba(255,255,255,.7)'; g.lineWidth = 3; g.beginPath(); g.arc(120, 470, 14, 0, TAU); g.stroke();
+    pier(g);
+    skid(g);
+    /* papers spraying off the car toward the sea */
+    NXX.speed(g, 560, 700, PA - 0.9, 120, 10, 200, 3);
+    [[600, 470, 70, 0.6], [520, 600, 62, -0.4], [960, 560, 58, -0.9], [620, 360, 50, 0.2]].forEach(function (s) { NXX.sheet(g, s[0], s[1], s[2], s[3], 0, 3); });
+    car(g);
+    g.save(); g.font = '400 64px Bangers'; g.lineJoin = 'round'; g.lineWidth = 12; g.strokeStyle = INK; g.translate(470, 840); g.rotate(-0.5); g.strokeText('SCREECH!', 0, 0); g.fillStyle = '#FFFFFF'; g.fillText('SCREECH!', 0, 0); g.restore();
+    /* Nexi flies up at the drone: huge, big head (high-angle render) */
+    if (S.nexi) { var nw = NEXI.h * S.nexi.naturalWidth / S.nexi.naturalHeight; g.save(); g.shadowColor = 'rgba(0,40,80,.35)'; g.shadowOffsetX = 30; g.shadowOffsetY = 60; g.shadowBlur = 30; g.drawImage(S.nexi, NEXI.x, NEXI.y, nw, NEXI.h); g.restore(); }
+    var bd = g.createLinearGradient(0, 960, 0, H); bd.addColorStop(0, 'rgba(16,28,69,0)'); bd.addColorStop(0.28, 'rgba(16,28,69,.8)'); bd.addColorStop(1, 'rgba(16,28,69,.95)'); g.fillStyle = bd; g.fillRect(0, 960, W, H - 960);
+    NXX.balloon(g, S.post, S.post.querySelector('.vbal'), [NEXI.x + 60, NEXI.y + 140], { px: 30, py: 24 });
+    window.__dbg = {};
+  }
+  TN.boot({ slugs: { 5: 'nexi-explains-s2-ep05-will-odoo-fix-our-mess' }, setup: { 5: setup }, render: { 5: render }, poster: { 5: 0 }, loop: 8 });
+})();
+</script>
+</body>
+</html>

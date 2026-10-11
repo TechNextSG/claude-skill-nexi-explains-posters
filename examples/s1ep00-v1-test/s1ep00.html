@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Nexi Explains S1 EP00 - Meet Nexi (premiere promo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Inter:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=block" rel="stylesheet">
+<link rel="stylesheet" href="kit.css">
+<style>
+/* NEXI EXPLAINS EPISODE PROMO - S1 EP00 "Meet Nexi" (the pilot). ?f=34 image, ?f=reel reel.
+   Film idea: the episode as an ISSUE #00 COMIC-BOOK COVER. Night city under a huge moon; the Spreadsheet Monster (the pilot's
+   own painter, copied by extract_monster.py) rises over the rooftops and roars at Lotus Mart (sample); caped Nexi hovers
+   in front of it, fist up, four power orbs orbiting her = the four TechNext services (Odoo ERP, AI, Marketing, Technology).
+   Light plan: moon backlight (rim on the monster), searchlight beams from the street, warm windows and a lamp pool on the shop.
+   Devices: moon bloom + cloud wisps, volumetric searchlights, haze between skyline layers, comic focus lines, halftone print,
+   grain + vignette. Words: series badge top-left (recurring per episode), title + cover line + premiere tape at the bottom. */
+.p0{background:#0B1A45}
+.p0 canvas{position:absolute;left:0;top:0;width:1080px;height:100%}
+.p0 .brand .odoo{height:42px}
+
+/* the series badge (same on every episode promo) */
+.p0 .epb{position:absolute;z-index:42;left:72px;top:172px;width:262px}
+.p0 .epb .card{border:5px solid #0B1534;border-radius:24px;overflow:hidden;box-shadow:8px 9px 0 #0B1534;background:#2A5BD0}
+.p0 .epb .band{display:flex;align-items:center;gap:10px;padding:11px 18px 10px;background:#0B1534;color:#fff;font:800 19px/1 var(--display);letter-spacing:.07em}
+.p0 .epb .band i{width:12px;height:12px;border-radius:50%;background:#5FD3FF;box-shadow:0 0 10px #5FD3FF}
+.p0 .epb .num{display:flex;align-items:flex-end;gap:12px;padding:4px 18px 10px;background:linear-gradient(180deg,#4D86EE,#2A5BD0)}
+.p0 .epb .num small{font:800 40px/1 var(--display);color:#fff;padding-bottom:16px;-webkit-text-stroke:7px #0B1534;paint-order:stroke fill}
+.p0 .epb .num b{font:800 100px/.9 var(--display);letter-spacing:-.04em;background:none;color:#FFD84A;-webkit-text-stroke:10px #0B1534;paint-order:stroke fill;text-shadow:0 7px 0 #0B1534}
+.p0 .epb .tag{display:inline-block;margin:14px 0 0 4px;padding:9px 18px 8px;border:4px solid #0B1534;border-radius:999px;background:#FFD84A;color:#0B1534;font:800 20px/1 var(--display);letter-spacing:.06em;box-shadow:5px 5px 0 #0B1534;transform:rotate(-3deg)}
+
+/* bottom stack: title, cover line, premiere tape */
+.p0 .words{top:auto;bottom:158px}
+.p0 .ttl{position:relative;width:fit-content;margin:0;font:800 142px/.9 var(--display);letter-spacing:-.02em;white-space:nowrap}
+.p0 .ttl span{display:block}
+.p0 .ttl .bk{color:#0B1534;-webkit-text-stroke:18px #0B1534;text-shadow:0 11px 0 #0B1534}
+.p0 .ttl .fr{position:absolute;left:0;top:0;color:#fff}
+.p0 .ttl .fr em{font-style:normal;background:linear-gradient(180deg,#FFF59A 8%,#FFD84A 48%,#FFA51A 92%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.p0 .cov{margin-top:22px;font:600 31px/1.3 var(--text);color:rgba(255,255,255,.9);letter-spacing:-.005em}
+.p0 .cov b{color:#fff;font-weight:800}
+.p0 .prem{display:inline-flex;align-items:center;gap:14px;margin-top:20px;padding:12px 26px 12px 12px;background:#FFD84A;border:4px solid #0B1534;border-radius:16px;box-shadow:7px 7px 0 #0B1534;transform:rotate(-1.4deg);transform-origin:left center;
+  font:800 27px/1 var(--display);color:#0B1534;letter-spacing:.01em;white-space:nowrap}
+.p0 .prem .pl{width:44px;height:44px;border-radius:12px;background:#0B1534;display:grid;place-items:center}
+.p0 .prem .pl svg{width:20px;height:20px;margin-left:3px}
+.p0 .prem s{text-decoration:none;opacity:.45;margin:0 -2px}
+
+/* the four powers = the four TechNext services (colours match the orbs) */
+.p0 .pows{display:flex;align-items:center;gap:12px;margin-top:16px;white-space:nowrap}
+.p0 .pows .k{font:800 19px/1 var(--display);letter-spacing:.1em;color:rgba(255,255,255,.7);margin-right:2px}
+.p0 .pows .pc{display:inline-flex;align-items:center;gap:9px;height:44px;padding:0 16px 0 6px;border-radius:999px;background:var(--c);border:3px solid #0B1534;box-shadow:3px 4px 0 #0B1534;
+  font:800 21px/1 var(--display);color:#fff;letter-spacing:-.005em}
+.p0 .pows .pc svg{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.22);padding:4px;color:#fff}
+
+.p0 .foot .btn svg{width:30px;height:30px}
+
+/* reel: the bottom stack sits above the footer (430) */
+.p0.f-reel .words{bottom:530px}
+.p0.f-reel .epb{top:300px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-play" viewBox="0 0 20 20"><path d="M3 1.8 18 10 3 18.2Z" fill="#FFD84A" stroke="#FFD84A" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="g-layers" viewBox="0 0 24 24"><path d="M12 3 21 8 12 13 3 8Z" fill="currentColor"/><path d="M3 12.5 12 17.5 21 12.5M3 16.5 12 21.5 21 16.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></symbol>
+  <symbol id="g-bot" viewBox="0 0 24 24"><rect x="3.5" y="7.5" width="17" height="12" rx="4" fill="none" stroke="currentColor" stroke-width="2.3"/><circle cx="9" cy="13.5" r="1.8" fill="currentColor"/><circle cx="15" cy="13.5" r="1.8" fill="currentColor"/><path d="M12 7.5V4" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/><circle cx="12" cy="3.2" r="1.6" fill="currentColor"/></symbol>
+  <symbol id="g-mega" viewBox="0 0 24 24"><path d="M3 9.5h4l10-5.5v16L7 14.5H3Z" fill="currentColor"/><path d="M6 15l1.8 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/><path d="M20 9.5v5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/></symbol>
+  <symbol id="g-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1" fill="currentColor"/><path d="M9.5 6V2.5M14.5 6V2.5M9.5 21.5V18M14.5 21.5V18M6 9.5H2.5M6 14.5H2.5M21.5 9.5H18M21.5 14.5H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.6 2H4.4ZM10 20.2a2.2 2.2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+</defs></svg>
+
+<section class="post p0 dark grain" data-p="0">
+  <canvas></canvas>
+  <div class="brand" data-qa="text"><img class="tn" src="assets/logo/technext-horizontal-blue.svg" alt="TechNext"><img class="odoo" src="assets/logo/odoo-logo-white.png" alt="Odoo"></div>
+
+  <div class="epb" data-qa="text">
+    <div class="card"><div class="band"><i></i>NEXI EXPLAINS</div><div class="num"><small>EP</small><b>00</b></div></div>
+    <span class="tag">SERIES PILOT</span>
+  </div>
+
+
+  <div class="words">
+    <h1 class="ttl" data-qa="text"><span class="bk" aria-hidden="true">MEET NEXI!</span><span class="fr">MEET <em>NEXI!</em></span></h1>
+    <p class="cov" data-qa="text">TechNext&rsquo;s AI companion <b>vs. the Spreadsheet Monster.</b></p>
+    <div class="pows" data-qa="text"><span class="k">4 POWERS</span><span class="pc" style="--c:#8350A0"><svg><use href="#g-layers"/></svg>Odoo ERP</span><span class="pc" style="--c:#2F6FE0"><svg><use href="#g-bot"/></svg>AI</span><span class="pc" style="--c:#EC4A7C"><svg><use href="#g-mega"/></svg>Marketing</span><span class="pc" style="--c:#159B6C"><svg><use href="#g-chip"/></svg>Technology</span></div>
+    <span class="prem" data-qa="text"><span class="pl"><svg><use href="#i-play"/></svg></span>PREMIERES TUE 13 OCT <s>&middot;</s> 6 PM SGT <s>&middot;</s> YOUTUBE</span>
+  </div>
+
+  <div class="foot" data-qa="text"><span class="btn">Get notified<svg><use href="#i-bell"/></svg></span><span class="site"><b>technext.asia</b><small>All episodes: /nexi-explains</small></span></div>
+</section>
+
+<script src="kit.js"></script>
+<script src="ep00-monster.js"></script>
+<script>
+(function () {
+  var W = TN.W, H = TN.H, LOOP = 8, TAU = Math.PI * 2, M = window.EP00M, INK = '#0B1534';
+  var DY = TN.pick({ 34: 0, reel: 236 });
+  var S = {}, rr = M.rrP, ell = M.ellP, poly = M.polyP, hsh = M.hsh;
+  var NEXI = { x: 100, y: 408, h: 522, nx: 0.39, ny: 0.505 };   // the hero render (nexi-cam 'hero' hold): neck at (nx, ny) of the image
+  var ORB = { cx: 0, cy: 0, rx: 226, ry: 104, tilt: -0.13, ph: 0.82 };
+  var POW = [['ODOO ERP', '#9A62BC', '#5E3A74', 'layers'], ['AI', '#4A86F0', '#1F4CAE', 'bot'], ['MARKETING', '#FF6A94', '#C92F5D', 'mega'], ['TECHNOLOGY', '#26BE88', '#127552', 'chip']];
+  var GROUND = 1000;
+
+  function img(src) { return new Promise(function (res) { var i = new Image(); i.onload = function () { res(i); }; i.onerror = function () { res(null); }; i.src = src; }); }
+
+  function setup(post) {
+    var dpr = window.devicePixelRatio || 1; S.dpr = dpr; S.post = post;
+    var c = post.querySelector('canvas'); c.width = W * dpr; c.height = H * dpr; S.g = c.getContext('2d');
+    /* seeded scenery */
+    var R = TN.rand(20261013); S.stars = [];
+    for (var i = 0; i < 150; i++) S.stars.push([R() * W, R() * 760 - 120, 0.7 + R() * 2.1, R() * TAU, 1 + Math.floor(R() * 3)]);
+    S.far = []; for (var x = -40; x < W + 40;) { var w = 60 + R() * 70; S.far.push([x, w, 150 + R() * 210]); x += w + 2; }
+    S.mid = []; for (var x2 = -60; x2 < W + 60;) { var w2 = 90 + R() * 80; S.mid.push([x2, w2, 120 + R() * 190, R()]); x2 += w2 + 8; }
+    return Promise.all([img('assets/nexi/nexi-ep00-hero.png'), img('assets/logo/logo-plane.png'), document.fonts.load('64px Bangers')]).then(function (a) { S.nexi = a[0]; S.plane = a[1]; });
+  }
+
+  /* ---------- painters ---------- */
+  function windows(g, x, top, w, h, col, seed, step) {
+    var p = new Path2D(), st = step || 28;
+    for (var wy = top + 18; wy < top + h - 20; wy += st) for (var wx = x + 12; wx < x + w - 18; wx += 22) if (hsh(wx * 0.37 + wy * 1.3 + seed) > 0.56) p.rect(wx, wy, 9, 13);
+    g.fillStyle = col; g.fill(p);
+  }
+  function cloud(g, x, y, s) { var p = new Path2D(); [[0, 0, 70], [70, -26, 86], [150, 0, 64], [80, 24, 70]].forEach(function (c) { p.moveTo(x + c[0] * s + c[2] * s, y + c[1] * s); p.arc(x + c[0] * s, y + c[1] * s, c[2] * s, 0, TAU); }); return p; }
+
+  function sky(g, th) {
+    var gr = g.createLinearGradient(0, -DY, 0, GROUND); gr.addColorStop(0, '#081646'); gr.addColorStop(0.36, '#1B3290'); gr.addColorStop(0.62, '#4A47A8'); gr.addColorStop(0.82, '#B0679E'); gr.addColorStop(1, '#F39C7E');
+    g.fillStyle = gr; g.fillRect(0, -DY, W, GROUND + DY + 40);
+    /* stars (twinkle on integer harmonics) */
+    var sp = new Path2D(); S.stars.forEach(function (s) { var a = 0.45 + 0.55 * Math.sin(th * s[4] + s[3]); if (a < 0.15) return; sp.moveTo(s[0] + s[2], s[1]); sp.arc(s[0], s[1], s[2] * (0.6 + 0.4 * a), 0, TAU); });
+    g.fillStyle = 'rgba(255,255,255,.8)'; g.fill(sp);
+  }
+  function halftone(g, x0, y0, w, h, col, step, dir) {
+    var p = new Path2D(), st = step || 20;
+    for (var yy = y0, r = 0; yy < y0 + h; yy += st, r++) for (var xx = x0 + (r % 2 ? st / 2 : 0); xx < x0 + w; xx += st) {
+      var d = dir === 'l' ? 1 - (xx - x0) / w : (xx - x0) / w, v = d * (dir === 'b' ? (yy - y0) / h : 1), rad = 0.4 + v * 4.6; if (rad < 0.6) continue; p.moveTo(xx + rad, yy); p.arc(xx, yy, rad, 0, TAU); }
+    g.fillStyle = col; g.fill(p);
+  }
+  function moon(g, th, mx, my, r) {
+    var gl = g.createRadialGradient(mx, my, r * 0.6, mx, my, r * 3.1); gl.addColorStop(0, 'rgba(255,240,205,.55)'); gl.addColorStop(0.35, 'rgba(255,226,180,.16)'); gl.addColorStop(1, 'rgba(255,226,180,0)');
+    g.fillStyle = gl; g.fillRect(mx - r * 3.2, my - r * 3.2, r * 6.4, r * 6.4);
+    var mg = g.createRadialGradient(mx - r * 0.3, my - r * 0.35, r * 0.1, mx, my, r); mg.addColorStop(0, '#FFFBEA'); mg.addColorStop(0.75, '#FFF1CC'); mg.addColorStop(1, '#F2DDAA');
+    g.fillStyle = mg; g.fill(ell(mx, my, r, r));
+    g.fillStyle = 'rgba(206,186,140,.45)'; [[-0.32, -0.2, 0.2], [0.28, 0.32, 0.15], [0.4, -0.36, 0.1], [-0.1, 0.45, 0.09], [-0.52, 0.22, 0.07]].forEach(function (c) { g.fill(ell(mx + c[0] * r, my + c[1] * r, c[2] * r, c[2] * r * 0.86)); });
+    g.lineWidth = 6; g.strokeStyle = 'rgba(11,21,52,.55)'; g.stroke(ell(mx, my, r, r));
+  }
+  function beam(g, x, y, ang, len, w0, w1, a) {
+    var ex = x + Math.sin(ang) * len, ey = y - Math.cos(ang) * len, nx = Math.cos(ang), ny = Math.sin(ang);
+    var gr = g.createLinearGradient(x, y, ex, ey); gr.addColorStop(0, 'rgba(255,248,214,' + a + ')'); gr.addColorStop(0.55, 'rgba(255,248,214,' + a * 0.45 + ')'); gr.addColorStop(1, 'rgba(255,248,214,0)');
+    g.save(); g.globalCompositeOperation = 'lighter'; g.filter = 'blur(6px)'; g.fillStyle = gr;
+    g.fill(poly([[x - nx * w0, y - ny * w0], [x + nx * w0, y + ny * w0], [ex + nx * w1, ey + ny * w1], [ex - nx * w1, ey - ny * w1]]));
+    g.filter = 'none'; g.restore();
+    return [ex, ey];
+  }
+  function signal(g, cx, cy, th) {
+    g.save(); g.fillStyle = 'rgba(122,132,205,.42)'; g.fill(cloud(g, cx - 175, cy + 14, 1.05)); g.restore();
+    g.save(); g.shadowColor = 'rgba(255,240,180,.95)'; g.shadowBlur = 50; g.fillStyle = 'rgba(255,248,214,.93)'; g.fill(ell(cx, cy, 96, 66)); g.restore();
+    if (S.plane) { var w = 96, h = w * S.plane.naturalHeight / S.plane.naturalWidth; g.save(); g.globalAlpha = 0.95; g.drawImage(S.plane, cx - w / 2, cy - h / 2, w, h); g.restore(); }
+  }
+  function skyline(g, th) {
+    /* far row in haze */
+    var fp = new Path2D(); S.far.forEach(function (b) { fp.rect(b[0], GROUND - b[2] - 60, b[1], b[2] + 80); });
+    g.fillStyle = '#3D3F92'; g.fill(fp);
+    S.far.forEach(function (b, i) { windows(g, b[0], GROUND - b[2] - 60, b[1], b[2] + 60, 'rgba(255,214,140,.32)', i * 7, 30); });
+    var hz = g.createLinearGradient(0, GROUND - 330, 0, GROUND); hz.addColorStop(0, 'rgba(176,103,158,0)'); hz.addColorStop(1, 'rgba(240,150,130,.5)'); g.fillStyle = hz; g.fillRect(0, GROUND - 330, W, 330);
+  }
+  function midRow(g, th) {
+    S.mid.forEach(function (b, i) {
+      var x = b[0], top = GROUND - b[2]; g.fillStyle = '#16255C'; g.fill(rr(x, top, b[1], b[2] + 30, 3)); g.fillStyle = '#2A3F86'; g.fill(rr(x + b[1] - 7, top, 7, b[2] + 30, 0));
+      windows(g, x, top, b[1], b[2], 'rgba(255,212,126,.72)', b[0], 28);
+      if (b[3] > 0.62) { g.strokeStyle = '#16255C'; g.lineWidth = 4; g.beginPath(); g.moveTo(x + b[1] / 2, top); g.lineTo(x + b[1] / 2, top - 46); g.stroke();
+        if (Math.sin(th * 4 + i) > 0) { g.save(); g.shadowColor = '#FF5A6E'; g.shadowBlur = 14; g.fillStyle = '#FF6A7C'; g.fill(ell(x + b[1] / 2, top - 48, 5, 5)); g.restore(); } }
+    });
+  }
+  /* Lotus Mart (sample): the pilot's shop, redrawn small */
+  function shop(g, x, y, s) {
+    var C = M.cel, PINK = '#FF4D7A'; g.save(); g.translate(x, y); g.scale(s, s);
+    var w = 300, h = 230;
+    C(g, rr(0, 0, w, h, 8), '#FFF4E0', '#EBD2AE', 16, 0, 6); C(g, rr(-10, -8, w + 20, 22, 6), '#E9C9A0', '#D2A97A', 0, 6, 5);
+    var aw = new Path2D(); aw.moveTo(-14, 14); aw.lineTo(w + 14, 14); aw.lineTo(w + 14, 66); for (var sc = 6; sc >= 0; sc--) aw.arc(-14 + (w + 28) * (sc + 0.5) / 7, 66, (w + 28) / 14, 0, Math.PI, false); aw.closePath();
+    g.save(); g.clip(aw); for (var st = 0; st < 7; st++) { g.fillStyle = st % 2 ? '#FFFFFF' : PINK; g.fillRect(-14 + st * (w + 28) / 7, 10, (w + 28) / 7 + 1, 90); } g.restore(); g.lineWidth = 5; g.strokeStyle = INK; g.stroke(aw);
+    var wn = rr(22, 100, 132, 108, 8); g.fillStyle = '#9FC3F0'; g.fill(wn); g.save(); g.clip(wn); g.fillStyle = '#C98B52'; g.fillRect(22, 176, 132, 10); [[30, '#FF8A8A'], [62, '#FFD84A'], [96, '#7DD3A8']].forEach(function (b) { g.fillStyle = b[1]; g.fill(rr(b[0], 152, 26, 24, 4)); }); g.fillStyle = 'rgba(255,255,255,.35)'; g.fill(poly([[40, 100], [80, 100], [30, 208], [22, 208], [22, 140]])); g.restore();
+    g.lineWidth = 5; g.strokeStyle = INK; g.stroke(wn);
+    C(g, rr(180, 100, 98, 130, 8), '#8B5A2B', '#6B4423', 10, 0, 5); g.fillStyle = '#FFD84A'; g.fill(ell(262, 168, 6, 6));
+    /* door sign: CLOSED */
+    g.fillStyle = '#8A93A6'; g.fill(rr(193, 124, 72, 26, 13)); g.fillStyle = '#fff'; g.font = '800 15px "Plus Jakarta Sans"'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('CLOSED', 229, 138);
+    /* name board + sample chip */
+    g.fillStyle = '#fff'; g.fill(rr(40, -58, w - 80, 50, 14)); g.lineWidth = 4; g.strokeStyle = INK; g.stroke(rr(40, -58, w - 80, 50, 14));
+    g.fillStyle = '#1F1F3D'; g.font = '800 27px "Plus Jakarta Sans"'; g.fillText('Lotus Mart', w / 2, -32);
+    g.fillStyle = '#EEF2FA'; g.fill(rr(w - 64, -86, 84, 28, 14)); g.fillStyle = '#4C4C63'; g.font = '700 17px Inter'; g.fillText('Sample', w - 22, -71);
+    g.restore();
+  }
+  function nearRow(g, th) {
+    var rows = [[-20, 150, 118], [126, 120, 84], [790, 120, 96], [906, 190, 140]];
+    rows.forEach(function (b, i) { var x = b[0], w = b[1], top = GROUND - b[2]; g.fillStyle = '#0B1534'; g.fill(rr(x, top, w, b[2] + 60, 2)); g.fillStyle = '#1D2E66'; g.fill(rr(x - 5, top - 9, w + 10, 11, 3)); windows(g, x, top, w, b[2], 'rgba(255,214,130,.78)', i * 31 + 5, 26); });
+    /* street + lamp pools */
+    g.fillStyle = '#0A1330'; g.fillRect(0, GROUND, W, H - GROUND + 10);
+    g.fillStyle = '#1A2856'; g.fillRect(0, GROUND, W, 10);
+    [[790, 0.48], [1050, 0.34]].forEach(function (l) { var lx = l[0], lg = g.createRadialGradient(lx, GROUND - 120, 6, lx, GROUND - 40, 230); lg.addColorStop(0, 'rgba(255,220,140,' + l[1] + ')'); lg.addColorStop(1, 'rgba(255,220,140,0)'); g.fillStyle = lg; g.fillRect(lx - 240, GROUND - 330, 480, 400);
+      g.fillStyle = '#222E55'; g.fill(rr(lx - 4, GROUND - 150, 8, 152, 4)); g.fill(rr(lx - 22, GROUND - 160, 44, 14, 7)); g.fillStyle = '#FFE6A8'; g.fill(ell(lx, GROUND - 150, 13, 7)); });
+  }
+  function focusLines(g, cx, cy, th) {
+    var p = new Path2D(), R = TN.rand(77);
+    for (var i = 0; i < 70; i++) { var a = (i / 70) * TAU + R() * 0.05, r0 = 360 + R() * 140, r1 = 1300; p.moveTo(cx + Math.cos(a - 0.006) * r0, cy + Math.sin(a - 0.006) * r0); p.lineTo(cx + Math.cos(a) * r1, cy + Math.sin(a) * r1); p.lineTo(cx + Math.cos(a + 0.012) * r1, cy + Math.sin(a + 0.012) * r1); p.closePath(); }
+    g.fillStyle = 'rgba(190,210,255,.07)'; g.fill(p);
+  }
+  /* the hero cape (after the pilot's drawCape): wind from the monster's side, so it streams out to the LEFT of her body like a
+     flag (a cape hanging straight down hides behind her round body). Far edge and hem ripple on integer harmonics of th. */
+  function cape(g, nx, ny, s, th) {
+    var w1 = Math.sin(th * 2), w2 = Math.sin(th * 3 + 1);
+    var l0 = [nx - 58 * s, ny + 4 * s], r0 = [nx + 58 * s, ny + 10 * s];
+    var tip = [nx - 286 * s, ny - 58 * s + w1 * 14 * s], bot = [nx - 262 * s + w2 * 10 * s, ny + 178 * s], hem = [nx - 30 * s, ny + 236 * s];
+    var p = new Path2D(); p.moveTo(l0[0], l0[1]);
+    p.bezierCurveTo(nx - 130 * s, ny - 40 * s + w1 * 8 * s, nx - 210 * s, ny - 80 * s, tip[0], tip[1]);
+    for (var i = 1; i <= 12; i++) { var u = i / 12; p.lineTo(lerp(tip[0], bot[0], u) + Math.sin(th * 3 + u * 7) * 13 * s, lerp(tip[1], bot[1], u)); }
+    for (var k = 1; k <= 12; k++) { var v = k / 12; p.lineTo(lerp(bot[0], hem[0], v), lerp(bot[1], hem[1], v) + Math.sin(th * 2 + v * 8) * 9 * s + Math.sin(v * Math.PI) * 20 * s); }
+    p.bezierCurveTo(nx + 40 * s, ny + 200 * s, r0[0] + 22 * s, ny + 96 * s, r0[0], r0[1]); p.closePath();
+    g.save();
+    var gr = g.createLinearGradient(nx, ny, tip[0], bot[1]); gr.addColorStop(0, '#1B47B4'); gr.addColorStop(0.6, '#2F6FE0'); gr.addColorStop(1, '#5B9BFF'); g.fillStyle = gr; g.fill(p);
+    g.save(); g.clip(p); g.lineCap = 'round';
+    /* folds fan out from the shoulders to the far edge */
+    g.strokeStyle = 'rgba(8,26,90,.45)'; g.lineWidth = 13 * s;
+    [0.18, 0.45, 0.72].forEach(function (u, n) { var ex = lerp(tip[0], bot[0], u) + Math.sin(th * 3 + u * 7) * 13 * s, ey = lerp(tip[1], bot[1], u);
+      g.beginPath(); g.moveTo(nx - 40 * s, ny + (30 + n * 26) * s); g.quadraticCurveTo(nx - 130 * s, ey + 10 * s, ex + 16 * s, ey); g.stroke(); });
+    /* light lining catching the moon along the top edge */
+    g.strokeStyle = 'rgba(190,220,255,.65)'; g.lineWidth = 10 * s; g.beginPath(); g.moveTo(l0[0] - 10 * s, ny + 8 * s); g.bezierCurveTo(nx - 130 * s, ny - 28 * s + w1 * 8 * s, nx - 206 * s, ny - 68 * s, tip[0] + 8 * s, tip[1] + 10 * s); g.stroke();
+    /* warm rim from the street on the hem */
+    g.strokeStyle = 'rgba(255,206,130,.45)'; g.lineWidth = 8 * s; g.beginPath(); g.moveTo(bot[0] + 10 * s, bot[1] - 8 * s); g.quadraticCurveTo(lerp(bot[0], hem[0], 0.5), hem[1] + 4 * s, hem[0], hem[1] - 10 * s); g.stroke();
+    g.restore(); g.lineJoin = 'round'; g.lineWidth = 6 * s; g.strokeStyle = INK; g.stroke(p); g.restore();
+  }
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  /* power orbs: glossy sphere, white glyph, ink outline */
+  function glyph(g, kind, r) {
+    g.save(); g.strokeStyle = '#fff'; g.fillStyle = '#fff'; g.lineWidth = r * 0.11; g.lineJoin = 'round'; g.lineCap = 'round';
+    if (kind === 'layers') { [-0.3, 0, 0.3].forEach(function (dy, i) { var p = poly([[-0.5 * r, dy * r], [0, (dy - 0.22) * r], [0.5 * r, dy * r], [0, (dy + 0.22) * r]]); if (i === 0) g.fill(p); else g.stroke(p); }); }
+    else if (kind === 'bot') { g.stroke(rr(-0.46 * r, -0.3 * r, 0.92 * r, 0.66 * r, 0.2 * r)); g.fill(ell(-0.19 * r, 0.03 * r, 0.09 * r, 0.11 * r)); g.fill(ell(0.19 * r, 0.03 * r, 0.09 * r, 0.11 * r)); g.beginPath(); g.moveTo(0, -0.3 * r); g.lineTo(0, -0.5 * r); g.stroke(); g.fill(ell(0, -0.55 * r, 0.08 * r, 0.08 * r)); }
+    else if (kind === 'mega') { g.fill(poly([[-0.42 * r, -0.14 * r], [-0.12 * r, -0.14 * r], [0.38 * r, -0.44 * r], [0.38 * r, 0.44 * r], [-0.12 * r, 0.14 * r], [-0.42 * r, 0.14 * r]])); g.beginPath(); g.moveTo(-0.26 * r, 0.16 * r); g.lineTo(-0.16 * r, 0.46 * r); g.stroke(); }
+    else { g.stroke(rr(-0.3 * r, -0.3 * r, 0.6 * r, 0.6 * r, 0.08 * r)); g.fill(rr(-0.13 * r, -0.13 * r, 0.26 * r, 0.26 * r, 0.04 * r)); [-0.15, 0.15].forEach(function (o) { [[o, -0.3, o, -0.48], [o, 0.3, o, 0.48], [-0.3, o, -0.48, o], [0.3, o, 0.48, o]].forEach(function (q) { g.beginPath(); g.moveTo(q[0] * r, q[1] * r); g.lineTo(q[2] * r, q[3] * r); g.stroke(); }); }); }
+    g.restore();
+  }
+  function orb(g, x, y, r, c1, c2, kind, glow) {
+    g.save(); g.globalCompositeOperation = 'lighter'; var hg = g.createRadialGradient(x, y, r * 0.5, x, y, r * 2.4); hg.addColorStop(0, c1 + 'AA'); hg.addColorStop(1, c1 + '00'); g.globalAlpha = glow; g.fillStyle = hg; g.fillRect(x - r * 2.5, y - r * 2.5, r * 5, r * 5); g.restore();
+    var sg = g.createRadialGradient(x - r * 0.35, y - r * 0.4, r * 0.1, x, y, r); sg.addColorStop(0, '#FFFFFF'); sg.addColorStop(0.18, c1); sg.addColorStop(1, c2);
+    g.fillStyle = sg; g.fill(ell(x, y, r, r)); g.save(); g.translate(x, y + r * 0.04); glyph(g, kind, r); g.restore();
+    g.fillStyle = 'rgba(255,255,255,.55)'; g.fill(ell(x - r * 0.38, y - r * 0.5, r * 0.22, r * 0.13));
+    g.lineWidth = 5; g.strokeStyle = INK; g.stroke(ell(x, y, r, r));
+  }
+  function orbPos(k, th) {
+    var a = th + ORB.ph + k * TAU / 4, ca = Math.cos(a), sa = Math.sin(a), x = ORB.rx * ca, y = ORB.ry * sa;
+    var ct = Math.cos(ORB.tilt), st = Math.sin(ORB.tilt);
+    return { x: ORB.cx + x * ct - y * st, y: ORB.cy + x * st + y * ct, z: sa, a: a };
+  }
+  function ring(g, front) {
+    g.save(); g.translate(ORB.cx, ORB.cy); g.rotate(ORB.tilt); g.lineWidth = 3; g.strokeStyle = 'rgba(160,205,255,.5)'; g.setLineDash([2, 12]); g.lineCap = 'round';
+    g.beginPath(); g.ellipse(0, 0, ORB.rx, ORB.ry, 0, front ? 0 : Math.PI, front ? Math.PI : TAU); g.stroke(); g.restore();
+  }
+  function sfx(g, word, x, y, size, rot) {
+    g.save(); g.translate(x, y); g.rotate(rot); g.font = size + 'px Bangers'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round';
+    var w = g.measureText(word).width, burst = poly(M.starPts(0, 0, w * 0.78, size * 0.95, 11, 0.7, 3));
+    g.fillStyle = '#FF4D5E'; g.fill(burst); g.lineWidth = 6; g.strokeStyle = INK; g.stroke(burst);
+    g.lineWidth = size * 0.2; g.strokeStyle = INK; g.strokeText(word, 0, 4);
+    var gr = g.createLinearGradient(0, -size * 0.45, 0, size * 0.4); gr.addColorStop(0, '#FFF37C'); gr.addColorStop(1, '#FFB01A'); g.fillStyle = gr; g.fillText(word, 0, 4);
+    g.restore();
+  }
+
+  function render(t) {
+    var th = TAU * t / LOOP, g = S.g, dpr = S.dpr; window.T = th;
+    g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H); g.translate(0, DY);
+    var MX = 872, MY = 360, MR = 150;                         // the moon behind the monster's head
+    var bob = Math.sin(th * 2) * 7, nh = NEXI.h, nw = S.nexi ? nh * S.nexi.naturalWidth / S.nexi.naturalHeight : nh;
+    var neck = [NEXI.x + nw * NEXI.nx, NEXI.y + bob + nh * NEXI.ny];
+    ORB.cx = neck[0] + 6; ORB.cy = neck[1] + 92;
+
+    sky(g, th);
+    halftone(g, 560, -DY, 520, 300 + DY, 'rgba(120,150,255,.14)', 20, 'r');
+    moon(g, th, MX, MY, MR);
+    /* cloud wisps across the moon, drifting one screen per loop */
+    [[0, 300, 0.8, 1], [0.45, 420, 0.55, 1], [0.2, 190, 0.6, 2]].forEach(function (c) { var u = (c[0] + t / LOOP * c[3]) % 1, x = -300 + u * (W + 600); g.fillStyle = 'rgba(108,118,196,.38)'; g.fill(cloud(g, x, c[1], c[2])); });
+    focusLines(g, neck[0], neck[1], th);
+    /* searchlights from the street; one lands on the TechNext signal */
+    var sa = 0.06 * Math.sin(th);
+    beam(g, 470, GROUND, -0.12 + sa, 820, 10, 120, 0.2);
+    beam(g, 1010, GROUND, -0.42 - sa * 0.8, 900, 10, 110, 0.13);
+    skyline(g, th);
+    /* the monster rises behind the middle row */
+    M.KJ.a = 1; M.KJ.rise = 1; M.KJ.roar = 0.82 + 0.18 * Math.sin(th * 2); M.KJ.look = -1; M.KJ.s = 1;
+    g.save(); g.filter = 'none'; M.monster(g, 888, GROUND + 40, 1.0); g.restore();
+    /* rim light from the moon on its back */
+    midRow(g, th);
+    shop(g, 566, GROUND - 200, 0.6);
+    nearRow(g, th);
+    sfx(g, 'ROAR!', 548, 232, 66, -0.12);
+    /* Nexi: back orbs, cape, hover glow, the render, front orbs */
+    var P = [0, 1, 2, 3].map(function (k) { return orbPos(k, th); });
+    cape(g, neck[0], neck[1], nh / 560, th);
+    ring(g, false);
+    P.forEach(function (p, k) { if (p.z <= 0) orb(g, p.x, p.y, 36 + p.z * 6, POW[k][1], POW[k][2], POW[k][3], 0.55); });
+    var hg = g.createRadialGradient(neck[0], NEXI.y + bob + nh + 6, 4, neck[0], NEXI.y + bob + nh + 6, 120); hg.addColorStop(0, 'rgba(120,210,255,.75)'); hg.addColorStop(1, 'rgba(120,210,255,0)'); g.fillStyle = hg; g.fill(ell(neck[0], NEXI.y + bob + nh + 6, 130, 40));
+    if (S.nexi) { g.save(); g.shadowColor = 'rgba(160,210,255,.55)'; g.shadowBlur = 26; g.drawImage(S.nexi, NEXI.x, NEXI.y + bob, nw, nh); g.restore(); }
+    ring(g, true);
+    P.forEach(function (p, k) { if (p.z > 0) orb(g, p.x, p.y, 40 + p.z * 8, POW[k][1], POW[k][2], POW[k][3], 0.8); });
+
+    /* screen-space finish: bottom darkening for the words, vignette */
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var tb = H - 470, bd = g.createLinearGradient(0, tb, 0, H); bd.addColorStop(0, 'rgba(6,12,34,0)'); bd.addColorStop(0.35, 'rgba(6,12,34,.72)'); bd.addColorStop(1, 'rgba(6,12,34,.94)'); g.fillStyle = bd; g.fillRect(0, tb, W, H - tb);
+    var vg = g.createRadialGradient(W / 2, H * 0.45, H * 0.35, W / 2, H * 0.5, H * 0.8); vg.addColorStop(0, 'rgba(0,0,20,0)'); vg.addColorStop(1, 'rgba(0,0,20,.45)'); g.fillStyle = vg; g.fillRect(0, 0, W, H);
+
+    window.__dbg = { neck: [neck[0], neck[1] + DY], o0: [P[0].x, P[0].y + DY], o1: [P[1].x, P[1].y + DY], o2: [P[2].x, P[2].y + DY], o3: [P[3].x, P[3].y + DY] };
+  }
+
+  TN.boot({ slugs: { 0: 'nexi-explains-s1-ep00-meet-nexi' }, setup: { 0: setup }, render: { 0: render }, poster: { 0: 0 }, loop: LOOP });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Nexi Explains S1 EP01 - Odoo Walkthrough (poster)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=block" rel="stylesheet">
+<link rel="stylesheet" href="kit.css">
+<style>
+/* S1EP01 "Odoo Walkthrough with Nexi" (hook: What is Odoo? A quick tour of the apps.) - Sat 17 Oct 2026, 6 PM SGT.
+   CONCEPT: archetype brass orrery / museum exhibit | camera 3/4 high angle, planet at the lens | light morning sun through a
+   side window, god rays | palette cream, brass gold, app colours | text centred title top + engraved plaque on the stand |
+   type DM Serif Display + engraved caps | build 2D canvas perspective maths + nexi-cam | nexi tour guide pointing, happy |
+   device dust motes in sunbeams + out-of-focus foreground planet.
+   Film idea: the episode's "Odoo is a family of apps" moment as a museum piece. In a sunlit study, guide Nexi points at a
+   brass orrery: the apps the episode tours (CRM, Sales, Inventory, Invoicing, Accounting, Reports) are planets circling
+   one glowing sun, the one database ("type it in just once"). */
+.p1{background:#F3E6D3}
+.p1 canvas{position:absolute;left:0;top:0;width:1080px;height:100%}
+
+.p1 .head{position:absolute;z-index:40;left:90px;right:90px;top:166px;text-align:center}
+.p1 .kick{display:inline-flex;align-items:center;gap:16px;font:700 19px/1 var(--text);letter-spacing:.24em;color:#8A6230}
+.p1 .kick::before,.p1 .kick::after{content:"";width:46px;height:2px;background:linear-gradient(90deg,transparent,#B98A3A)}
+.p1 .kick::after{transform:scaleX(-1)}
+.p1 h1.t{margin:16px auto 0;width:fit-content;font:400 132px/.96 "DM Serif Display",serif;letter-spacing:-.02em;color:#1F1F3D}
+.p1 h1.t em{font-style:italic;color:#714B67}
+.p1 .sub{margin:18px auto 0;max-width:800px;font:500 28px/1.38 var(--text);color:#5B4632;text-wrap:balance}
+.p1 .sub b{color:#2B1F14;font-weight:700}
+
+/* brass plaque on the orrery's plinth (engraved) */
+.p1 .plq{position:absolute;z-index:38;padding:12px 26px 13px;border-radius:10px;text-align:center;white-space:nowrap;
+  background:linear-gradient(180deg,#F6DC93 0%,#D9A84C 38%,#B9852F 62%,#E7C273 100%);
+  box-shadow:inset 0 1px 0 rgba(255,250,225,.9),inset 0 -2px 0 rgba(90,60,15,.45),0 8px 18px -8px rgba(70,40,10,.6)}
+.p1 .plq small{display:block;font:800 15px/1 var(--text);letter-spacing:.26em;color:#5A3D10;text-shadow:0 1px 0 rgba(255,240,200,.75)}
+.p1 .plq b{display:block;margin-top:7px;font:800 23px/1 var(--display);letter-spacing:.05em;color:#3E2A08;text-shadow:0 1px 0 rgba(255,240,200,.8)}
+.p1 .plq i{position:absolute;top:50%;width:9px;height:9px;margin-top:-4.5px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#FFF2C4,#8E6420)}
+.p1 .plq i.a{left:9px}.p1 .plq i.b{right:9px}
+
+/* planet name tags (museum labels) */
+.p1 .tg{position:absolute;z-index:37;padding:6px 11px 6px;border-radius:7px;background:rgba(255,250,240,.94);border:1.5px solid #C9A260;
+  font:700 17px/1 var(--text);color:#4A3418;white-space:nowrap;box-shadow:0 6px 12px -8px rgba(70,40,10,.6)}
+
+/* footer: an admission ticket + the site, on the dark wood */
+.p1 .foot{align-items:flex-end}
+.p1 .tix{position:relative;display:inline-flex;align-items:center;gap:18px;height:86px;padding:0 30px 0 26px;border-radius:12px;background:#FFF6E4;color:#2B1F14;
+  -webkit-mask:radial-gradient(circle 12px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 12px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat;
+          mask:radial-gradient(circle 12px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 12px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat}
+.p1 .tix .adm{padding-right:18px;border-right:2px dashed #C9A260;font:800 13px/1.25 var(--text);letter-spacing:.2em;color:#8A6230;text-align:center}
+.p1 .tix .go{display:flex;align-items:center;gap:12px;font:800 28px/1 var(--display);letter-spacing:-.01em}
+.p1 .tix svg{width:26px;height:26px;color:#714B67}
+.p1 .site b{color:#FFF6E4}.p1 .site small{color:rgba(255,240,215,.78)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M9.6 7.6 16.6 12 9.6 16.4Z" fill="#FFF6E4"/></symbol>
+</defs></svg>
+
+<section class="post p1 grain" data-p="1">
+  <canvas></canvas>
+  <div class="brand" data-qa="text"><img class="tn" src="assets/logo/technext-horizontal-blue.svg" alt="TechNext"><img class="odoo" src="assets/logo/odoo-logo.png" alt="Odoo"></div>
+
+  <div class="head">
+    <span class="kick" data-qa="text">NEXI EXPLAINS &middot; EPISODE 01</span>
+    <h1 class="t" data-qa="text">What is <em>Odoo?</em></h1>
+    <p class="sub" data-qa="text">A quick tour of the apps with Nexi: <b>one order, every app, typed in just once.</b></p>
+  </div>
+
+  <div class="tg g0" data-qa="text" data-qa-group="tags">CRM</div>
+  <div class="tg g1" data-qa="text" data-qa-group="tags">Sales</div>
+  <div class="tg g2" data-qa="text" data-qa-group="tags">Inventory</div>
+  <div class="tg g3" data-qa="text" data-qa-group="tags">Invoicing</div>
+  <div class="tg g4" data-qa="text" data-qa-group="tags">Accounting</div>
+  <div class="tg g5" data-qa="text" data-qa-group="tags">Reports</div>
+  <div class="tg gs" data-qa="text" data-qa-group="tags">One database</div>
+
+  <div class="plq" data-qa="text"><i class="a"></i><i class="b"></i><small>ODOO WALKTHROUGH &middot; 2 MIN</small><b>PREMIERES SAT 17 OCT &middot; 6 PM SGT</b></div>
+
+  <div class="foot" data-qa="text"><span class="tix"><span class="adm">ADMIT<br>ONE</span><span class="go">Watch the tour on YouTube<svg><use href="#i-play"/></svg></span></span><span class="site"><b>technext.asia</b><small>All episodes: /nexi-explains</small></span></div>
+</section>
+
+<script src="kit.js"></script>
+<script>
+(function () {
+  var W = TN.W, H = TN.H, LOOP = 8, TAU = Math.PI * 2;
+  var S = {};
+  /* orrery world: y up, z toward the camera; camera elevation E, distance D; screen centre of the sun (CX, CY) */
+  var E = 0.42, D = 1150, CX = 684, CY = 700, sE = Math.sin(E), cE = Math.cos(E);
+  var PL = [   // app, ring radius, angle (0 = +x, PI/2 = toward camera), planet radius
+    ['crm', 140, 2.62, 47], ['sale', 140, -0.55, 46], ['stock', 216, 1.1, 50], ['account', 216, -2.1, 47], ['accountant', 286, 0.48, 54], ['spreadsheet_dashboard', 286, 3.5, 48]];
+  var RINGS = [140, 216, 292], TOPY = -400;   // plinth top in world y
+  var NX = { x: 22, y: 560, h: 474, bx: 0.338, hx: 0.954, hy: 0.605 };   // nexi-ep01-guide.png: body centre x, pointing hand
+
+  function img(src) { return new Promise(function (res) { var i = new Image(); i.onload = function () { res(i); }; i.onerror = function () { res(null); }; i.src = src; }); }
+  function P(x, y, z) { var y1 = y * cE - z * sE, z1 = y * sE + z * cE, k = D / (D - z1); return { x: CX + x * k, y: CY - y1 * k, k: k, d: z1 }; }
+  function ell(g, x, y, rx, ry) { g.beginPath(); g.ellipse(x, y, Math.max(rx, .1), Math.max(ry, .1), 0, 0, TAU); }
+
+  function setup(post) {
+    var dpr = window.devicePixelRatio || 1; S.dpr = dpr; S.post = post;
+    var c = post.querySelector('canvas'); c.width = W * dpr; c.height = H * dpr; S.g = c.getContext('2d');
+    S.tags = [0, 1, 2, 3, 4, 5].map(function (k) { return post.querySelector('.g' + k); }); S.tagS = post.querySelector('.gs'); S.plq = post.querySelector('.plq');
+    var R = TN.rand(170); S.dust = []; for (var i = 0; i < 190; i++) S.dust.push([R(), R(), 0.6 + R() * 2.2, R(), R()]);
+    return Promise.all([img('assets/nexi/nexi-ep01-guide.png')].concat(PL.map(function (p) { return img('assets/odoo/' + p[0] + '.svg'); }))).then(function (a) { S.nexi = a[0]; S.icons = a.slice(1); });
+  }
+
+  /* ---------- the room ---------- */
+  var WALL_B = 1012;
+  function room(g) {
+    var w = g.createLinearGradient(0, 0, 0, WALL_B); w.addColorStop(0, '#F7EEDF'); w.addColorStop(0.7, '#EFDDC4'); w.addColorStop(1, '#E2CBAA'); g.fillStyle = w; g.fillRect(0, 0, W, WALL_B);
+    /* wainscot */
+    g.fillStyle = '#D6B98F'; g.fillRect(0, 812, W, WALL_B - 812); g.fillStyle = 'rgba(120,80,30,.25)'; g.fillRect(0, 812, W, 4); g.fillStyle = 'rgba(255,240,210,.5)'; g.fillRect(0, 818, W, 2);
+    for (var x = 30; x < W; x += 210) { g.strokeStyle = 'rgba(110,72,28,.22)'; g.lineWidth = 3; g.strokeRect(x, 846, 170, 140); g.strokeStyle = 'rgba(255,240,210,.35)'; g.lineWidth = 1.5; g.strokeRect(x + 3, 849, 170, 140); }
+    /* the window's light on the wall: six skewed panes from a window off-frame left */
+    g.save(); g.filter = 'blur(3px)'; g.fillStyle = 'rgba(255,248,226,.62)';
+    for (var c = 0; c < 2; c++) for (var r = 0; r < 3; r++) { var x0 = 560 + c * 162 + r * 34, y0 = 150 + r * 142 + c * 40;
+      g.beginPath(); g.moveTo(x0, y0); g.lineTo(x0 + 140, y0 + 40); g.lineTo(x0 + 174, y0 + 160); g.lineTo(x0 + 34, y0 + 120); g.closePath(); g.fill(); }
+    g.restore();
+    /* table */
+    var t = g.createLinearGradient(0, WALL_B, 0, H); t.addColorStop(0, '#9A6434'); t.addColorStop(0.3, '#7A4A24'); t.addColorStop(1, '#3E2410'); g.fillStyle = t; g.fillRect(0, WALL_B, W, H - WALL_B);
+    g.fillStyle = 'rgba(255,220,170,.35)'; g.fillRect(0, WALL_B, W, 3);
+    var pl = new Path2D(); for (var i = -8; i <= 16; i++) { pl.moveTo(540 + i * 70, WALL_B); pl.lineTo(540 + i * 190, H); } g.strokeStyle = 'rgba(40,20,5,.18)'; g.lineWidth = 2; g.stroke(pl);
+    var gr = new Path2D(); for (var j = 0; j < 26; j++) { var yy = WALL_B + 20 + j * 17 + j * j * 0.6; gr.moveTo(0, yy); gr.bezierCurveTo(300, yy + 6, 700, yy - 6, W, yy + 3); } g.strokeStyle = 'rgba(255,210,150,.05)'; g.lineWidth = 2; g.stroke(gr);
+    /* sun patch on the table */
+    g.save(); g.filter = 'blur(10px)'; g.fillStyle = 'rgba(255,214,150,.22)'; g.beginPath(); g.moveTo(0, 1040); g.lineTo(520, 1060); g.lineTo(760, 1300); g.lineTo(0, 1320); g.closePath(); g.fill(); g.restore();
+  }
+  function rays(g) {
+    g.save(); g.globalCompositeOperation = 'screen'; g.filter = 'blur(14px)';
+    [[-160, 40, 0.62, 260, 0.2], [-200, 300, 0.5, 200, 0.14], [-120, -60, 0.72, 160, 0.12]].forEach(function (r) {
+      var x = r[0], y = r[1], a = r[2], len = 1500, w0 = 60, w1 = r[3], ex = x + Math.cos(a) * len, ey = y + Math.sin(a) * len, nx = -Math.sin(a), ny = Math.cos(a);
+      var gg = g.createLinearGradient(x, y, ex, ey); gg.addColorStop(0, 'rgba(255,244,215,' + r[4] * 2.2 + ')'); gg.addColorStop(0.5, 'rgba(255,236,200,' + r[4] + ')'); gg.addColorStop(1, 'rgba(255,236,200,0)');
+      g.fillStyle = gg; g.beginPath(); g.moveTo(x + nx * w0, y + ny * w0); g.lineTo(ex + nx * w1, ey + ny * w1); g.lineTo(ex - nx * w1, ey - ny * w1); g.lineTo(x - nx * w0, y - ny * w0); g.closePath(); g.fill(); });
+    g.restore();
+  }
+  function dust(g, t, front) {
+    g.save(); g.globalCompositeOperation = 'lighter';
+    S.dust.forEach(function (d, i) {
+      var big = d[2] > 2.4; if (big !== !!front) return;
+      var u = d[0], v = d[1], x = -80 + u * 1200 + Math.sin(TAU * t / LOOP + i) * 6, y = 60 + v * 1000 + Math.cos(TAU * t / LOOP + i * 2) * 5;
+      var inBeam = Math.abs((y - 40) - (x + 160) * Math.tan(0.62)) < 230 + x * 0.12 || Math.abs((y - 300) - (x + 200) * Math.tan(0.5)) < 170 + x * 0.1;
+      if (!inBeam) return;
+      var a = 0.25 + 0.6 * d[3], r = big ? d[2] * 2.4 : d[2];
+      if (big) g.filter = 'blur(2.5px)'; g.fillStyle = 'rgba(255,246,220,' + (big ? a * 0.6 : a) + ')'; g.beginPath(); g.arc(x, y, r, 0, TAU); g.fill(); if (big) g.filter = 'none';
+    });
+    g.restore();
+  }
+
+  /* ---------- the orrery ---------- */
+  function brassLine(g, a, b, w) {
+    g.lineCap = 'round'; g.strokeStyle = '#8E6420'; g.lineWidth = w + 2; g.beginPath(); g.moveTo(a.x, a.y); g.lineTo(b.x, b.y); g.stroke();
+    var gr = g.createLinearGradient(a.x, a.y - w, a.x, a.y + w); gr.addColorStop(0, '#FFF0B8'); gr.addColorStop(0.5, '#D9A84C'); gr.addColorStop(1, '#A87A2A');
+    g.strokeStyle = gr; g.lineWidth = w; g.stroke(); g.strokeStyle = 'rgba(255,250,220,.7)'; g.lineWidth = Math.max(1, w * 0.25); g.beginPath(); g.moveTo(a.x - w * .2, a.y - w * .3); g.lineTo(b.x - w * .2, b.y - w * .3); g.stroke();
+  }
+  function ringHalf(g, r, front) {
+    g.beginPath(); for (var i = 0; i <= 64; i++) { var a = (front ? 0 : Math.PI) + i / 64 * Math.PI, q = P(r * Math.cos(a), 0, r * Math.sin(a)); if (i) g.lineTo(q.x, q.y); else g.moveTo(q.x, q.y); }
+    g.strokeStyle = '#9A6E26'; g.lineWidth = 5; g.stroke(); g.strokeStyle = '#E9C26A'; g.lineWidth = 2.6; g.stroke(); g.strokeStyle = 'rgba(255,248,215,.8)'; g.lineWidth = 1; g.stroke();
+  }
+  function plinth(g) {
+    var top = P(0, TOPY, 0), rx = 176, ry = 40, bot = top.y + 104;
+    g.save(); g.filter = 'blur(16px)'; g.fillStyle = 'rgba(30,14,2,.5)'; ell(g, top.x + 70, bot + 10, rx + 40, 34); g.fill(); g.restore();
+    var sd = g.createLinearGradient(top.x - rx, 0, top.x + rx, 0); sd.addColorStop(0, '#6B3E1A'); sd.addColorStop(0.35, '#A86A34'); sd.addColorStop(0.7, '#7A4620'); sd.addColorStop(1, '#4A2810');
+    g.fillStyle = sd; g.beginPath(); g.moveTo(top.x - rx, top.y); g.lineTo(top.x - rx, bot); g.ellipse(top.x, bot, rx, ry, 0, Math.PI, 0, true); g.lineTo(top.x + rx, top.y); g.closePath(); g.fill();
+    var tp = g.createLinearGradient(0, top.y - ry, 0, top.y + ry); tp.addColorStop(0, '#C98B4C'); tp.addColorStop(1, '#93592A'); g.fillStyle = tp; ell(g, top.x, top.y, rx, ry); g.fill();
+    g.strokeStyle = 'rgba(255,220,170,.5)'; g.lineWidth = 2; ell(g, top.x, top.y, rx - 2, ry - 1); g.stroke();
+    /* brass foot */
+    var bf = P(0, TOPY + 10, 0); var fg = g.createRadialGradient(bf.x - 30, bf.y - 10, 4, bf.x, bf.y, 90); fg.addColorStop(0, '#FFF0B8'); fg.addColorStop(0.5, '#D3A04A'); fg.addColorStop(1, '#8E6420'); g.fillStyle = fg; ell(g, bf.x, bf.y - 4, 86, 20); g.fill();
+    return { x: top.x, y: top.y, bot: bot };
+  }
+  function column(g) {
+    var a = P(0, TOPY + 14, 0), b = P(0, -10, 0);
+    var cg = g.createLinearGradient(a.x - 12, 0, a.x + 12, 0); cg.addColorStop(0, '#8E6420'); cg.addColorStop(0.35, '#FFF0B8'); cg.addColorStop(0.6, '#D3A04A'); cg.addColorStop(1, '#7A5418');
+    g.fillStyle = cg; g.fillRect(a.x - 11, b.y, 22, a.y - b.y);
+    /* a gear on the column */
+    var gc = P(0, -210, 0); g.save(); g.translate(gc.x, gc.y); g.scale(1, 0.42); var gp = new Path2D();
+    for (var i = 0; i < 24; i++) { var an = i / 24 * TAU, r = i % 2 ? 58 : 66; if (i) gp.lineTo(Math.cos(an) * r, Math.sin(an) * r); else gp.moveTo(Math.cos(an) * r, Math.sin(an) * r); } gp.closePath();
+    g.fillStyle = '#C69440'; g.fill(gp); g.strokeStyle = '#7A5418'; g.lineWidth = 3; g.stroke(gp); g.fillStyle = '#8E6420'; g.beginPath(); g.arc(0, 0, 20, 0, TAU); g.fill(); g.restore();
+  }
+  function sun(g) {
+    var c = P(0, 0, 0), r = 64 * c.k;
+    g.save(); g.globalCompositeOperation = 'lighter'; var h = g.createRadialGradient(c.x, c.y, r * 0.6, c.x, c.y, r * 3.4); h.addColorStop(0, 'rgba(255,214,120,.55)'); h.addColorStop(1, 'rgba(255,214,120,0)'); g.fillStyle = h; g.fillRect(c.x - r * 3.5, c.y - r * 3.5, r * 7, r * 7); g.restore();
+    var s = g.createRadialGradient(c.x - r * 0.3, c.y - r * 0.35, r * 0.1, c.x, c.y, r); s.addColorStop(0, '#FFFDF0'); s.addColorStop(0.45, '#FFE08A'); s.addColorStop(1, '#E39A2E'); g.fillStyle = s; g.beginPath(); g.arc(c.x, c.y, r, 0, TAU); g.fill();
+    /* the database glyph, engraved */
+    g.save(); g.translate(c.x, c.y + 2); g.strokeStyle = 'rgba(122,72,8,.7)'; g.lineWidth = 3.4; var w = r * 0.5, hh = r * 0.13;
+    [-0.42, 0, 0.42].forEach(function (dy, i) { g.beginPath(); g.ellipse(0, dy * r, w, hh, 0, 0, TAU); if (i === 0) g.stroke(); else { g.beginPath(); g.ellipse(0, dy * r, w, hh, 0, 0, Math.PI); g.stroke(); } });
+    g.beginPath(); g.moveTo(-w, -0.42 * r); g.lineTo(-w, 0.42 * r); g.moveTo(w, -0.42 * r); g.lineTo(w, 0.42 * r); g.stroke(); g.restore();
+    return c;
+  }
+  function planet(g, k, q) {
+    var p = PL[k], r = p[3] * q.k, x = q.x, y = q.y;
+    var b = g.createRadialGradient(x - r * 0.4, y - r * 0.45, r * 0.1, x, y, r); b.addColorStop(0, '#FFFFFF'); b.addColorStop(0.86, '#FFFEFB'); b.addColorStop(1, '#F4EADA');
+    g.fillStyle = b; g.beginPath(); g.arc(x, y, r, 0, TAU); g.fill();
+    var ic = S.icons[k]; if (ic) { var s = r * 1.08; g.drawImage(ic, x - s / 2, y - s / 2, s, s); }
+    var sh = g.createRadialGradient(x - r * 0.3, y - r * 0.35, r * 0.82, x, y, r * 1.01); sh.addColorStop(0, 'rgba(90,55,20,0)'); sh.addColorStop(0.7, 'rgba(90,55,20,.03)'); sh.addColorStop(1, 'rgba(70,40,10,.2)');
+    g.fillStyle = sh; g.beginPath(); g.arc(x, y, r, 0, TAU); g.fill();
+    g.fillStyle = 'rgba(255,255,255,.75)'; ell(g, x - r * 0.38, y - r * 0.46, r * 0.26, r * 0.15); g.fill();
+    g.strokeStyle = '#C9A260'; g.lineWidth = 3; g.beginPath(); g.arc(x, y, r + 1, 0, TAU); g.stroke(); g.strokeStyle = 'rgba(255,248,220,.9)'; g.lineWidth = 1.2; g.beginPath(); g.arc(x, y, r + 2.5, Math.PI * 1.05, Math.PI * 1.6); g.stroke();
+    return r;
+  }
+
+  function render(t) {
+    var g = S.g, dpr = S.dpr;
+    g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+    room(g); rays(g); dust(g, t, false);
+    var base = plinth(g); column(g);
+    /* back halves of the rings, then everything by depth: arms + posts + planets + the sun, then the front halves */
+    RINGS.forEach(function (r) { ringHalf(g, r, false); });
+    var items = PL.map(function (p, k) { var q = P(p[1] * Math.cos(p[2]), 0, p[1] * Math.sin(p[2])); return { k: k, q: q, d: q.d }; });
+    items.push({ k: -1, d: 0 });
+    items.sort(function (a, b) { return a.d - b.d; });
+    var pos = {};
+    items.forEach(function (it) {
+      if (it.k < 0) { pos.sun = sun(g); RINGS.forEach(function (r) { ringHalf(g, r, true); }); return; }
+      var p = PL[it.k], X = p[1] * Math.cos(p[2]), Z = p[1] * Math.sin(p[2]);
+      brassLine(g, P(0, -70, 0), P(X, -70, Z), 6 * it.q.k); brassLine(g, P(X, -70, Z), P(X, -p[3] * 0.6, Z), 4.5 * it.q.k);
+      pos[it.k] = { x: it.q.x, y: it.q.y, r: planet(g, it.k, it.q) };
+    });
+    /* Nexi, the guide: soft shadow on the table, hover glow, the render */
+    if (S.nexi) {
+      var nw = NX.h * S.nexi.naturalWidth / S.nexi.naturalHeight, bx = NX.x + nw * NX.bx, fy = NX.y + NX.h;
+      g.save(); g.filter = 'blur(14px)'; g.fillStyle = 'rgba(40,20,4,.38)'; ell(g, bx + 60, 1150, 150, 26); g.fill(); g.restore();
+      var hg = g.createRadialGradient(bx, fy + 4, 4, bx, fy + 4, 110); hg.addColorStop(0, 'rgba(140,215,255,.7)'); hg.addColorStop(1, 'rgba(140,215,255,0)'); g.fillStyle = hg; ell(g, bx, fy + 4, 120, 32); g.fill();
+      g.save(); g.shadowColor = 'rgba(255,226,170,.55)'; g.shadowBlur = 24; g.drawImage(S.nexi, NX.x, NX.y, nw, NX.h); g.restore();
+      pos.hand = [NX.x + nw * NX.hx, NX.y + NX.h * NX.hy];
+    }
+    dust(g, t, true);
+    /* lens layer: the Accounting planet's twin right at the lens, far out of focus */
+    g.save(); g.filter = 'blur(13px)'; var fx = 1040, fyy = 1062, fr = 128;
+    var fb = g.createRadialGradient(fx - fr * 0.4, fyy - fr * 0.4, fr * 0.1, fx, fyy, fr); fb.addColorStop(0, '#FFFFFF'); fb.addColorStop(0.6, '#F1E3CC'); fb.addColorStop(1, '#B89A6E'); g.fillStyle = fb; g.beginPath(); g.arc(fx, fyy, fr, 0, TAU); g.fill();
+    if (S.icons[4]) { g.globalAlpha = 0.85; g.drawImage(S.icons[4], fx - fr * 0.6, fyy - fr * 0.6, fr * 1.2, fr * 1.2); } g.restore();
+    /* grade + vignette */
+    g.save(); g.globalCompositeOperation = 'soft-light'; var gd = g.createLinearGradient(0, 0, W, H); gd.addColorStop(0, 'rgba(255,200,130,.5)'); gd.addColorStop(0.6, 'rgba(128,128,128,0)'); gd.addColorStop(1, 'rgba(60,40,110,.16)'); g.fillStyle = gd; g.fillRect(0, 0, W, H); g.restore();
+    var vg = g.createRadialGradient(W / 2, H * 0.44, H * 0.38, W / 2, H * 0.5, H * 0.82); vg.addColorStop(0, 'rgba(40,20,5,0)'); vg.addColorStop(1, 'rgba(40,20,5,.3)'); g.fillStyle = vg; g.fillRect(0, 0, W, H);
+
+    /* labels: name tags under each planet; the plaque on the plinth */
+    PL.forEach(function (p, k) { var e = S.tags[k], q = pos[k]; if (!q) return; var back = Math.sin(p[2]) < 0;
+      e.style.left = Math.min(W - 40 - e.offsetWidth, q.x - e.offsetWidth / 2) + 'px'; e.style.top = (back ? q.y - q.r - 10 - e.offsetHeight : q.y + q.r + 9) + 'px'; });
+    if (pos.sun) { var ty = pos.sun.y - 64 * pos.sun.k - 112; S.tagS.style.left = (pos.sun.x - S.tagS.offsetWidth / 2) + 'px'; S.tagS.style.top = ty + 'px';
+      g.setTransform(dpr, 0, 0, dpr, 0, 0); g.strokeStyle = 'rgba(140,100,40,.7)'; g.lineWidth = 2; g.setLineDash([3, 5]); g.beginPath(); g.moveTo(pos.sun.x, ty + 34); g.lineTo(pos.sun.x, pos.sun.y - 64 * pos.sun.k - 4); g.stroke(); g.setLineDash([]); }
+    S.plq.style.left = (base.x - S.plq.offsetWidth / 2) + 'px'; S.plq.style.top = (base.y + 40) + 'px';
+    window.__dbg = { sun: pos.sun ? [pos.sun.x, pos.sun.y] : null, hand: pos.hand, p0: pos[0] && [pos[0].x, pos[0].y], p1: pos[1] && [pos[1].x, pos[1].y], p2: pos[2] && [pos[2].x, pos[2].y], p3: pos[3] && [pos[3].x, pos[3].y], p4: pos[4] && [pos[4].x, pos[4].y], p5: pos[5] && [pos[5].x, pos[5].y], plinth: [base.x, base.y] };
+  }
+
+  TN.boot({ slugs: { 1: 'nexi-explains-s1-ep01-odoo-walkthrough-with-nexi' }, setup: { 1: setup }, render: { 1: render }, poster: { 1: 0 }, loop: LOOP });
+})();
+</script>
+</body>
+</html>
